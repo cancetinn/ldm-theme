@@ -1,0 +1,18 @@
+.redux-container .redux-action_bar input.button-primary {
+    background-color: #e5d5b9;
+    color: #000;
+    border-width: 0;
+    font-weight: 600;
+}
+
+.redux-container .redux-action_bar input:not(.button-primary) {
+    border: 1px solid #c7c7c7;
+    font-weight: 400;
+    color: #5d5d5d;
+    margin-left: 0.5rem;
+}
+
+.admin-color-fresh #redux-header,
+.wp-customizer #redux-header {
+    border-color: #e5d5b9;
+}
