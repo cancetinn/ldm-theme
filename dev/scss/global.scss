@@ -2,6 +2,8 @@
     --font-primary: "Poppins", sans-serif;
     --primary-color: #ee0d8c;
     --secondary-color: #ad3d80;
+    background-image: linear-gradient(to left top, #10110e, #181a19, #202222, #292a2a, #323232);
+    color: #fff;
 }
 
 body {
@@ -16,6 +18,8 @@ body {
 
     overflow-y: scroll;
     overflow-x: hidden;
+    background-image: linear-gradient(to left top, #10110e, #181a19, #202222, #292a2a, #323232);
+    color: #fff;
 }
 
 p {

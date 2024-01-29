@@ -16,7 +16,8 @@ class Elementor
 
     private static $elements = [
         // foldername => Classname
-        'test' => 'Test',
+        'test'   => 'Test',
+        'thanks' => 'Thanks',
      ];
 
     protected function __construct()

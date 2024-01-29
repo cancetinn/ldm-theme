@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.29.3",
+    "browser-sync": "^3.0.2",
     "cross-env": "^7.0.3",
     "gulp": "^4.0.2",
     "gulp-clean": "^0.4.0",
@@ -27,7 +27,8 @@
     "gulp-sourcemaps": "^3.0.0",
     "gulp-svgmin": "^4.1.0",
     "gulp-terser": "^2.1.0",
-    "sass": "^1.69.5",
+    "gulp-uglify": "^3.0.2",
+    "sass": "^1.70.0",
     "svg-sprite-generator": "^0.0.7"
   }
 }

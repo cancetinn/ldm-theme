@@ -101,6 +101,11 @@ class Ajax
         reserve_player1_uid varchar(50),
         reserve_player1_email varchar(100),
         reserve_player1_discord varchar(50),
+        reserve_player2_fullname varchar(100),
+        reserve_player2_ign varchar(50),
+        reserve_player2_uid varchar(50),
+        reserve_player2_email varchar(100),
+        reserve_player2_discord varchar(50),
         coach_fullname varchar(100),
         coach_email varchar(100),
         coach_discord varchar(50),
@@ -140,6 +145,11 @@ class Ajax
         reserve_player1_uid varchar(50),
         reserve_player1_email varchar(100),
         reserve_player1_discord varchar(50),
+        reserve_player2_fullname varchar(100),
+        reserve_player2_ign varchar(50),
+        reserve_player2_uid varchar(50),
+        reserve_player2_email varchar(100),
+        reserve_player2_discord varchar(50),
         coach_fullname varchar(100),
         coach_email varchar(100),
         coach_discord varchar(50),
@@ -179,6 +189,11 @@ class Ajax
         reserve_player1_uid varchar(50),
         reserve_player1_email varchar(100),
         reserve_player1_discord varchar(50),
+        reserve_player2_fullname varchar(100),
+        reserve_player2_ign varchar(50),
+        reserve_player2_uid varchar(50),
+        reserve_player2_email varchar(100),
+        reserve_player2_discord varchar(50),
         coach_fullname varchar(100),
         coach_email varchar(100),
         coach_discord varchar(50),
@@ -236,6 +251,12 @@ class Ajax
         $reserve_player1_email = isset($_POST['reserve_player1_email']) ? sanitize_email($_POST['reserve_player1_email']) : '';
         $reserve_player1_discord = isset($_POST['reserve_player1_discord']) ? sanitize_text_field($_POST['reserve_player1_discord']) : '';
 
+        $reserve_player2_fullname = isset($_POST['reserve_player2_fullname']) ? sanitize_text_field($_POST['reserve_player2_fullname']) : '';
+        $reserve_player2_ign = isset($_POST['reserve_player2_ign']) ? sanitize_text_field($_POST['reserve_player2_ign']) : '';
+        $reserve_player2_uid = isset($_POST['reserve_player2_uid']) ? sanitize_text_field($_POST['reserve_player2_uid']) : '';
+        $reserve_player2_email = isset($_POST['reserve_player2_email']) ? sanitize_email($_POST['reserve_player2_email']) : '';
+        $reserve_player2_discord = isset($_POST['reserve_player2_discord']) ? sanitize_text_field($_POST['reserve_player2_discord']) : '';
+
         $coach_fullname = isset($_POST['coach_fullname']) ? sanitize_text_field($_POST['coach_fullname']) : '';
         $coach_email = isset($_POST['coach_email']) ? sanitize_email($_POST['coach_email']) : '';
         $coach_discord = isset($_POST['coach_discord']) ? sanitize_text_field($_POST['coach_discord']) : '';
@@ -273,6 +294,11 @@ class Ajax
                 'reserve_player1_uid' => $reserve_player1_uid,
                 'reserve_player1_email' => $reserve_player1_email,
                 'reserve_player1_discord' => $reserve_player1_discord,
+                'reserve_player2_fullname' => $reserve_player2_fullname,
+                'reserve_player2_ign' => $reserve_player2_ign,
+                'reserve_player2_uid' => $reserve_player2_uid,
+                'reserve_player2_email' => $reserve_player2_email,
+                'reserve_player2_discord' => $reserve_player2_discord,
                 'coach_fullname' => $coach_fullname,
                 'coach_email' => $coach_email,
                 'coach_discord' => $coach_discord,
@@ -286,7 +312,7 @@ class Ajax
             wp_die('Veritabanına ekleme başarısız.');
         }
 
-        wp_redirect(home_url('/tesekkurler/'));
+        wp_redirect(home_url('/thank-you/'));
         exit;
     }
 
@@ -320,14 +346,12 @@ class Ajax
     public function handle_form_data_endpoint($request)
     {
         global $wpdb;
-
+        $params = $request->get_params();
         $query = "SELECT * FROM {$wpdb->prefix}applications";
 
-        $params = $request->get_params();
-
-        if (isset($params['after'])) {
-            $after = sanitize_text_field($params['after']);
-            $query .= $wpdb->prepare(" WHERE time > %s", $after);
+        if (isset($params['status'])) {
+            $status = sanitize_text_field($params['status']);
+            $query .= $wpdb->prepare(" WHERE status = %s", $status);
         }
 
         $query .= " ORDER BY time DESC";
@@ -397,6 +421,11 @@ class Ajax
             'reserve_player1_uid' => $submission->reserve_player1_uid,
             'reserve_player1_email' => $submission->reserve_player1_email,
             'reserve_player1_discord' => $submission->reserve_player1_discord,
+            'reserve_player2_fullname' => $submission->reserve_player2_fullname,
+            'reserve_player2_ign' => $submission->reserve_player2_ign,
+            'reserve_player2_uid' => $submission->reserve_player2_uid,
+            'reserve_player2_email' => $submission->reserve_player2_email,
+            'reserve_player2_discord' => $submission->reserve_player2_discord,
             'coach_fullname' => $submission->coach_fullname,
             'coach_email' => $submission->coach_email,
             'coach_discord' => $submission->coach_discord,
