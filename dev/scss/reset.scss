@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+ul:not(class),
+ol:not(class) {
+    list-style-type: none;
+}
+
+code,
+pre {
+    font-family: monospace;
+}
+
+b,
+strong {
+    font-weight: bold;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.lazyload,
+.lazyloading {
+    opacity: 0.2;
+}
+
+.lazyloaded {
+    animation: slide_up 0.3s forwards 1;
+}
+
+@keyframes slide_up {
+    from {
+        opacity: 0.2;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+
+    & + label {
+        position: relative;
+        cursor: pointer;
+        padding-left: 1.5rem;
+        user-select: none;
+    }
+
+    & + label:before {
+        content: '';
+        width: 15px;
+        height: 15px;
+        border: 1px solid #a4a4a4;
+        position: absolute;
+        left: 0;
+        top: calc(50% - 9px);
+        border-radius: 2px;
+        transition: all .3s ease;
+    }
+
+    & + label:after {
+        content: '';
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 4px;
+        height: 8px;
+        border: 2px solid transparent;
+        border-left-width: 0;
+        border-top-width: 0;
+        transform: rotate(45deg);
+    }
+
+    &:checked + label:before {
+        background: var(--primary-color);
+        border-color: var(--primary-color);
+    }
+
+    &:checked + label:after {
+        border-color: #fff;
+    }
+}
+
+input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+
+    & + label {
+        position: relative;
+        cursor: pointer;
+        padding-left: 1.5rem;
+        user-select: none;
+
+        &:before {
+            content: "";
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            top: calc(50% - 9px);
+            left: 0;
+            background-color: #fff;
+            border: 1px solid #a4a4a4;
+            border-radius: 50%;
+            transition: all .3s ease;
+            z-index: -1;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            top: 7px;
+            left: 4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+    }
+
+    &:checked + label:after {
+        background-color: var(--primary-color);
+    }
+}

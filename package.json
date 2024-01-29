@@ -7,7 +7,8 @@
     "dev": "cross-env NODE_ENV=development gulp",
     "build": "cross-env NODE_ENV=production gulp build",
     "wdev": "cross-env NODE_ENV=development gulp watch",
-    "wbuild": "cross-env NODE_ENV=production gulp watch"
+    "wbuild": "cross-env NODE_ENV=production gulp watch",
+    "sprite": "svg-sprite-generate -d assets/icons -o dev/sprites/icons.svg"
   },
   "keywords": [],
   "author": "",
@@ -24,7 +25,9 @@
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
-    "gulp-uglify": "^3.0.2",
-    "sass": "^1.62.1"
+    "gulp-svgmin": "^4.1.0",
+    "gulp-terser": "^2.1.0",
+    "sass": "^1.69.5",
+    "svg-sprite-generator": "^0.0.7"
   }
 }

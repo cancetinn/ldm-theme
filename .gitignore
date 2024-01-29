@@ -1,5 +1,10 @@
 .idea
-dist
+assets
+assets/css
+assets/fonts
+assets/icons
+assets/img
+assets/js
 node_modules
 package-lock.json
 yarn.lock

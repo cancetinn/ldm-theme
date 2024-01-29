@@ -1,10 +1,11 @@
 const { src, dest, series, parallel, watch } = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
-const uglify = require('gulp-uglify');
+const terser = require('gulp-terser');
 const concat = require('gulp-concat');
 const clean = require('gulp-clean');
 const sourcemaps = require('gulp-sourcemaps');
 const gulpif = require('gulp-if');
+const svgmin = require('gulp-svgmin');
 
 const paths = {
     dev: {
@@ -41,6 +42,18 @@ function img() {
 
 function icons() {
     return src(paths.dev.icons)
+        .pipe(svgmin({
+            multipass: true,
+            full: true,
+            /*plugins: [
+                {
+                    name: "removeAttrs",
+                    params: {
+                        attrs: "(fill|style|stroke)"
+                    }
+                }
+            ],*/
+        }))
         .pipe(dest(paths.assets.icons));
 }
 
@@ -58,8 +71,8 @@ exports.default = series(parallel(js, img, icons, scss));
 function buildJs() {
     return src(paths.dev.js)
         .pipe(sourcemaps.init())
+        .pipe(terser())
         .pipe(concat('theme.min.js'))
-        .pipe(uglify())
         .pipe(gulpif(!production, sourcemaps.write('.')))
         .pipe(dest(paths.assets.js));
 }

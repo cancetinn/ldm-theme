@@ -1,5 +1,44 @@
+:root {
+    --font-primary: "Poppins", sans-serif;
+    --primary-color: #ee0d8c;
+    --secondary-color: #ad3d80;
+}
+
 body {
-    font-family: "Poppins", sans-serif;
+    font-family: var(--font-primary);
+    font-size: 16px;
+    word-wrap: break-word;
+    text-rendering: optimizeLegibility;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+p {
+    color: var(--pcolor);
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+
+    &:not(:last-child){
+        margin-bottom: 1.25rem;
+    }
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+    transition: all .2s ease;
+}
+
+.container {
+    width: 100%;
+    max-width: 1350px;
+    margin-inline: auto;
+    padding: 0 30px;
 }
 
 img[src*="data:image/svg+xml"] {
@@ -7,20 +46,42 @@ img[src*="data:image/svg+xml"] {
     border-radius: 4px;
 }
 
+.icon {
+    display: inline-block;
 
-.lazyload,
-.lazyloading {
-    opacity: 0.2;
-}
-.lazyloaded {
-    animation: slide_up 0.3s forwards 1;
-}
-@keyframes slide_up {
-    from {
-        opacity: 0.2;
+    &:before {
+        content: "";
+        width: var(--iw);
+        height: var(--ih);
+        -webkit-mask: var(--iurl) no-repeat center;
+        mask: var(--iurl) no-repeat center;
+        background-color: var(--ic, var(--primary-color));
+        display: block;
     }
 
-    to {
-        opacity: 1;
+    &.primary {
+        --ic: var(--primary-color);
+    }
+
+    &.secondary {
+        --ic: var(--secondary-color);
     }
 }
+
+.spacex {
+    height: var(--spacer);
+}
+
+/* Exemple svg css
+svg.linkedin {
+    --sw: 40px;
+    --sh: 40px;
+    --sc: #2558b9;
+}
+*/
+svg.svg {
+    width: var(--sw, 50px);
+    height: var(--sh, 50px);
+    fill: var(--sc, var(--primary-color));
+}
+

@@ -66,6 +66,7 @@ class Options
 
         // Add image size
         add_image_size( 'post_thumb', 400, 200, true );
+        add_image_size( 'blog_thumb', 400, 300, true );
 
         //Remove widgets block editor
         remove_theme_support('widgets-block-editor');
@@ -186,7 +187,7 @@ class Options
     public function image_lazyload_class($attr, $attachment, $size)
     {
         if (is_admin()) return $attr;
-        if (str_contains($attr['class'], 'no_lazy')) return $attr;
+        //if (str_contains($attr['class'], 'no_lazy')) return $attr;
 
         if ($attachment->post_mime_type === 'image/svg+xml') {
             unset($attr['loading']);
@@ -285,7 +286,8 @@ class Options
         return array_values($classes);
     }
 
-    public function change_widget_menu_class( $args ) {
+    public function change_widget_menu_class( $args )
+    {
         if ( $args['menu_class'] == 'menu' ) {
             $args['menu_class'] = 'link-list dropdown_content';
             $args['container'] = false;
@@ -294,33 +296,35 @@ class Options
         return $args;
     }
 
-    public function add_linebreak_shortcode() {
+    public function add_linebreak_shortcode()
+    {
         return '<br class="br" />';
     }
 
-    public function contact_now_shortcode() {
+    public function contact_now_shortcode()
+    {
         ob_start();
         $current_page_id = get_queried_object_id();
 
         ?>
         <form id="contactform" method="post" action="" name="contactform">
-            <input type="hidden" id="cttitle" name="cttitle" value="<?php echo get_the_title( $current_page_id ); ?>">
-            <input type="hidden" id="ctpermalink" name="ctpermalink" value="<?php echo get_the_permalink( $current_page_id ); ?>">
+            <input type="hidden" id="thetitle" name="thetitle" value="<?php echo get_the_title( $current_page_id ); ?>">
+            <input type="hidden" id="thepermalink" name="thepermalink" value="<?php echo get_the_permalink( $current_page_id ); ?>">
 
             <div class="cf-wrap">
                 <div class="inputs">
                     <label for="name"><?php esc_html_e('Ad Soyad', ARINA_TEXT); ?>*</label>
-                    <input id="name" name="name" type="text" value="" required>
+                    <input id="name" name="name" type="text" value="" >
                 </div>
 
                 <div class="inputs">
                     <label for="phone"><?php esc_html_e('Telefon Numarası', ARINA_TEXT); ?>*</label>
-                    <input id="phone" name="phone" type="tel" value="" required>
+                    <input id="phone" name="phone" type="tel" value="" >
                 </div>
 
                 <div class="inputs">
                     <label for="email"><?php esc_html_e('Mail Adresi', ARINA_TEXT); ?>*</label>
-                    <input id="email" name="email" type="email" value="" required>
+                    <input id="email" name="email" type="email" value="" >
                 </div>
             </div>
 
@@ -328,13 +332,13 @@ class Options
                 <button type="submit" class="buttonx primary"><?php esc_html_e('Gönder', ARINA_TEXT); ?></button>
             </div>
         </form>
-        <div class="ct_messages"></div>
         <?php
 
         return ob_get_clean();
     }
 
-    public function arina_tag_cloud_font_change( $args ){
+    public function arina_tag_cloud_font_change( $args )
+    {
         $args['smallest'] = 9;
         $args['largest']  = 9;
         $args['format']  = 'list';
@@ -342,14 +346,16 @@ class Options
         return $args;
     }
 
-    public function arina_list_categories_output_change( $links ) {
+    public function arina_list_categories_output_change( $links )
+    {
         $links = str_replace('</a> (', '</a> <span>', $links);
         $links = str_replace(')', '</span>', $links);
 
         return $links;
     }
 
-    public function exclude_pages_from_search($query) {
+    public function exclude_pages_from_search($query)
+    {
         if ( !is_admin() && $query->is_main_query() ) {
             if ( $query->is_search ) {
                 $query->set( 'post_type', ['post'] );

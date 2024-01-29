@@ -12,8 +12,8 @@ $name = $args['name'] ?? '';
 $phone = $args['phone'] ?? '';
 $email = $args['email'] ?? '';
 
-$cttitle = $args['cttitle'] ?? '';
-$ctpermalink = $args['ctpermalink'] ?? '';
+$the_title = $args['thetitle'] ?? '';
+$the_permalink = $args['thepermalink'] ?? '';
 
 ?>
 <table style="font-family:'Poppins',sans-serif;" border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -23,7 +23,7 @@ $ctpermalink = $args['ctpermalink'] ?? '';
             <tr>
                 <th colspan="2" align="center">
                     <h2>
-                        Form <a href="<?php echo $ctpermalink; ?>" target="_blank"><?php echo $cttitle; ?></a>
+                        Form <a href="<?php echo $the_permalink; ?>" target="_blank"><?php echo $the_title; ?></a>
                         sayfasından gönderildi.
                     </h2>
                 </th>

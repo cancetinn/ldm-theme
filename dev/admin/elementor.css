@@ -23,3 +23,7 @@ div[id*="elementor-panel-category-arina"].elementor-active {
     order: 1;
     -webkit-box-ordinal-group: 2;
 }
+
+#elementor-panel .e-ai-button {
+    display: none;
+}

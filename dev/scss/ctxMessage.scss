@@ -1,0 +1,126 @@
+.ctxMessages {
+    position: relative;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s ease;
+
+    &.loading {
+
+        .messageBody {
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 15px;
+                right: 0;
+                height: 60px;
+                width: 100%;
+                filter: invert(1);
+                background: url("../icons/loading.svg") no-repeat center;
+            }
+        }
+
+        .loadingStatus {
+            background-color: var(--primary-color);
+            border-bottom: 7px solid var(--secondary-color);
+        }
+    }
+
+    .messageBody {
+        font-size: 22px;
+        color: #fff;
+        width: 700px;
+        padding: 30px 40px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 20px 40px #0000003d;
+        transition: all .3s ease;
+        z-index: 9999;
+    }
+
+    .success {
+        background-color: var(--primary-color);
+        border-bottom: 7px solid var(--secondary-color);
+
+        &:before {
+            content: "";
+            width: 50px;
+            height: 50px;
+            margin-right: 30px;
+            flex-shrink: 0;
+            background: url("../icons/success-message.svg") no-repeat center;
+        }
+    }
+
+    .error {
+        background-color: #a82929;
+        border-bottom: 7px solid #f78692;
+
+        &:before {
+            content: "";
+            width: 50px;
+            height: 50px;
+            margin-right: 30px;
+            flex-shrink: 0;
+            background: url("../icons/error-message.svg") no-repeat center;
+        }
+    }
+
+    .ctxClose {
+
+        img {
+            pointer-events: none;
+            filter: invert(1);
+            width: 14px;
+        }
+
+        &:before {
+            content: "";
+            width: 14px;
+            height: 14px;
+            position: fixed;
+            top: calc(50% - 35px);
+            left: calc(50% + 330px);
+            transform: translate(-50%,-50%);
+            display: flex;
+            background: url("../icons/close.svg") no-repeat center;
+            background-size: contain;
+            filter: invert(1);
+            cursor: pointer;
+            z-index: 9999;
+        }
+    }
+
+    &.loading,
+    &.on {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .ctxMessages {
+
+        .messageBody {
+            font-size: 16px;
+            width: 350px;
+            padding: 15px 30px 15px 15px;
+        }
+
+        .success::before {
+            margin-right: 15px;
+            background-size: contain;
+        }
+
+        .ctxClose::before {
+            top: calc(50% - 30px);
+            left: calc(50% + 160px);
+        }
+    }
+}

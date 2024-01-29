@@ -11,7 +11,6 @@ get_header();
 /*
  * get_the_post_thumbnail_url( get_option('page_for_posts') )
  * get_the_title( get_option('page_for_posts') )
- * esc_url(home_url( '/' ))
  *
  * */
 
@@ -33,13 +32,13 @@ get_header();
                         wp_reset_postdata();
                     endif;
 
-                    //arina_pagination();
+                    arina_pagination();
 
                     ?>
                 </ul>
 
                 <div class="sidebar">
-                    <?php //dynamic_sidebar('sidebar-blog'); ?>
+                    <?php dynamic_sidebar('sidebar-blog'); ?>
                 </div>
             </div>
         </div>

@@ -6,11 +6,38 @@
 
 defined('ABSPATH') || exit; // Exit if accessed directly
 
+// get svg
+if (!function_exists('getSvg')) :
+    function getSvg($idName, $className = 'default')
+    {
+        $iconsSvg = ARINA_THEME_URI . "dev/sprites/icons.svg";
+        $svgs = sprintf('<svg class="svg %s" role="img">
+        <use href="%s#%s"></use>
+        </svg>', $className, $iconsSvg, $idName);
+
+        return $svgs;
+    }
+endif;
+
+
 // get attachment image
 if (!function_exists('getImage')) :
     function getImage($id, $classname = 'img', $sizes = 'full')
     {
         return wp_get_attachment_image( $id, $sizes, false, ['class' => $classname] );
+    }
+endif;
+
+// get icon
+if (!function_exists('getIcon')) :
+    function getIcon($id, $classname = 'default')
+    {
+        $iconMeta = wp_get_attachment_metadata($id);
+        if ( !isset($iconMeta['width']) ) return false;
+
+        $iconUrl = wp_get_attachment_image_url($id, 'full');
+
+        return "<i class='icon $classname' style='--iurl:url($iconUrl);--iw:{$iconMeta['width']}px;--ih:{$iconMeta['height']}px'></i>";
     }
 endif;
 
@@ -23,8 +50,8 @@ if (!function_exists('getClassName')) :
 endif;
 
 // Get Taxonomy Name
-if (!function_exists('arina_get_taxonomy')) :
-    function arina_get_taxonomy($taxonomy = 'category')
+if (!function_exists('getTaxonomy')) :
+    function getTaxonomy($taxonomy = 'category')
     {
         $categories = get_categories(['taxonomy' => $taxonomy]);
 
@@ -37,8 +64,8 @@ if (!function_exists('arina_get_taxonomy')) :
 endif;
 
 // Get Pages Name
-if (!function_exists('arina_get_pages')) :
-    function arina_get_pages()
+if (!function_exists('getPages')) :
+    function getPages()
     {
         $pages = get_pages();
 
@@ -127,108 +154,70 @@ endif;
 
 // Menu custom template
 if (!function_exists('menu_nav')) :
-    function menu_nav($menu_id, $classx = null) {
+    function menu_nav($menu_id, $classx = null)
+    {
         $menu_class = \ARINA_THEME\Inc\Menus::get_instance();
         $get_menu = $menu_class->get_menu_id($menu_id);
         $menus = wp_get_nav_menu_items($get_menu);
-        $li_class = ($classx !== null) ? $classx : "menu-item menu-item-has-children";
 
-        // Check menus
-        if (empty($menus) && !is_array($menus)) return;
+        $li_class = ($classx !== null) ? $classx : "menu-item-has-children";
 
-        foreach ($menus as $menu_item) {
-            $current_page_id = get_the_ID();
+        if (!empty($menus) && is_array($menus)) {
+            foreach ($menus as $menu_item) {
+                if (!$menu_item->menu_item_parent) {
+                    $child_menu_items = $menu_class->get_child_menu_items($menus, $menu_item->ID);
+                    $has_children = !empty($child_menu_items) && is_array($child_menu_items);
 
-            if (!$menu_item->menu_item_parent) {
-                $child_menu_items = $menu_class->get_child_menu_items($menus, $menu_item->ID);
-                $has_children = !empty($child_menu_items) && is_array($child_menu_items);
-
-                if (!$has_children) :
-                    $link_class = !empty($menu_item->classes[0]) ? $menu_item->classes[0] : "nb";
-
-                    ?>
-                    <li class="menu-item">
-                        <a class="<?php echo $link_class; ?>" href="<?php echo esc_url($menu_item->url); ?>">
-                            <?php esc_html_e($menu_item->title); ?>
-                        </a>
-                    </li>
+                    if (!$has_children) :
+                        $link_class = !empty($menu_item->classes[0]) ? $menu_item->classes[0] : "nb";
+                        ?>
+                        <li>
+                            <a class="<?php echo $link_class; ?>" href="<?php echo esc_url($menu_item->url); ?>">
+                                <?php esc_html_e($menu_item->title); ?>
+                            </a>
+                        </li>
                     <?php
-                else :
-                    $mega_menu = get_field('mega_menu', $menu_item);
-                    $menu_image = get_field('menu_image', $menu_item);
-                    $full_wh = !$menu_image ? ' full-w' : '';
-                    $mega_div = $mega_menu ? '<div class="mega-menu'.$full_wh.'">' : '';
-                    $mega_div_end = $mega_menu ? '</div>' : '';
-                    $li_mega_class = $mega_menu ? ' mega' : '';
-
-                    ?>
-                    <li class="<?php echo $li_class . $li_mega_class; ?>">
-                        <a href="<?php echo esc_url($menu_item->url); ?>"><?php esc_html_e($menu_item->title); ?></a>
-                        <?php echo $mega_div; ?>
-                        <?php if ($menu_image) : ?>
-                            <div class="mega-image">
-                                <img src="<?php echo $menu_image['url']; ?>" width="<?php echo $menu_image['width']; ?>" height="<?php echo $menu_image['height']; ?>" alt="<?php esc_html_e($menu_item->title); ?>">
-                            </div>
-                        <?php endif; ?>
-                        <ul class="sub-menu">
-                            <?php
-
-                            foreach ($child_menu_items as $child_menu) :
-                                $child_menu_items2 = $menu_class->get_child_menu_items($menus, $child_menu->ID);
-                                $has_children2 = !empty($child_menu_items2) && is_array($child_menu_items2);
-                                $current_classM = ($current_page_id == $child_menu->object_id) ? ' current-menu-item' : '';
-
-                                if (!$has_children2) :
+                    else :
+                        ?>
+                        <li class="<?php echo $li_class; ?>">
+                            <a href="<?php echo esc_url($menu_item->url); ?>"><?php esc_html_e($menu_item->title); ?></a>
+                            <ul class="sub-menu">
+                                <?php
+                                foreach ($child_menu_items as $child_menu) :
                                     ?>
-                                    <li class="menu-item<?php echo $current_classM; ?>">
+                                    <li>
                                         <a href="<?php echo esc_url($child_menu->url); ?>"><?php esc_html_e($child_menu->title); ?></a>
                                     </li>
                                 <?php
-                                else :
-
-                                    ?>
-                                    <li class="<?php echo $li_class; ?>">
-                                        <a href="<?php echo esc_url($child_menu->url); ?>"><?php esc_html_e($child_menu->title); ?></a>
-                                        <ul class="sub-menu">
-                                            <?php
-                                            foreach ($child_menu_items2 as $child_menu3) :
-                                                $current_class = ($current_page_id == $child_menu3->object_id) ? ' current-menu-item' : '';
-
-                                                ?>
-                                                <li class="menu-item<?php echo $current_class; ?>">
-                                                    <a href="<?php echo esc_url($child_menu3->url); ?>"><?php esc_html_e($child_menu3->title); ?></a>
-                                                </li>
-                                                <?php
-                                            endforeach;
-                                            ?>
-                                        </ul>
-                                    </li>
-                                    <?php
-
-                                endif;
-                            endforeach;
-
-                            ?>
-                        </ul>
-                        <?php echo $mega_div_end; ?>
-                    </li>
+                                endforeach;
+                                ?>
+                            </ul>
+                        </li>
                     <?php
-                endif;
+                    endif;
+                }
             }
         }
+    }
+endif;
+
+// Menu nav wrapper
+if (!function_exists('arina_nav_wrap')) :
+    function arina_nav_wrap() {
+        $wrap  = '<ul id="%1$s" class="%2$s">%3$s';
+        $wrap .= '</ul>';
+
+        return $wrap;
     }
 endif;
 
 // Add Breadcrumbs
 if( ! function_exists( 'arina_breadcrumbs' )) :
     function arina_breadcrumbs(){
-        $bread_home = 'GTech';
-
-        // breadcrumbs
-        $home_text   = $bread_home;
+        $home_text   = 'Arina';
         $before      = '<li class="link"><span>';
         $after       = '</span></li>';
-        $breadcrumbs = array();
+        $breadcrumbs = [];
 
         // bbPress breadcrumbs
         if  ( ! is_home() && ! is_front_page() || is_paged() ){
@@ -514,11 +503,8 @@ if( ! function_exists( 'arina_breadcrumbs' )) :
                                     $class_home = $key === 0 ? ' home' : '';
 
                                     if( !empty( $item['url'] )){
-                                        echo sprintf(
-                                            '<li class="link%s"><a href="%s">%s</a></li>',
-                                            $class_home,
-                                            esc_url($item['url']),
-                                            $item['name']
+                                        echo sprintf( '<li class="link%s"><a href="%s">%s</a></li>',
+                                            $class_home, esc_url($item['url']), $item['name']
                                         );
                                     } else {
                                         echo ( $before . $item['name'] . $after );

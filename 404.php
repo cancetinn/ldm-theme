@@ -14,7 +14,7 @@ get_header();
             <div class="container">
                 <div class="ep-wrap">
                     <div class="e404">404</div>
-                    <h1 class="title">Sayfa bulunamadı!</h1>
+                    <h1 class="title"><?php esc_html_e('Sayfa bulunamadı!', ARINA_TEXT); ?></h1>
                 </div>
             </div>
         </section>

@@ -45,6 +45,13 @@ class Assets
         // Enqueue style
         wp_enqueue_style('style', get_stylesheet_uri(), [], ARINA_VERSION, 'all');
         wp_enqueue_style('theme');
+
+        // Removed block/global/classic styles
+        wp_dequeue_style('wp-block-library');
+        wp_dequeue_style('wp-block-library-theme');
+        wp_dequeue_style('wc-blocks-style');
+        wp_dequeue_style('global-styles');
+        wp_dequeue_style('classic-theme-styles');
     }
 
     function register_scripts()
@@ -56,19 +63,12 @@ class Assets
         wp_register_script('theme', ARINA_ASSETS_URI . '/js/theme.min.js', [], $theme_js, true);
 
         // disabled jQuery
-        //wp_deregister_script('jquery');
-        //wp_register_script('jquery', false);
+        /*wp_deregister_script('jquery');
+        wp_register_script('jquery', false);*/
 
         // Enqueue scripts
-        wp_enqueue_script('jquery');
+        //wp_enqueue_script('jquery');
         wp_enqueue_script('theme');
-
-        // Removed block/global/classic styles
-        wp_dequeue_style('wp-block-library');
-        wp_dequeue_style('wp-block-library-theme');
-        wp_dequeue_style('wc-blocks-style');
-        wp_dequeue_style('global-styles');
-        wp_dequeue_style('classic-theme-styles');
     }
 
     function arina_admin_enqueue()
@@ -81,7 +81,8 @@ class Assets
         endif;
     }
 
-    function remove_jquery_migrate($scripts) {
+    function remove_jquery_migrate($scripts)
+    {
         if (!is_admin() && isset($scripts->registered['jquery'])) {
             $script = $scripts->registered['jquery'];
 

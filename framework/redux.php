@@ -23,8 +23,8 @@ $args = array(
     //Specify if the admin menu should appear or not. Options: menu or submenu (Under appearance only)
     'allow_sub_menu'       => false,
     // Show the sections below the admin menu item or not
-    'menu_title'           => __( 'Tema Ayarları', ARINA_TEXT ),
-    'page_title'           => __( 'Tema Ayarları', ARINA_TEXT ),
+    'menu_title'           => 'Tema Ayarları',
+    'page_title'           => 'Tema Ayarları',
     'admin_theme'          => 'classic',
     // You will need to generate a Google API key to use this feature.
     // Please visit: https://developers.google.com/fonts/docs/developer_api#Auth
@@ -59,7 +59,7 @@ $args = array(
     // For a full list of options, visit: http://codex.wordpress.org/Function_Reference/add_submenu_page#Parameters
     'page_permissions'     => 'manage_options',
     // Permissions needed to access the options panel.
-    'menu_icon'            => '/img/favicon.png',
+    'menu_icon'            => ARINA_ASSETS_URI . '/img/arina.png',
     // Specify a custom URL to an icon
     'last_tab'             => '',
     // Force your panel to always open to a specific tab (by id)
@@ -125,13 +125,13 @@ Redux::setArgs( $opt_name, $args );
 $tabs = array(
     array(
         'id'      => 'redux-help-tab-1',
-        'title'   => __( 'Theme Information 1', ARINA_TEXT ),
-        'content' => __( '<p>This is the tab content, HTML is allowed.</p>', ARINA_TEXT )
+        'title'   => 'Theme Information 1',
+        'content' => '<p>This is the tab content, HTML is allowed.</p>'
     ),
     array(
         'id'      => 'redux-help-tab-2',
-        'title'   => __( 'Theme Information 2', ARINA_TEXT ),
-        'content' => __( '<p>This is the tab content, HTML is allowed.</p>', ARINA_TEXT )
+        'title'   => 'Theme Information 2',
+        'content' => '<p>This is the tab content, HTML is allowed.</p>'
     )
 );
 
@@ -142,7 +142,7 @@ else :
 endif;
 
 // Set the help sidebar
-$content = __( '<p>This is the sidebar content, HTML is allowed.</p>', ARINA_TEXT );
+$content = '<p>This is the sidebar content, HTML is allowed.</p>';
 
 if( method_exists( 'Redux', 'set_help_sidebar' ) ) :
     Redux::set_help_sidebar( $opt_name, $content );

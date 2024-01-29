@@ -4,61 +4,81 @@
  *
  **/
 
-defined( 'ABSPATH' ) || exit; // Exit if accessed directly
+defined('ABSPATH') || exit; // Exit if accessed directly
 
 get_header();
 
-if ( !is_front_page() && !is_home() ) :
-    arina_breadcrumbs();
+if (!is_front_page() && !is_home()) :
+	arina_breadcrumbs();
 endif;
-
-echo "<main>";
-
-//echo do_shortcode('[contact_now]');
 
 ?>
-    <script>
-        document.addEventListener('DOMContentLoaded', function(){
-            const contactForm = document.querySelector('#contactform')
-            const datAjax = document.querySelector("#datajax")
-            const {nonce, ajaxurl} = datAjax.dataset
+<main>
+	<?php echo do_shortcode('[contact_now]'); ?>
+	<div data-nonce="<?php echo wp_create_nonce('contact_form_nonce'); ?>"></div>
+	<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const getForm = selector("#contactform")
+            const dataNonce = getDataset("[data-nonce]", "nonce")
+            const ajax = new AjaxOperation()
 
-            contactForm.addEventListener('submit', (e) => {
+            getForm.addEventListener('submit', e => {
                 e.preventDefault()
 
-                const formData = new FormData(contactForm)
+                const formData = new FormData(getForm)
                 formData.append('action', 'contact_form')
-                formData.append('security', nonce)
+                formData.append('security', dataNonce)
 
-                fetch(ajaxurl, {
-                    method: 'POST',
-                    body: formData,
-                })
-                    .then(response => response.text())
-                    .then(data => {
-                        console.log(data)
-                    })
+                ajax.fetchForm(formData, getForm)
             })
         })
-    </script>
-<?php
+	</script>
 
-if ( have_posts() ) :
+	<form action="">
+		<div class="form-field">
+			<input id="checkx" type="checkbox" name="checkx">
+			<label for="checkx">Checkbox</label>
+		</div>
 
-    while ( have_posts() ): the_post();
+		<div class="form-field">
+			<input id="radiox_yes" type="radio" name="radiox" value="evet">
+			<label for="radiox_yes">Evet</label>
 
-        the_content();
+			<input id="radiox_no" type="radio" name="radiox" value="hayır">
+			<label for="radiox_no">Hayır</label>
+		</div>
+	</form>
 
-        the_post_thumbnail('post_thumb');
+	<div class="svgIcons">
+		<?php
 
-        the_post_thumbnail();
+		echo getIcon('5012');
+		echo getIcon('5013', 'primary');
+		echo getIcon('5014', 'secondary');
+		echo getIcon('5015');
 
-        echo wp_get_attachment_image( get_post_thumbnail_id(), 'full' );
+		echo getSvg('icon-linkedin', 'linkedin');
 
-    endwhile;
+		?>
+	</div>
 
-endif;
+	<div class="imgAttachment">
+		<?php echo getImage('1362', sizes: 'blog_thumb'); ?>
+	</div>
 
-echo "</main>";
+	<?php
 
-get_footer();
+	if (have_posts()) :
+
+		while (have_posts()): the_post();
+
+			the_content();
+
+		endwhile;
+
+	endif;
+
+	?>
+</main>
+
+<?php get_footer();
