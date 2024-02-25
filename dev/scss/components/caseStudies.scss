@@ -1,0 +1,51 @@
+.caseStudies {
+    transform: rotate(-6deg);
+    background-image: linear-gradient(113deg, rgba(141,27,254,1.00) 0%,rgba(0,55,236,1.00) 100%);background-position: center center;
+    width: 1920px;
+    position: relative;
+    left: -30px;
+
+    #marqListCarousel {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        overflow: hidden;
+        align-content: center;
+        justify-content: center;
+
+        .marquee {
+            white-space: nowrap;
+            animation: marquee 6s linear infinite;
+            max-width: none;
+
+            h2 {
+                font-size: 136px;
+                font-weight: 500;
+                display: flex;
+                -webkit-text-stroke: 4px white;
+                -webkit-text-fill-color: transparent;
+                align-items: center;
+
+                &:before {
+                    content: "";
+                    width: 85px;
+                    height: 85px;
+                    background: url("../icons/star.svg") no-repeat center;
+                    display: inline-flex;
+                    margin-left: 35px;
+                    margin-right: 20px;
+                }
+            }
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(-100%, 0);
+            }
+        }
+    }
+}
+

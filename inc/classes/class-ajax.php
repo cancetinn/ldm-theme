@@ -22,6 +22,10 @@ class Ajax
         add_action('admin_post_submit_application_form', [$this, 'save_application_form']);
         add_action('admin_post_nopriv_submit_application_form', [$this, 'save_application_form']);
         add_action('rest_api_init', [$this, 'register_custom_rest_route']);
+
+        /*Tournaments Custom Post Type*/
+        add_action('wp_ajax_tournaments', [$this, 'load_works_by_category']);
+        add_action('wp_ajax_nopriv_tournaments', [$this, 'load_works_by_category']);
     }
 
     public function load_posts_by_category()

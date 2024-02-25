@@ -220,6 +220,11 @@ class Test extends Widget_Base
                 </fieldset>
             </div>
 
+            <div class="gdprArea">
+                <input type="checkbox" id="gdpr" name="gdpr" value="gdpr" required>
+                <label for="gdpr"> Eu li e aceito os <a class="gdpr" href="https://lidoma.com/Lidoma%20User%20Agreement%20Terms%20of%20Use.pdf" target="_blank"> Termos e Condições</a> e a <a class="gdpr" href="https://lidoma.com/privacy.php" target="_blank">Política de Privacidade.</a></label><br>
+            </div>
+
             <input type="hidden" name="action" value="submit_application_form">
             <?php wp_nonce_field('application_nonce', 'application_nonce_field'); ?>
             <div class="buttonl-area">

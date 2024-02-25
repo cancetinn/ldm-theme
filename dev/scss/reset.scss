@@ -81,8 +81,8 @@ input[type="checkbox"] {
     }
 
     &:checked + label:before {
-        background: var(--primary-color);
-        border-color: var(--primary-color);
+        background: #ff6d00;
+        border-color: #ff6d00;
     }
 
     &:checked + label:after {

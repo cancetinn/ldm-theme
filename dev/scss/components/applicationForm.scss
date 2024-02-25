@@ -83,6 +83,25 @@
                 border: 1px solid #FF6D00;
             }
         }
+
+        label {
+            a {
+
+            }
+        }
+
+    }
+    .gdprArea {
+        .gdpr {
+            color: #ff6d00;
+            text-decoration: underline;
+            transition: .3s all;
+
+            &:hover {
+                color: white;
+                transition: .3s ease-in;
+            }
+        }
     }
 }
 

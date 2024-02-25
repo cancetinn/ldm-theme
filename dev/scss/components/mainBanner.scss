@@ -1,0 +1,72 @@
+.mainBanner {
+    padding-top: 150px;
+
+    .textArea {
+        h1.title {
+            font-size: clamp(2rem, -4.643rem + 10.714vw, 5rem);
+            font-weight: 700;
+        }
+
+        h2.title {
+            font-size: clamp(1.75rem, -3.232rem + 8.036vw, 4rem);
+            font-weight: 500;
+        }
+
+        p {
+            font-size: clamp(0.75rem, 0.196rem + 0.893vw, 1rem);
+            font-weight: normal;
+        }
+    }
+
+
+    .bannerArea {
+        display: flex;
+        align-items: center;
+        height: 45vh;
+
+        .imgArea {
+            flex-shrink: 0;
+
+            img {
+                position: absolute;
+                top: 0;
+                right: 0;
+                padding-top: 150px;
+            }
+        }
+    }
+
+    .buttonArea {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+
+        .buttonLidoma {
+            border: 1px solid #ffffff;
+            border-radius: 50px;
+            padding: 12px 30px;
+            font-size: 18px;
+            color: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            &:after {
+                content: "";
+                width: 24px;
+                height: 24px;
+                margin-left: 10px;
+                transition: all .3s ease;
+                background: url("../icons/chevron-right.svg") no-repeat center;
+            }
+
+            &:hover {
+                background-color: var(--primary-color);
+
+                &:after {
+                    transform: translateX(10px);
+                }
+            }
+        }
+    }
+}

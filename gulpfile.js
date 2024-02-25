@@ -12,14 +12,16 @@ const paths = {
         js: 'dev/js/**/*.js',
         img: 'dev/img/**/*',
         icons: 'dev/icons/**/*',
-        scss: 'dev/scss/**/*.scss'
+        scss: 'dev/scss/**/*.scss',
+        fonts: 'dev/fonts/**/*'
     },
     assets: {
         root: 'assets',
         js: 'assets/js',
         img: 'assets/img',
         icons: 'assets/icons',
-        css: 'assets/css'
+        css: 'assets/css',
+        fonts: 'assets/fonts'
     }
 };
 
@@ -42,19 +44,13 @@ function img() {
 
 function icons() {
     return src(paths.dev.icons)
-        .pipe(svgmin({
-            multipass: true,
-            full: true,
-            /*plugins: [
-                {
-                    name: "removeAttrs",
-                    params: {
-                        attrs: "(fill|style|stroke)"
-                    }
-                }
-            ],*/
-        }))
+        .pipe(svgmin())
         .pipe(dest(paths.assets.icons));
+}
+
+function fonts() {
+    return src(paths.dev.fonts)
+        .pipe(dest(paths.assets.fonts));
 }
 
 function scss() {
@@ -66,7 +62,7 @@ function scss() {
         .pipe(dest(paths.assets.css));
 }
 
-exports.default = series(parallel(js, img, icons, scss));
+exports.default = series(parallel(js, img, icons, fonts, scss));
 
 function buildJs() {
     return src(paths.dev.js)
@@ -87,7 +83,7 @@ function buildCss() {
 }
 
 function cleanAndBuild(cb) {
-    return series(cleanDist, parallel(img, icons), buildJs, buildCss)(cb);
+    return series(cleanDist, parallel(img, icons, fonts), buildJs, buildCss)(cb);
 }
 
 exports.build = series(cleanAndBuild);
@@ -98,5 +94,6 @@ exports.watch = function () {
     watch(paths.dev.js, series(buildJs));
     watch(paths.dev.img, series(img));
     watch(paths.dev.icons, series(icons));
+    watch(paths.dev.fonts, series(fonts));
     watch(paths.dev.scss, series(buildCss));
 };
