@@ -81,7 +81,26 @@ class Options
             update_option('elementor_disable_color_schemes', 'yes');
             update_option('elementor_disable_typography_schemes', 'yes');
         endif;
+
+        register_post_type('tournaments', [
+                'labels' => [
+                    'name' => __('Tournaments', ARINA_TEXT),
+                    'singular_name' => __('Tournaments', ARINA_TEXT)
+                ],
+                'menu_icon'     => 'dashicons-groups',
+                'menu_position' => 6,
+                'supports'      => array('title', 'editor', 'thumbnail', 'excerpt'),
+                'rewrite'       => array('slug' => 'tournament'),
+                'show_ui'       => true,
+                'has_archive'   => false,
+                'public'        => true,
+                'show_in_rest'  => false,
+                'publicly_queryable'  => false,
+            ]
+        );
     }
+
+
 
     public function plugins_activation()
     {
