@@ -1,0 +1,350 @@
+header {
+    --admin-bar: 0;
+    --header-height: 75px;
+    --fixed-height: 75px;
+
+    .headerMain {
+        height: var(--header-height);
+        transition: all .4s ease;
+
+        &.stickyMenu.fixed {
+            --header-height: var(--fixed-height);
+
+            position: fixed;
+            top: var(--admin-bar);
+            width: 100%;
+            z-index: 999;
+        }
+    }
+}
+
+body {
+
+    &.admin-bar {
+
+        header {
+            --admin-bar: 32px;
+        }
+    }
+
+    &.home {
+
+        header {
+
+            .headerMain {
+                position: absolute;
+                top: calc(0 + var(--admin-bar));
+                left: 0;
+                right: 0;
+                display: flex;
+                align-items: center;
+                z-index: 9;
+                background-color: rgba(255, 255, 255, 0.1);
+
+                &:after {
+                    content: "";
+                    background: var(--header-gradient);
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    height: 200px;
+                    z-index: -1;
+                    transition: height .3s ease, background-color .8s ease;
+                }
+
+                &.fixed {
+
+                    &:after {
+                        background: var(--become-bgcolor);
+                        height: 100px;
+                    }
+                }
+            }
+        }
+    }
+
+    &:not(.home) {
+
+        header {
+            --header-height: 100px;
+            --fixed-height: 100px;
+
+            .fixedSpace.fixed {
+                height: var(--fixed-height);
+            }
+
+            .headerMain {
+                background: var(--black-color);
+                display: flex;
+                align-items: center;
+
+                &.stickyMenu.fixed {
+                    background: var(--become-bgcolor);
+                }
+            }
+        }
+    }
+}
+
+// min width
+@media only screen and (min-width: 992px) {
+    header {
+
+        .mobile-menu {
+            display: none;
+
+
+            .sidebar-menu.opened {
+                display: none;
+            }
+        }
+
+        .desktop-menu {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            nav {
+                ul.arina-nav {
+                    display: flex;
+
+                    li {
+                        a {
+                            font-size: 1rem;
+                            color: #fff;
+                            display: flex;
+                            padding: 10px 22px;
+
+                            &:hover {
+                                color: var(--primary-color);
+                            }
+                        }
+
+                        &.current-menu-item {
+                            a {
+                                color: var(--primary-color);
+                            }
+                        }
+                    }
+
+                    li.menu-button {
+                        color: #ffffff;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        background: linear-gradient(99.74deg, #06DBAC 5.23%, #BD00FF 92.7%);
+                        border-radius: 50px;
+                        margin-left: 90px;
+                        transition: all .3s ease;
+                        a {
+                            font-size: 15px;
+
+                            &:hover {
+                                color: #ffffff;
+                                transition: all .3s ease;
+                            }
+                        }
+
+
+                        &:after {
+                            content: "";
+                            width: 24px;
+                            height: 24px;
+                            margin-right: 15px;
+                            transition: all .3s ease;
+                            background: url("../icons/chevron-right.svg") no-repeat center;
+                        }
+
+                        &:hover {
+                            background: var(--primary-color);
+                            transition: all .3s ease;
+
+                            &:after {
+                                transform: translateX(10px);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    /*
+    body {
+
+        &.home {
+
+            header {
+
+                .desktop-menu {
+                    padding: 35px 0 0;
+                }
+            }
+        }
+    }*/
+}
+
+// max width
+@media only screen and (max-width: 992px) {
+    header {
+        --header-height: 100px;
+
+        .desktop-menu {
+            display: none;
+        }
+
+        .mobile-menu {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .logo {
+                z-index: 12;
+
+                a {
+                    display: flex;
+                }
+            }
+
+            .sidebar-menu {
+                position: fixed;
+                right: -300px;
+                top: 0;
+                bottom: 0;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+
+                transition: max-width .2s ease;
+                width: 100%;
+                max-width: 300px;
+                background-color: var(--black-color);
+
+                margin-top: -13vh;
+                z-index: 9;
+
+
+                nav {
+
+                    a {
+                        color: #fff;
+                        padding: 8px 0;
+                        display: block;
+                        font-weight: 500;
+                        font-size: 1.5625rem;
+                    }
+
+                    .current-menu-item {
+
+                        a {
+                            color: var(--primary-color);
+                        }
+                    }
+                }
+
+                &.opened {
+                    max-width: 100%;
+                    right: 0;
+
+                    .svg {
+                        --sw: 70px;
+                        --sh: 80px;
+                        margin-bottom: 40px;
+                    }
+                }
+            }
+
+            .hamburger-menu {
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+                cursor: pointer;
+                position: relative;
+                z-index: 11;
+
+                span {
+                    width: 35px;
+                    height: 4px;
+                    background-color: #fff;
+                    pointer-events: none;
+                    transition: all .3s ease;
+                    border-radius: 2px;
+                }
+
+                &.active {
+
+                    span {
+
+                        &:nth-child(1) {
+                            width: 50%;
+                            transform: rotate(-45deg);
+                            transform-origin: 20px -15px;
+                        }
+
+                        &:nth-child(2) {
+                            transform: rotate(45deg);
+                        }
+
+                        &:nth-child(3) {
+                            transform: rotate(-45deg);
+                            width: 50%;
+                            transform-origin: 5px -2px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    body {
+
+        &.noscroll {
+            overflow-y: hidden;
+        }
+
+        &.home {
+
+            header {
+
+                .headerMain {
+                    display: flex;
+                    align-items: center;
+                }
+            }
+        }
+
+        &:not(.home) {
+
+            header {
+                --header-height: 100px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 782px) {
+    body {
+
+        &.admin-bar {
+
+            header {
+                --admin-bar: 46px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+
+        &.admin-bar {
+
+            header {
+                --admin-bar: 0;
+            }
+        }
+    }
+}

@@ -15,6 +15,8 @@ define( 'ARINA_INC_DIR',    trailingslashit(get_template_directory()) . 'inc' );
 define( 'ARINA_ASSETS_DIR', trailingslashit(get_template_directory()) . 'assets' );
 define( 'ARINA_THEME_URI',  trailingslashit(get_template_directory_uri()) );
 define( 'ARINA_ASSETS_URI', trailingslashit(get_template_directory_uri()) . 'assets' );
+define( 'ADMIN_STYLE',      trailingslashit(get_template_directory_uri()) . 'dev/outside/admin' );
+define( 'ARINA_OUTSIDE',    trailingslashit(get_template_directory_uri()) . 'dev/outside' );
 
 // Mail Defines
 define( 'MAIL_TEXT',        'Arina Dev' );
@@ -28,6 +30,7 @@ define( 'MAIL_PORT',        587 );
 require_once ARINA_INC_DIR . '/helpers/plugin-activation.php';
 require_once ARINA_INC_DIR . '/helpers/autoloader.php';
 require_once ARINA_INC_DIR . '/helpers/theme-helpers.php';
+require_once ARINA_INC_DIR . '/helpers/acf-options.php';
 
 // Get All Class
 function arina_get_theme_instance(){
@@ -57,3 +60,7 @@ function add_query_vars($vars) {
 
 // Disabled Appearance -> Theme File Editor
 define( 'DISALLOW_FILE_EDIT', true );
+
+
+
+

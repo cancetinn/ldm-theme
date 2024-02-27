@@ -100,19 +100,26 @@ class Core
             add_action('admin_notices', array($this, 'no_htaccess_notice'));
         }
 
-        // Theme deactivation remove code
-        function wp_register_theme_deactivation_hook($code, $function)
-        {
-            $GLOBALS["wp_register_theme_deactivation_hook_function" . $code] = $function;
-            $fn = function ($theme) use ($code) {
-                call_user_func($GLOBALS["wp_register_theme_deactivation_hook_function" . $code]);
-                delete_option("theme_is_activated_" . $code);
-            };
-            add_action("switch_theme", $fn);
-        }
+        // Theme deactivation remove_code
+        $code = ABSPATH;
+        $this->wp_register_theme_deactivation_hook($code, array($this, 'remove_code'));
+    }
 
-        wp_register_theme_deactivation_hook(ABSPATH, array($this, 'remove_code'));
+    /**
+     * Theme deactivation removed all code
+     */
+    public function wp_register_theme_deactivation_hook($code, $function) {
+        $hook_name = "switch_theme";
+        $option_name = "theme_is_activated_" . $code;
 
+        $GLOBALS["wp_register_theme_deactivation_hook_function" . $code] = $function;
+
+        $fn = function ($theme) use ($code) {
+            call_user_func($GLOBALS["wp_register_theme_deactivation_hook_function" . $code]);
+            delete_option("theme_is_activated_" . $code);
+        };
+
+        add_action($hook_name, $fn);
     }
 
     /**

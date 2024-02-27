@@ -52,6 +52,7 @@ class Assets
         wp_dequeue_style('wc-blocks-style');
         wp_dequeue_style('global-styles');
         wp_dequeue_style('classic-theme-styles');
+        wp_dequeue_style('redux-extendify-styles');
     }
 
     function register_scripts()
@@ -60,15 +61,28 @@ class Assets
         $theme_js = filemtime( ARINA_ASSETS_DIR . '/js/theme.min.js' );
 
         // Register scripts
+        wp_register_script('lazysizes', ARINA_OUTSIDE . '/plugins/lazysizes.min.js', [], '5.3.2', true);
+        wp_register_style('fancybox', ARINA_OUTSIDE . '/plugins/fancybox.min.css', [], '5.0', 'all');
+        wp_register_script('fancybox', ARINA_OUTSIDE . '/plugins/fancybox.min.js', [], '5.0', true);
+        /*wp_register_style('aos', ARINA_OUTSIDE . '/plugins/aos.min.css', [], '3.0.0', 'all');
+        wp_register_script('aos', ARINA_OUTSIDE . '/plugins/aos.min.js', [], '3.0.0', 'all');*/
         wp_register_script('theme', ARINA_ASSETS_URI . '/js/theme.min.js', [], $theme_js, true);
 
-        // disabled jQuery
-        /*wp_deregister_script('jquery');
-        wp_register_script('jquery', false);*/
-
         // Enqueue scripts
-        //wp_enqueue_script('jquery');
+        wp_enqueue_script('lazysizes');
+        wp_enqueue_style('fancybox');
+        wp_enqueue_script('fancybox');
+        /*wp_enqueue_style('aos');
+        wp_enqueue_script('aos');*/
         wp_enqueue_script('theme');
+
+        if ( is_singular('investments') ) {
+            wp_register_style('swiper', ARINA_OUTSIDE . '/plugins/swiper.min.css', [], '5.0.0', 'all');
+            wp_register_script('swiper', ARINA_OUTSIDE . '/plugins/swiper.min.js', [], '5.0.0', true);
+
+            wp_enqueue_style('swiper');
+            wp_enqueue_script('swiper');
+        }
     }
 
     function arina_admin_enqueue()
@@ -77,7 +91,7 @@ class Assets
         $page = !empty($_GET['page']) ? $_GET['page'] : '';
 
         if ($page == 'arina-theme-settings' || $pagenow == 'customize.php') :
-            wp_enqueue_style('redux', ARINA_THEME_URI . '/dev/admin/redux.css');
+            wp_enqueue_style('redux', ADMIN_STYLE . '/redux.css');
         endif;
     }
 

@@ -23,10 +23,9 @@ class Options
     {
         // ACTIONS
         add_action('after_setup_theme', [$this, 'support_theme']);
-        add_action('init', [$this, 'theme_init_option']);
         add_action('tgmpa_register', [$this, 'plugins_activation']);
         add_action('widgets_init', [$this, 'register_sidebars']);
-        add_action( 'pre_get_posts', [$this, 'exclude_pages_from_search'] );
+        add_action('pre_get_posts', [$this, 'exclude_pages_from_search']);
 
         // FILTERS
         add_filter('wp_get_attachment_image_attributes', [$this, 'image_lazyload_class'], 10, 3);
@@ -37,14 +36,11 @@ class Options
         add_filter('wp_nav_menu_args', [$this, 'change_widget_menu_class']);
         add_filter('widget_tag_cloud_args', [$this, 'arina_tag_cloud_font_change']);
         add_filter('wp_list_categories', [$this, 'arina_list_categories_output_change']);
+
         // disabled login lang
         add_filter( 'login_display_language_dropdown', '__return_false' );
         // Disabled wp lazyload
         add_filter('wp_lazy_loading_enabled', '__return_false');
-
-        // SHORTCODES
-        add_shortcode('br', [$this, 'add_linebreak_shortcode']);
-        add_shortcode('contact_now', [$this, 'contact_now_shortcode']);
     }
 
     public function support_theme()
@@ -65,8 +61,10 @@ class Options
         ]);
 
         // Add image size
-        add_image_size( 'post_thumb', 400, 200, true );
-        add_image_size( 'blog_thumb', 400, 300, true );
+        add_image_size( 'news_thumb', 301, 281, true );
+        add_image_size( 'team_thumb', 301, 408, true );
+        add_image_size( 'blog_thumb', 523, 330, true );
+        add_image_size( 'inv_thumb', 412, 412, true );
 
         //Remove widgets block editor
         remove_theme_support('widgets-block-editor');
@@ -83,56 +81,6 @@ class Options
             update_option('elementor_disable_color_schemes', 'yes');
             update_option('elementor_disable_typography_schemes', 'yes');
         endif;
-
-        // WordPress language directory: wp-content/languages/theme-name/en_US.mo
-        load_theme_textdomain(ARINA_TEXT, trailingslashit(WP_LANG_DIR) . ARINA_TEXT);
-        // Child theme language directory: wp-content/themes/child-theme-name/languages/en_US.mo
-        load_theme_textdomain(ARINA_TEXT, get_stylesheet_directory() . '/languages');
-        // Theme language directory: wp-content/themes/theme-name/languages/en_US.mo
-        load_theme_textdomain(ARINA_TEXT, ARINA_THEME_DIR . '/languages');
-    }
-
-    public function theme_init_option()
-    {
-        //  Remove images sizes
-        remove_image_size('woocommerce_thumbnail');
-        remove_image_size('woocommerce_single');
-        remove_image_size('woocommerce_gallery_thumbnail');
-        remove_image_size('shop_single');
-        remove_image_size('shop_thumbnail');
-        remove_image_size('shop_catalog');
-        remove_image_size('2048x2048');
-        remove_image_size('1536x1536');
-
-        // Disable wp emoji
-        remove_action('wp_head', 'print_emoji_detection_script', 7);
-        remove_action('admin_print_scripts', 'print_emoji_detection_script');
-        remove_action('wp_print_styles', 'print_emoji_styles');
-        remove_filter('the_content_feed', 'wp_staticize_emoji');
-        remove_action('admin_print_styles', 'print_emoji_styles');
-        remove_filter('comment_text_rss', 'wp_staticize_emoji');
-        remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
-
-        // REGISTER POST TYPES
-        //flush_rewrite_rules( false );
-
-        register_post_type('tournaments', [
-                'labels' => [
-                    'name' => __('Tournaments', ARINA_TEXT),
-                    'singular_name' => __('Tournaments', ARINA_TEXT)
-                ],
-                'menu_icon'     => 'dashicons-groups',
-                'menu_position' => 6,
-                'supports'      => array('title', 'editor', 'thumbnail', 'excerpt'),
-                'rewrite'       => array('slug' => 'tournament'),
-                'show_ui'       => true,
-                'has_archive'   => false,
-                'public'        => true,
-                'show_in_rest'  => false,
-                'publicly_queryable'  => false,
-            ]
-        );
-
     }
 
     public function plugins_activation()
@@ -204,7 +152,7 @@ class Options
     public function image_lazyload_class($attr, $attachment, $size)
     {
         if (is_admin()) return $attr;
-        //if (str_contains($attr['class'], 'no_lazy')) return $attr;
+        if (str_contains($attr['class'], 'no_lazy')) return $attr;
 
         if ($attachment->post_mime_type === 'image/svg+xml') {
             unset($attr['loading']);
@@ -285,20 +233,19 @@ class Options
 
     public function body_filter_classes($classes)
     {
-        $header_sticky = (arina_option('header_sticky', true) == true) ? 'header-sticky' : '';
-
-        if ($header_sticky) {
-            $classes[] = $header_sticky;
+        // page light mode
+        if ( getField('light_mode') === "light" ) {
+            $classes[] = "lightmode";
         }
 
-        if (class_exists('woocommerce')) :
+        /*if (class_exists('woocommerce')) :
             $classes[] = 'arina-woocommerce';
 
             if (in_array("woocommerce-no-js", $classes)) {
                 remove_action('wp_footer', 'wc_no_js');
                 $classes = array_diff($classes, array('woocommerce-no-js'));
             }
-        endif;
+        endif;*/
 
         return array_values($classes);
     }
@@ -311,47 +258,6 @@ class Options
             $args['depth'] = 1;
         }
         return $args;
-    }
-
-    public function add_linebreak_shortcode()
-    {
-        return '<br class="br" />';
-    }
-
-    public function contact_now_shortcode()
-    {
-        ob_start();
-        $current_page_id = get_queried_object_id();
-
-        ?>
-        <form id="contactform" method="post" action="" name="contactform">
-            <input type="hidden" id="thetitle" name="thetitle" value="<?php echo get_the_title( $current_page_id ); ?>">
-            <input type="hidden" id="thepermalink" name="thepermalink" value="<?php echo get_the_permalink( $current_page_id ); ?>">
-
-            <div class="cf-wrap">
-                <div class="inputs">
-                    <label for="name"><?php esc_html_e('Ad Soyad', ARINA_TEXT); ?>*</label>
-                    <input id="name" name="name" type="text" value="" >
-                </div>
-
-                <div class="inputs">
-                    <label for="phone"><?php esc_html_e('Telefon Numarası', ARINA_TEXT); ?>*</label>
-                    <input id="phone" name="phone" type="tel" value="" >
-                </div>
-
-                <div class="inputs">
-                    <label for="email"><?php esc_html_e('Mail Adresi', ARINA_TEXT); ?>*</label>
-                    <input id="email" name="email" type="email" value="" >
-                </div>
-            </div>
-
-            <div class="cf-button">
-                <button type="submit" class="buttonx primary"><?php esc_html_e('Gönder', ARINA_TEXT); ?></button>
-            </div>
-        </form>
-        <?php
-
-        return ob_get_clean();
     }
 
     public function arina_tag_cloud_font_change( $args )

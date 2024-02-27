@@ -6,12 +6,50 @@
 
 defined('ABSPATH') || exit; // Exit if accessed directly
 
+// remove space text
+if (!function_exists('removeSpace')) :
+    function removeSpace($text)
+    {
+        echo str_replace(' ', '',$text);
+    }
+endif;
+
+// is elementor page
+if (!function_exists('isElementorPage')) :
+    function isElementorPage($id)
+    {
+        return \Elementor\Plugin::$instance->db->is_built_with_elementor($id);
+    }
+endif;
+
+// Get acf field
+if (!function_exists('getField')) :
+    function getField($field, $status = false)
+    {
+        return !class_exists('ACF') ? $status : wp_kses_post( get_field($field) );
+    }
+endif;
+
+// get logo
+if (!function_exists('getLogo')) :
+    function getLogo()
+    {
+        $logoTheme = (getField('black_page') === "black") ? "white_logo" : "black_logo";
+        $logoID = getRedux( $logoTheme );
+
+        $getLogo = getImage( ($logoID['id'] ?? "0"), 'img no_lazy' );
+        $logo = !$getLogo ? getSvg('logo', 'logo') : $getLogo;
+
+        return $logo;
+    }
+endif;
+
 // get svg
 if (!function_exists('getSvg')) :
     function getSvg($idName, $className = 'default')
     {
-        $iconsSvg = ARINA_THEME_URI . "dev/sprites/icons.svg";
-        $svgs = sprintf('<svg class="svg %s" role="img">
+        $iconsSvg = ARINA_THEME_URI . "dev/outside/sprites/icons.svg";
+        $svgs = sprintf('<svg class="svg %s">
         <use href="%s#%s"></use>
         </svg>', $className, $iconsSvg, $idName);
 
@@ -19,12 +57,17 @@ if (!function_exists('getSvg')) :
     }
 endif;
 
-
 // get attachment image
 if (!function_exists('getImage')) :
-    function getImage($id, $classname = 'img', $sizes = 'full')
+    function getImage($id, $classname = 'img', $sizes = 'full', $alt = null)
     {
-        return wp_get_attachment_image( $id, $sizes, false, ['class' => $classname] );
+        $args = ['class' => $classname];
+
+        if ( $alt !== null ) {
+            $args['alt'] = strip_tags($alt);
+        }
+
+        return wp_get_attachment_image( $id, $sizes, false, $args );
     }
 endif;
 
@@ -78,8 +121,8 @@ if (!function_exists('getPages')) :
 endif;
 
 // Redux Global Option
-if (!function_exists('arina_option')) :
-    function arina_option($id = NULL, $sub = NULL, $default = NULL)
+if (!function_exists('getRedux')) :
+    function getRedux($id = NULL, $sub = NULL, $default = NULL)
     {
         $result = "";
 
@@ -212,9 +255,9 @@ if (!function_exists('arina_nav_wrap')) :
 endif;
 
 // Add Breadcrumbs
-if( ! function_exists( 'arina_breadcrumbs' )) :
+if( !function_exists( 'arina_breadcrumbs' )) :
     function arina_breadcrumbs(){
-        $home_text   = 'Arina';
+        $home_text   = getRedux('bread_home_text');
         $before      = '<li class="link"><span>';
         $after       = '</span></li>';
         $breadcrumbs = [];
@@ -390,7 +433,6 @@ if( ! function_exists( 'arina_breadcrumbs' )) :
 
                 // Single Post
                 if ( get_post_type() == 'post' ){
-
                     $category = get_the_category();
                     $useCatLink = true;
                     // If post has a category assigned.
@@ -484,6 +526,13 @@ if( ! function_exists( 'arina_breadcrumbs' )) :
                             }
                         }
                     }
+
+                    if (get_post_type() == 'team') {
+                        $breadcrumbs[] = array(
+                            'url'  => getRedux('team_bread_url'),
+                            'name' => getRedux('team_bread_text'),
+                        );
+                    }
                 }
 
                 $breadcrumbs[] = array(
@@ -496,23 +545,23 @@ if( ! function_exists( 'arina_breadcrumbs' )) :
 
                 ?>
                 <nav class="breadcrubs">
-                    <ul class="breadList align-items-center">
-                            <?php
+                    <ul class="breadList">
+                        <?php
 
-                                foreach( $breadcrumbs as $key => $item ) :
-                                    $class_home = $key === 0 ? ' home' : '';
+                        foreach( $breadcrumbs as $key => $item ) :
+                            $class_home = $key === 0 ? ' home' : '';
 
-                                    if( !empty( $item['url'] )){
-                                        echo sprintf( '<li class="link%s"><a href="%s">%s</a></li>',
-                                            $class_home, esc_url($item['url']), $item['name']
-                                        );
-                                    } else {
-                                        echo ( $before . $item['name'] . $after );
-                                    }
-                                endforeach;
+                            if( !empty( $item['url'] )){
+                                echo sprintf( '<li class="link%s"><a href="%s">%s</a></li>',
+                                    $class_home, esc_url($item['url']), $item['name']
+                                );
+                            } else {
+                                echo ( $before . $item['name'] . $after );
+                            }
+                        endforeach;
 
-                            ?>
-                        </ul>
+                        ?>
+                    </ul>
                 </nav>
                 <?php
 

@@ -1,0 +1,64 @@
+.liwaZone {
+
+    .lzArea {
+        display: flex;
+        align-items: center;
+
+        .lzText {
+
+            h2.title {
+                font-size: 48px;
+                font-weight: normal;
+
+                &:after {
+                    content: "";
+                    width: 495px;
+                    height: 30px;
+                    background: url("../icons/arrow.svg") no-repeat center;
+                    display: block;
+                    margin-bottom: 30px;
+                    margin-top: -10px;
+                }
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            .lzButton {
+
+                .buttonLidoma {
+                    border: 1px solid #ffffff;
+                    border-radius: 50px;
+                    padding: 12px 30px;
+                    font-size: 18px;
+                    color: #ffffff;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    &:after {
+                        content: "";
+                        width: 24px;
+                        height: 24px;
+                        margin-left: 10px;
+                        transition: all .3s ease;
+                        background: url("../icons/chevron-right.svg") no-repeat center;
+                    }
+
+                    &:hover {
+                        background-color: var(--primary-color);
+
+                        &:after {
+                            transform: translateX(10px);
+                        }
+                    }
+                }
+            }
+        }
+
+        .lzImgArea {
+            flex-shrink: 0;
+        }
+    }
+}

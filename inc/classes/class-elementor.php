@@ -21,6 +21,7 @@ class Elementor
         'marqlidoma'    => 'Marqlidoma',
         'tournaments'   => 'Tournaments',
         'casestudies'   => 'Casestudies',
+        'liwazone'      => 'Liwazone',
         'thanks'        => 'Thanks',
      ];
 

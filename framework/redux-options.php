@@ -8,43 +8,43 @@ defined( 'ABSPATH' ) || exit; // Exit if accessed directly
 
 // General
 Redux::setSection( $opt_name, [
-    'title'     => __( 'General', ARINA_REDUX ),
+    'title'     => 'General',
     'id'        => 'general',
     'icon'      => 'el el-wrench',
     'fields'    => [
         [
             'id' => 'social_mail',
-            'title' => esc_html__( 'E-posta', ARINA_REDUX ),
+            'title' => 'E-posta',
             'type' => 'text',
-            'default' => 'info@gtech.com.tr',
+            'default' => 'info@arinadigital.com',
         ],
         [
             'id' => 'social_linkedin',
-            'title' => esc_html__( 'linkedin URL', ARINA_REDUX ),
+            'title' => 'linkedin URL',
             'type' => 'text',
             'default' => '#',
         ],
         [
             'id' => 'social_facebook',
-            'title' => esc_html__( 'facebook URL', ARINA_REDUX ),
+            'title' => 'facebook URL',
             'type' => 'text',
             'default' => '#',
         ],
         [
             'id' => 'social_instagram',
-            'title' => esc_html__( 'instagram URL', ARINA_REDUX ),
+            'title' => 'instagram URL',
             'type' => 'text',
             'default' => '#',
         ],
         [
             'id' => 'social_youtube',
-            'title' => esc_html__( 'youtube URL', ARINA_REDUX ),
+            'title' => 'youtube URL',
             'type' => 'text',
             'default' => '#',
         ],
         [
             'id' => 'social_x',
-            'title' => esc_html__( 'X URL', ARINA_REDUX ),
+            'title' => 'X URL',
             'type' => 'text',
             'default' => '#',
         ],
@@ -53,17 +53,26 @@ Redux::setSection( $opt_name, [
 
 // Header
 Redux::setSection( $opt_name, [
-    'title'     => __( 'Header Ayarları', ARINA_REDUX ),
+    'title'     => 'Header Ayarları',
     'id'        => 'header-options',
     'icon'      => 'el el-wrench',
     'fields'    => [
         [
-            'id'        => 'logo-upload',
+            'id'        => 'black_logo',
             'type'      => 'media',
             'url'       => true,
-            'title'     => __( 'Logo Yükle', ARINA_REDUX ),
+            'title'     => 'Logo Yükle',
             'default'   => [
-                'url'   => '' //ARINA_ASSETS_URI . '/img/logo.png'
+                'url'   => ARINA_ASSETS_URI . '/icons/logo.svg'
+            ]
+        ],
+        [
+            'id'        => 'white_logo',
+            'type'      => 'media',
+            'url'       => true,
+            'title'     => 'Beyaz Logo Yükle',
+            'default'   => [
+                'url'   => ''
             ]
         ],
     ]
@@ -71,62 +80,220 @@ Redux::setSection( $opt_name, [
 
 // Footer
 Redux::setSection( $opt_name, [
-    'title'  => __( 'Footer Ayarları', ARINA_REDUX ),
+    'title'  => 'Footer Ayarları',
     'id'     => 'footer-options',
-    'icon'   => 'el el-brush',
+    'icon'   => 'el el-wrench',
     'fields' => [
+        [
+            'id'        => 'footer_logo',
+            'type'      => 'media',
+            'url'       => true,
+            'title'     => 'Footer logo',
+            'default'   => [
+                'url'   => ARINA_ASSETS_URI . '/icons/black_logo.svg'
+            ]
+        ],
+        [
+            'id'        => 'footer_bg',
+            'type'      => 'media',
+            'url'       => true,
+            'title'     => 'Footer bg',
+            'default'   => [
+                'url'   => ARINA_ASSETS_URI . '/img/footer-bg.png'
+            ]
+        ],
+        [
+            'id'    => 'footer_adressTR',
+            'type'  => 'textarea',
+            'title' => 'Footer adress TR',
+            'default' => 'Sair Nedim Cd. No:20 Kat:6  Besiktas, Istanbul TURKEY',
+        ],
+        [
+            'id'    => 'footer_phoneTR',
+            'type'  => 'text',
+            'title' => 'Footer phone TR',
+            'default' => '+90 212 381 2222',
+        ],
+        [
+            'id'    => 'footer_adressEN',
+            'type'  => 'textarea',
+            'title' => 'Footer adress EN',
+            'default' => '55 East 59th Street, 24th floor  New York, NY USA',
+        ],
+        [
+            'id'    => 'footer_phoneEN',
+            'type'  => 'text',
+            'title' => 'Footer phone EN',
+            'default' => '+1 212 616 0400',
+        ],
         [
             'id'    => 'footer_copyright',
             'type'  => 'text',
-            'title' => esc_html__( 'Footer copyright', ARINA_REDUX ),
-            'default' => '© Copyright GTech 2023',
+            'title' => 'Footer copyright',
+            'default' => '© 2024 BLG Varlık',
         ],
         [
-            'id'    => 'footer_poweredby',
-            'type'  => 'editor',
-            'title' => esc_html__( 'Footer powered by', ARINA_REDUX ),
-            'default' => 'Arina Digital tarafından geliştirildi.',
-        ]
+            'id'    => 'footer_disclamer',
+            'type'  => 'text',
+            'title' => 'Disclaimer',
+            'default' => 'Disclaimer',
+        ],
+        [
+            'id'    => 'footer_disclamer_url',
+            'type'  => 'text',
+            'title' => 'Disclaimer url',
+            'default' => '#',
+        ],
+        [
+            'id'    => 'footer_privacy',
+            'type'  => 'text',
+            'title' => 'footer privacy',
+            'default' => 'Privacy Policy',
+        ],
+        [
+            'id'    => 'footer_privacy_url',
+            'type'  => 'text',
+            'title' => 'footer privacy url',
+            'default' => '#',
+        ],
     ]
 ]);
 
-// Single
+// Blog Settings
 Redux::setSection( $opt_name, [
-    'title'     => __( 'İçerik Ayarları', ARINA_REDUX ),
-    'id'        => 'single-options',
-    'icon'      => 'el el-wrench',
+    'title'  => 'Blog options',
+    'id'     => 'inv-options',
+    'icon'   => 'el el-wrench',
+    'fields' => [
+        [
+            'id'    => 'news_title',
+            'type'  => 'text',
+            'title' => 'News page title',
+            'default' => 'News & Insights',
+        ],
+        [
+            'id'        => 'sidebar_logo',
+            'type'      => 'media',
+            'url'       => true,
+            'title'     => 'News sidebar logo',
+            'default'   => [
+                'url'   => ARINA_ASSETS_URI . '/icons/side__logo.svg'
+            ]
+        ],
+        [
+            'id'    => 'sidebar_button',
+            'type'  => 'text',
+            'title' => 'News sidebar button text',
+            'default' => 'View Original Source',
+        ],
+        [
+            'id'    => 'sidebar_button_url',
+            'type'  => 'text',
+            'title' => 'News sidebar button url',
+            'default' => '#',
+        ],
+        [
+            'id'   =>'blog_divider1',
+            'type' => 'divide'
+        ],
+        [
+            'id'    => 'team_bread_text',
+            'type'  => 'text',
+            'title' => 'Team page bradcrumb text',
+            'default' => 'Team',
+        ],
+        [
+            'id'    => 'team_bread_url',
+            'type'  => 'text',
+            'title' => 'Team page bradcrumb url',
+            'default' => '/team',
+        ],
+        [
+            'id'   =>'blog_divider2',
+            'type' => 'divide'
+        ],
+        [
+            'id'    => 'title_view',
+            'type'  => 'text',
+            'title' => 'View Project text',
+            'default' => "View Project",
+        ],
+    ]
 ]);
 
+// Page Settings
 Redux::setSection( $opt_name, [
-    'title'     => __( 'Pozisyon ayarları', ARINA_REDUX ),
-    'subsection' => true,
-    'id'        => 'single-options-positions',
-    'fields'    => [
+    'title'  => 'Page options',
+    'id'     => 'page-options',
+    'icon'   => 'el el-wrench',
+    'fields' => [
         [
-            'id'       => 'blog_readmore',
-            'type'     => 'text',
-            'title'    => esc_html__( 'Devamını oku yazısı', ARINA_REDUX ),
-            'default'  => 'Devamını oku',
+            'id'    => 'bread_home_text',
+            'type'  => 'text',
+            'title' => 'breadcrump Home text',
+            'default' => 'Home',
         ],
-    ],
+    ]
+]);
+
+// Contact Form Settings
+Redux::setSection( $opt_name, [
+    'title'  => 'Contact Form',
+    'id'     => 'cForm-options',
+    'icon'   => 'el el-wrench',
+    'fields' => [
+        [
+            'id'    => 'form_check',
+            'type'  => 'editor',
+            'title' => 'Contact Form Check',
+            'default' => 'Personal data',
+        ],
+        [
+            'id'    => 'checkbox_validation',
+            'type'  => 'textarea',
+            'title' => 'Checkbox Validation message',
+            'default' => 'Please give your consent to send the form',
+        ],
+    ]
+]);
+
+// 404
+Redux::setSection( $opt_name, [
+    'title'  => '404 Ayarları',
+    'id'     => '404-options',
+    'icon'   => 'el el-wrench',
+    'fields' => [
+        [
+            'id'    => '404_content',
+            'type'  => 'textarea',
+            'title' => '404 Content',
+            'default' => 'The requested page was not found!',
+        ],
+        [
+            'id'    => '404_button',
+            'type'  => 'text',
+            'title' => '404 button text',
+            'default' => 'Go Back Home',
+        ],
+    ]
 ]);
 
 // Style
 Redux::setSection( $opt_name, [
-    'title'  => __( 'Styling', ARINA_REDUX ),
+    'title'  => 'Styling',
     'id'     => 'styling',
     'icon'   => 'el el-brush',
     'fields' => [
         [
-            'id' => 'top_primary_color',
+            'id' => 'primary_color',
             'type' => 'color',
-            'title' => __('Top header rengi', ARINA_REDUX),
+            'title' => 'Primary color',
             'default' => '',
         ],
         [
-            'id' => 'global_primary_color',
+            'id' => 'secondary_color',
             'type' => 'color',
-            'title' => __('Genel site rengi', ARINA_REDUX),
+            'title' => 'Secondary color',
             'default' => '',
         ]
     ]
