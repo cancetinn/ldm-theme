@@ -62,6 +62,18 @@
                     font-size: 18px;
                     font-weight: normal;
                     padding-top: 8px;
+
+                    a.readMore {
+                        color: var(--primary-color);
+                        font-size: 15px;
+                        text-decoration: underline;
+                        font-weight: normal;
+
+                        &:hover {
+                            transition: all .3s ease;
+                            color: #8D1CFE;
+                        }
+                    }
                 }
             }
 
@@ -205,6 +217,21 @@
             &:hover {
                 background-color: #8D1CFE;
                 transition: all .3s ease;
+            }
+        }
+    }
+}
+
+// min width
+@media only screen and (min-width: 992px) {
+    .Tournaments {
+
+        h1.title {
+            &:before {
+                top: -75%;
+                left: 1%;
+                width: 136px;
+                height: 135px;
             }
         }
     }

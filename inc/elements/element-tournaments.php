@@ -96,7 +96,7 @@ class Tournaments extends Widget_Base
                                         <h4 class="title"><?php the_title(); ?></h4>
                                     </div>
                                     <div class="tournamentDesc">
-                                        <p><?php echo esc_html(get_the_excerpt()); ?></p>
+                                        <p><?php echo esc_html(get_the_excerpt()); ?> <a href="<?php echo the_permalink(); ?>" class="readMore">Read More</a></p>
                                     </div>
                                     <div class="tournamentReq">
                                         <div class="platform">
@@ -117,7 +117,7 @@ class Tournaments extends Widget_Base
                                             </p>
                                         </div>
                                         <div class="tJoinButton">
-                                            <a href="#">Join</a>
+                                            <a href="<?php echo the_permalink(); ?>">Join</a>
                                         </div>
                                     </div>
                                 </div>

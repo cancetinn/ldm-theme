@@ -1,7 +1,121 @@
 footer {
     margin-top: auto;
-    background-color: #d9d9d9;
-    color: #191919;
+    padding: 50px 0;
+
+    a {
+        color: var(--black-color);
+    }
+
+    .footerLogo {
+        margin-bottom: 40px;
+        font-size: 46px;
+        font-weight: normal;
+    }
+
+    .social {
+        margin-bottom: 50px;
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .socialMedia {
+            line-height: 150%;
+            font-size: 32px;
+            display: flex;
+            gap: 40px;
+
+            span {
+                display: block;
+                border-right: 1px solid #fff;
+                padding-right: 30px;
+
+                &:last-child {
+                    border-right: none;
+                }
+            }
+        }
+    }
+
+    .footerBottom {
+
+        ul li a,
+        .copyright {
+            font-size: 14px;
+        }
+
+        ul {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+
+            li a {
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
 }
 
+// min width
+@media only screen and (min-width: 992px) {
+    footer {
 
+        .social {
+            display: flex;
+            align-items: center;
+            gap: 100px;
+        }
+    }
+}
+
+@media only screen and (min-width: 520px) {
+    footer {
+
+        .social {
+            display: flex;
+            align-items: center;
+            gap: 100px;
+        }
+
+        .footerBottom {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}
+
+// max width
+@media only screen and (max-width: 520px) {
+    footer {
+        text-align: center;
+
+        .footerLogo {
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+
+        .social {
+            margin-bottom: 30px;
+
+            .socialMedia {
+                margin-inline: auto;
+                flex-direction: column;
+
+                span {
+                    border-right: none;
+                    padding-right: 0;
+                }
+            }
+        }
+
+        .footerBottom ul {
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+    }
+}

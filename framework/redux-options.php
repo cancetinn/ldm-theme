@@ -16,7 +16,7 @@ Redux::setSection( $opt_name, [
             'id' => 'social_mail',
             'title' => 'E-posta',
             'type' => 'text',
-            'default' => 'info@arinadigital.com',
+            'default' => 'info@lidoma.com',
         ],
         [
             'id' => 'social_linkedin',
@@ -85,63 +85,21 @@ Redux::setSection( $opt_name, [
     'icon'   => 'el el-wrench',
     'fields' => [
         [
-            'id'        => 'footer_logo',
-            'type'      => 'media',
-            'url'       => true,
-            'title'     => 'Footer logo',
-            'default'   => [
-                'url'   => ARINA_ASSETS_URI . '/icons/black_logo.svg'
-            ]
-        ],
-        [
-            'id'        => 'footer_bg',
-            'type'      => 'media',
-            'url'       => true,
-            'title'     => 'Footer bg',
-            'default'   => [
-                'url'   => ARINA_ASSETS_URI . '/img/footer-bg.png'
-            ]
-        ],
-        [
-            'id'    => 'footer_adressTR',
-            'type'  => 'textarea',
-            'title' => 'Footer adress TR',
-            'default' => 'Sair Nedim Cd. No:20 Kat:6  Besiktas, Istanbul TURKEY',
-        ],
-        [
-            'id'    => 'footer_phoneTR',
-            'type'  => 'text',
-            'title' => 'Footer phone TR',
-            'default' => '+90 212 381 2222',
-        ],
-        [
-            'id'    => 'footer_adressEN',
-            'type'  => 'textarea',
-            'title' => 'Footer adress EN',
-            'default' => '55 East 59th Street, 24th floor  New York, NY USA',
-        ],
-        [
-            'id'    => 'footer_phoneEN',
-            'type'  => 'text',
-            'title' => 'Footer phone EN',
-            'default' => '+1 212 616 0400',
-        ],
-        [
             'id'    => 'footer_copyright',
             'type'  => 'text',
             'title' => 'Footer copyright',
-            'default' => '© 2024 BLG Varlık',
+            'default' => 'Copyright © 2024 Lidoma',
         ],
         [
             'id'    => 'footer_disclamer',
             'type'  => 'text',
-            'title' => 'Disclaimer',
-            'default' => 'Disclaimer',
+            'title' => 'Terms and Conditions',
+            'default' => 'Terms and Conditions',
         ],
         [
             'id'    => 'footer_disclamer_url',
             'type'  => 'text',
-            'title' => 'Disclaimer url',
+            'title' => 'Terms and Conditions',
             'default' => '#',
         ],
         [

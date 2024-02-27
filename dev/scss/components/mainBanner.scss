@@ -70,3 +70,31 @@
         }
     }
 }
+
+// min width
+@media only screen and (min-width: 992px) {
+    .mainBanner {
+
+        .bannerArea {
+            .textArea {
+                padding: 30px;
+            }
+
+            .imgArea {
+
+                img {
+                    top: -30px;
+                    padding-top: 0;
+                    z-index: -100;
+                }
+            }
+        }
+        .buttonArea {
+            padding: 30px;
+
+            .buttonLidoma {
+                font-size: 13px;
+            }
+        }
+    }
+}

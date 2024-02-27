@@ -62,3 +62,15 @@
         }
     }
 }
+
+// min width
+@media only screen and (min-width: 992px) {
+    .liwaZone {
+
+        .lzArea {
+            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 100px;
+        }
+    }
+}

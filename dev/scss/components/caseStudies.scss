@@ -49,3 +49,20 @@
     }
 }
 
+@media only screen and (min-width: 992px) {
+    .caseStudies {
+        width: 100%;
+
+        #marqListCarousel {
+
+            .marquee {
+
+                h2 {
+                    font-size: 80px;
+
+                }
+            }
+        }
+    }
+}
+
