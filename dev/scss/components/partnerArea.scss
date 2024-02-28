@@ -1,0 +1,35 @@
+.partnerArea {
+    .logo-slider-wrapper {
+        height: 120px;
+    }
+
+    .logo-slider {
+        overflow: hidden;
+        position: relative;
+        height: 100%;
+    }
+
+    .logo-slider .swiper-slide {
+        position: relative;
+        max-width: 240px;
+        background: transparent;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-top: 2px ridge #f9f9f9;
+        border-left: 2px solid #626262;
+        border-radius: 25px;
+        -webkit-transition: all .3s ease;
+        transition: all .3s ease;
+    }
+
+
+
+    .logo-slider .swiper-slide img {
+        margin: 0 auto;
+        max-width: 100% !important;
+        height: auto;
+    }
+}

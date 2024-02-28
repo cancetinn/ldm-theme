@@ -1,8 +1,4 @@
 class RequestX {
-    constructor(url){
-        this.url = url
-    }
-
     async send(method = "GET", data = null) {
         try {
             let options = {
@@ -13,11 +9,11 @@ class RequestX {
                 options.body = data
             }
 
-            const response = await fetch(this.url, options)
+            const response = await fetch(getAjaxUrl(), options)
 
             return await response.json()
         } catch (error) {
-            const ajax = new AjaxOperation()
+            const ajax = new AjaxForm()
 
             ajax.messages("error", "Error response!")
             console.log('Bir hata oluştu:', error.message)

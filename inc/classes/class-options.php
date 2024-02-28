@@ -98,6 +98,27 @@ class Options
                 'publicly_queryable'  => false,
             ]
         );
+
+        register_post_type('newsletter', [
+            'labels' => [
+                'name' => __('Newsletter', ARINA_TEXT),
+                'singular_name' => __('Newsletter', ARINA_TEXT)
+            ],
+            'menu_icon'     => 'dashicons-groups',
+            'menu_position' => 7,
+            'supports'      => array('title'),
+            'rewrite'       => array('slug' => 'newsletter'),
+            'show_ui'       => true,
+            'has_archive'   => false,
+            'public'        => false,
+            'show_in_rest'  => false,
+                'capabilities' => array(
+
+                    'create_posts' => false,
+                ),
+            'publicly_queryable'  => false,
+        ]
+        );
     }
 
 

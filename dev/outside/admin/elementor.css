@@ -27,3 +27,8 @@ div[id*="elementor-panel-category-arina"].elementor-active {
 #elementor-panel .e-ai-button {
     display: none;
 }
+
+body .elementor-control-notice
+{
+    display: none !important;
+}

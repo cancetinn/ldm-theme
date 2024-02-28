@@ -16,13 +16,15 @@ class Elementor
 
     private static $elements = [
         // foldername => Classname
-        'test'          => 'Test',
-        'mainbanner'    => 'Mainbanner',
-        'marqlidoma'    => 'Marqlidoma',
-        'tournaments'   => 'Tournaments',
-        'casestudies'   => 'Casestudies',
-        'liwazone'      => 'Liwazone',
-        'thanks'        => 'Thanks',
+        'test'              => 'Test',
+        'mainbanner'        => 'Mainbanner',
+        'marqlidoma'        => 'Marqlidoma',
+        'tournaments'       => 'Tournaments',
+        'casestudies'       => 'Casestudies',
+        'liwazone'          => 'Liwazone',
+        'partnerarea'       => 'Partnerarea',
+        'newsletterarea'    => 'Newsletterarea',
+        'thanks'            => 'Thanks',
      ];
 
     protected function __construct()

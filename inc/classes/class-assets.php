@@ -77,11 +77,11 @@ class Assets
         wp_enqueue_script('theme');
 
         if ( is_singular('investments') ) {
-            //wp_register_style('swiper', ARINA_OUTSIDE . '/plugins/swiper.min.css', [], '5.0.0', 'all');
-            //wp_register_script('swiper', ARINA_OUTSIDE . '/plugins/swiper.min.js', [], '5.0.0', true);
+            wp_register_style('swiper', ARINA_OUTSIDE . '/plugins/swiper.min.css', [], '5.0.0', 'all');
+            wp_register_script('swiper', ARINA_OUTSIDE . '/plugins/swiper.min.js', [], '5.0.0', true);
 
-            //wp_enqueue_style('swiper');
-            //wp_enqueue_script('swiper');
+            wp_enqueue_style('swiper');
+            wp_enqueue_script('swiper');
         }
     }
 

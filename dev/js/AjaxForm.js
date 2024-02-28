@@ -1,8 +1,7 @@
-class AjaxOperation {
+class AjaxForm {
     stopLoadingStatus = null
     timeoutDuration = 5000
     footer = selector("footer")
-    ajaxUrl = getDataset('[data-ajaxurl]', 'ajaxurl')
 
     messages(status, messageText = "") {
         const existingctxMessages = selector(".ctxMessages")
@@ -10,13 +9,14 @@ class AjaxOperation {
         const submitButton = selector('form button[type="submit"]')
 
         this.stopLoadingStatus = getLoading ? true : false
-        submitButton.disabled = status === "loading" ? true : false
+        submitButton.disabled = status === "loading"
 
         if (getLoading && status === "loading") {
             return false
         }
 
         existingctxMessages?.remove()
+
 
         const templateMessages = status === "loading"
             ? `<div class="ctxMessages loading">
@@ -33,7 +33,7 @@ class AjaxOperation {
     }
 
     fetchForm(formData, getForm){
-        const req = new RequestX(this.ajaxUrl)
+        const req = new RequestX()
 
         this.messages("loading")
 
@@ -42,10 +42,10 @@ class AjaxOperation {
         req.post(formData)
             .then(data => {
                 if (data?.status !== "error") {
-                    this.messages("success", data?.message)
+                    this.messages("success", "Thank you !")
                     getForm.reset()
                 } else {
-                    this.messages("error", data?.message)
+                    this.messages("error", "Something went wrong !")
                 }
             })
     }

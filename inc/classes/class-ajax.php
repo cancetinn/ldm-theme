@@ -26,6 +26,12 @@ class Ajax
         /*Tournaments Custom Post Type*/
         add_action('wp_ajax_tournaments', [$this, 'load_works_by_category']);
         add_action('wp_ajax_nopriv_tournaments', [$this, 'load_works_by_category']);
+
+        /*Newsletter Form*/
+        add_action('wp_ajax_newsletterForm', [$this, 'save_custom_fields_data']);
+        add_action('wp_ajax_nopriv_newsletterForm', [$this, 'save_custom_fields_data']);
+
+
     }
 
     public function load_posts_by_category()
@@ -66,6 +72,24 @@ class Ajax
 
         wp_die();
     }
+
+    function save_custom_fields_data()
+    {
+        $email = sanitize_text_field($_POST['email']);
+
+        $args = [
+            'post_type' => 'newsletter',
+            'post_title' => $email,
+            'post_status' => 'publish',
+        ];
+
+        $post_id = wp_insert_post($args);
+
+        echo 'Form verileri başarıyla kaydedildi!';
+        wp_die();
+    }
+
+
 
     // Veri tablosu oluşturma.
     public function create_wp_applications_table()
