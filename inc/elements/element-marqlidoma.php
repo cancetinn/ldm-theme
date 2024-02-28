@@ -78,7 +78,7 @@ class Marqlidoma extends Widget_Base
 
         ?>
         <div class="ellipse-21">
-            <img src="<?php echo ARINA_ASSETS_URI; ?>/img/ellipse-21.png" alt="Ellipse 21">
+            <img class="lazyload lazyloaded" src="<?php echo ARINA_ASSETS_URI; ?>/img/ellipse-21.png" alt="Ellipse 21">
         </div>
             <section class="marqLidoma">
                 <ul class="marqList" id="marqListCarousel">

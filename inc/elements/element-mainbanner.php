@@ -117,7 +117,7 @@ class Mainbanner extends Widget_Base
 
         ?>
             <div class="ellipseBanner">
-                <img src="<?php echo ARINA_ASSETS_URI; ?>/img/ellipse-banner.png" alt="Ellipse Banner">
+                <img class="lazyload lazyloaded" src="<?php echo ARINA_ASSETS_URI; ?>/img/ellipse-banner.png" alt="Ellipse Banner">
             </div>
         <section class="mainBanner">
             <div class="container banner">
@@ -127,7 +127,7 @@ class Mainbanner extends Widget_Base
                         <h2 class="title"><?php echo $settings['second_big_text']?></h2>
                         <?php echo $settings['banner_content']?>
                     </div>
-                    <div class="imgArea">
+                    <div class="imgArea lazyload lazyloaded">
                         <?php echo getImage( $settings['banner_image']['id']  ); ?>
                     </div>
                 </div>

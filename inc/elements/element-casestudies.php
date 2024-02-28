@@ -78,7 +78,7 @@ class Casestudies extends Widget_Base
 
         ?>
         <div class="ellipse-18">
-            <img src="<?php echo ARINA_ASSETS_URI; ?>/img/elipse-18.png" alt="Ellipse 18">
+            <img class="lazyload lazyloaded" src="<?php echo ARINA_ASSETS_URI; ?>/img/elipse-18.png" alt="Ellipse 18">
         </div>
        <section class="caseStudies">
            <ul class="csList" id="marqListCarousel">

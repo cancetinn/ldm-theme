@@ -35,7 +35,7 @@ defined('ABSPATH') || exit; // Exit if accessed directly
             <div class="mobile-menu">
                 <div class="logo">
                     <a href="<?php echo home_url(); ?>">
-                        <?php echo getLogo(); ?>
+                        <img src="<?php echo ARINA_ASSETS_URI; ?>/icons/logo.svg" alt="Lidoma">
                     </a>
                 </div>
 

@@ -197,6 +197,7 @@ body {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            padding: 15px;
 
             .logo {
                 z-index: 12;
@@ -221,7 +222,7 @@ body {
                 transition: max-width .2s ease;
                 width: 100%;
                 max-width: 300px;
-                background-color: var(--black-color);
+                background-color: #1E1E1E;
 
                 margin-top: -13vh;
                 z-index: 9;
