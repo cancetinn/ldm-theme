@@ -76,7 +76,7 @@ class Mail {
             )
         );
         $mail->setFrom(MAIL_USERNAME, MAIL_TEXT);
-        $mail->addAddress('akif.aykan@arinadigital.com', MAIL_TEXT);
+        $mail->addAddress('can.cetin@arinadigital.com', MAIL_TEXT);
 
 	    // Format date/time
 	    $date = date_i18n('d/m/Y H:i', current_time('timestamp'));
