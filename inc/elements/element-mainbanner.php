@@ -129,7 +129,7 @@ class Mainbanner extends Widget_Base
                     </div>
                 </div>
                 <div class="buttonArea">
-                    <img class="lazyload" src="<?php echo ARINA_ASSETS_URI; ?>/img/lidoma_banner_logo.png" alt="Lidoma">
+                    <img class="lazyload" src="<?php echo ARINA_ASSETS_URI; ?>/img/white_lidoma_logo.png" alt="Lidoma">
                     <?php if ( $button_url ): ?>
                         <a href="<?php echo $button_url ?>"<?php echo $button_target ?> class="buttonLidoma"><?php echo $settings['lidoma_button'] ?></a>
                     <?php endif; ?>

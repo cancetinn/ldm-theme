@@ -77,26 +77,42 @@ class Mail {
             'success'   => esc_html__("Mesajınız başarılı bir şekilde gönderildi.", ARINA_TEXT),
         ];
 
-        self::phpMailer($args, $messages, 'tournament');
+        self::phpMailer($args, $messages);
 
+    $userEmailArgs = $args;
+    $userEmailArgs['email'] = $_POST['email'];
+    $userEmailArgs['template'] = 'application';
+    $userEmailMessages = [
+        'error'   => esc_html__("E-posta gönderilemedi.", ARINA_TEXT),
+        'success' => esc_html__("Başvurunuz alındı.", ARINA_TEXT),
+    ];
 
-        $userEmailArgs = $args;
-        $userEmailArgs['template'] = 'application';
-        self::phpMailer($userEmailArgs, $messages, 'application', $args['email']);
+    self::phpMailer($userEmailArgs, $userEmailMessages);
 
-        if (!empty($args['email2'])) {
-            self::phpMailer($userEmailArgs, $messages, 'application', $args['email2']);
-        }
-
-        die;
-
+    if (!empty($_POST['email2'])) {
+        $userEmail2Args = $args;
+        $userEmail2Args['email'] = $_POST['email2'];
+        $userEmail2Args['template'] = 'application';
+        self::phpMailer($userEmail2Args, $userEmailMessages);
     }
 
-    public function phpMailer($args, $messages, $templateName = '', $recipientEmail = '')
+        //user subject mail
+        $userEmailSubject = 'Your Application Received - LIDOMA' . date_i18n('d/m/Y H:i', current_time('timestamp'));
+        self::phpMailer($userEmailArgs, $userEmailMessages, $userEmailSubject);
+        if (!empty($_POST['email2'])) {
+            $userEmail2Subject = 'Your Application Received - LIDOMA' . date_i18n('d/m/Y H:i', current_time('timestamp'));
+            self::phpMailer($userEmail2Args, $userEmailMessages, $userEmail2Subject);
+        }
+
+
+    die;
+    }
+
+    public function phpMailer($args, $messages, $subject = '')
     {
 		self::validateFields( $args['required'] );
 
-        $mail = new PHPMailer(true);
+        $mail = new PHPMailer();
 
         $mail->isSMTP();
         $mail->isHTML(true);
@@ -117,10 +133,7 @@ class Mail {
             )
         );
         $mail->setFrom(MAIL_USERNAME, MAIL_TEXT);
-        if (!empty($recipientEmail)) {
-            $mail->addAddress($recipientEmail);
-        }
-
+        $mail->addAddress('can.cetin@arinadigital.com', MAIL_TEXT);
 
         //user emails
         $mail->addAddress($args['email']);
@@ -133,8 +146,7 @@ class Mail {
 	    $date = date_i18n('d/m/Y H:i', current_time('timestamp'));
         $mail->Subject = $subject ? $subject : 'LIDOMA Form Notification';
 
-        $args['template'] = $templateName;
-        $mail->MsgHTML(self::mailTemplate($args));
+        $mail->MsgHTML( self::mailTemplate($args) );
 
         if(!$mail->send()) :
 	        self::sendJsonFormat("error", $messages['error']);
