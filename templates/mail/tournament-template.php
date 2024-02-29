@@ -9,11 +9,30 @@ defined('ABSPATH') || exit; // Exit if accessed directly
 $args = isset($args) && is_array($args) ? $args : [];
 
 $name = $args['name'] ?? '';
-$phone = $args['phone'] ?? '';
+$name2 = $args['name2'] ?? '';
 $email = $args['email'] ?? '';
+$email2 = $args['email2'] ?? '';
+
+$pubg = $args['pubg'] ?? '';
+$cs2 = $args['cs2'] ?? '';
+$fc24 = $args['fc24'] ?? '';
 
 $the_title = $args['thetitle'] ?? '';
 $the_permalink = $args['thepermalink'] ?? '';
+
+
+$pickgames = '';
+if (!empty($pubg)) {
+    $pickgames .= $pubg . ', ';
+}
+if (!empty($cs2)) {
+    $pickgames .= $cs2 . ', ';
+}
+if (!empty($fc24)) {
+    $pickgames .= $fc24 . ', ';
+}
+
+$pickgames = rtrim($pickgames, ', ');
 
 ?>
 <table style="font-family:'Poppins',sans-serif;" border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -30,7 +49,7 @@ $the_permalink = $args['thepermalink'] ?? '';
             <tr>
                 <th colspan="2" align="center">
                     <h2>
-                        You have a new Tournament Form notification!
+                        Tournament Form has been filled out!
                     </h2>
                 </th>
             </tr>

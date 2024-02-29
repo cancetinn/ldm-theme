@@ -64,7 +64,7 @@ class Test extends Widget_Base
             <section class="formApp">
                 <div class="container">
                     <div class="bannerImg" style="text-align: center">
-                        <img src="https://lidoma.com/lidoma/assets/images/new-header-3.png" alt="" style="max-width: 250px;">
+                        <img src="https://lidoma.com/lidoma/assets/images/new-header-3.png" alt="<?php echo $settings['title'] ?>" style="max-width: 250px;">
                     </div>
 
 

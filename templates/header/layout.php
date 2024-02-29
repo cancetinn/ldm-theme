@@ -7,6 +7,9 @@
 defined('ABSPATH') || exit; // Exit if accessed directly
 
 ?>
+<div class="ellipseBanner">
+    <img class="lazyload lazyloaded" src="<?php echo ARINA_ASSETS_URI; ?>/img/ellipse-banner.png" alt="Ellipse Banner">
+</div>
 <header class="header">
     <div class="fixedSpace"></div>
     <div class="headerMain stickyMenu">

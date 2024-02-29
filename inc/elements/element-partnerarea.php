@@ -78,18 +78,16 @@ class Partnerarea extends Widget_Base
 
         ?>
         <section class="partnerArea">
-            <div class="logo-slider-wrapper">
-                <div class="logo-slider">
-                    <div class="swiper-wrapper">
-                        <?php
-                        foreach ($settings['partner_repeater'] as $item) {
-                            $image_url = $item['image']['url'] ?? '';
+            <div class="logoCarousel">
+                <div class="swiper-wrapper">
+                    <?php
+                    foreach ($settings['partner_repeater'] as $item) {
+                        $image_url = $item['image']['url'] ?? '';
                         ?>
-                        <a  class="swiper-slide">
-                            <img class="lazyload" src="<?php echo esc_url($image_url); ?>" alt="">
-                        </a>
-                        <?php } ?>
+                    <div class="swiper-slide">
+                        <img class="lazyload" src="<?php echo esc_url($image_url); ?>" alt="Partner Logos">
                     </div>
+                        <?php } ?>
                 </div>
             </div>
         </section>

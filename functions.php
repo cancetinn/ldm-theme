@@ -19,10 +19,10 @@ define( 'ADMIN_STYLE',      trailingslashit(get_template_directory_uri()) . 'dev
 define( 'ARINA_OUTSIDE',    trailingslashit(get_template_directory_uri()) . 'dev/outside' );
 
 // Mail Defines
-define( 'MAIL_TEXT',        'Arina Dev' );
+define( 'MAIL_TEXT',        'LIDOMA VISION' );
 define( 'MAIL_HOST',        'smtp.gmail.com' );
-define( 'MAIL_USERNAME',    'arina.develop@gmail.com' );
-define( 'MAIL_PASSWORD',    'dkqnxcqpfdfiotfb' );
+define( 'MAIL_USERNAME',    'lidomavision@gmail.com' );
+define( 'MAIL_PASSWORD',    'ooabzjfrtugdugje' );
 define( 'MAIL_SECURE',      'tls' );
 define( 'MAIL_PORT',        587 );
 

@@ -82,9 +82,11 @@ class Options
             update_option('elementor_disable_typography_schemes', 'yes');
         endif;
 
+        //flush_rewrite_rules( false );
+
         register_post_type('tournaments', [
                 'labels' => [
-                    'name' => __('Tournaments', ARINA_TEXT),
+                    'name' => __('tournaments', ARINA_TEXT),
                     'singular_name' => __('Tournaments', ARINA_TEXT)
                 ],
                 'menu_icon'     => 'dashicons-groups',
@@ -94,8 +96,8 @@ class Options
                 'show_ui'       => true,
                 'has_archive'   => false,
                 'public'        => true,
-                'show_in_rest'  => false,
-                'publicly_queryable'  => false,
+                'show_in_rest'  => true, // gutenberg
+                //'publicly_queryable'  => false,
             ]
         );
 
@@ -104,7 +106,7 @@ class Options
                 'name' => __('Newsletter', ARINA_TEXT),
                 'singular_name' => __('Newsletter', ARINA_TEXT)
             ],
-            'menu_icon'     => 'dashicons-groups',
+            'menu_icon'     => 'dashicons-email',
             'menu_position' => 7,
             'supports'      => array('title'),
             'rewrite'       => array('slug' => 'newsletter'),
@@ -119,6 +121,7 @@ class Options
             'publicly_queryable'  => false,
         ]
         );
+
     }
 
 

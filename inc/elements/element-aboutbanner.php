@@ -11,16 +11,16 @@ use Elementor\Controls_Manager;
 
 defined( 'ABSPATH' ) || exit; // Exit if accessed directly
 
-class Mainbanner extends Widget_Base
+class Aboutbanner extends Widget_Base
 {
     public function get_name()
     {
-        return 'mainbanner';
+        return 'aboutbanner';
     }
 
     public function get_title()
     {
-        return 'Main Banner';
+        return 'About Banner';
     }
 
     public function get_icon()
@@ -57,53 +57,55 @@ class Mainbanner extends Widget_Base
 
         $this->add_control(
             'big_text', [
-                'label' => 'Big Text',
+                'label' => 'Banner Text',
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => "THE ULTIMATE",
+                'default' => "ABOUT US",
                 'label_block' => true,
             ]
         );
 
-        $this->add_control(
-            'second_big_text', [
-                'label' => 'SecondBig Text',
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => "ESPORTS PLATFORM",
-                'label_block' => true,
-            ]
-        );
 
         $this->add_control(
             'banner_content', [
                 'label' => 'Banner Content',
                 'type' => \Elementor\Controls_Manager::WYSIWYG,
-                'default' => '<p>Join the community of gamers and compete in the most popular games for amazing prizes and glory.</p>',
+                'default' => '<p>Lidoma Vision Esports, a UAE-based International Gaming & Esports Solutions Company established in 2020, is on a mission to revolutionize the global gaming community and ecosystem. Driven by a dedicated and passionate team of gaming aficionados, we traverse the dynamic terrains of the global gaming realm. Lidoma embodies a simple yet profound mantra: Inspire the World to Play, Earn, and Enjoy. Through our efforts, we bring together communities, conduct top-tier tournaments and leagues, and air both online and offline events, all while presenting an all-encompassing platform filled with rich services for our esteemed partners and community.</p>',
             ]
         );
 
         $this->add_control(
-            'lidoma_button',
-            [
-                'label' => __('Lidoma Button', ARINA_TEXT),
+            'list_text', [
+                'label' => 'List Text',
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => 'Discover More',
+                'default' => "Our Stellar Services Include",
                 'label_block' => true,
             ]
         );
 
         $this->add_control(
-            'lidoma_button_url',
+            'about_list',
             [
-                'label' => esc_html__('Lidoma Button url', ARINA_TEXT),
-                'type' => \Elementor\Controls_Manager::URL,
-                'default' => [
-                    'url' => '#',
-                    'is_external' => false,
-                    'nofollow' => false,
+                'label' => esc_html__( 'About List Items', ARINA_TEXT ),
+                'type' => \Elementor\Controls_Manager::REPEATER,
+                'fields' => [
+                    [
+                        'name' => 'title',
+                        'label' => esc_html__( 'Title', ARINA_TEXT ),
+                        'type' => \Elementor\Controls_Manager::TEXTAREA,
+                        'default' => 'Lorem Ipsum',
+                        'label_block' => true,
+                    ],
                 ],
-                'label_block' => true,
+                'default' => [
+                    [
+                        'title' => 'Lorem Ipsum',
+                    ],
+                ],
+                'title_field' => '{{{ title }}}',
             ]
         );
+
+
 
         // END CONTROLS
         $this->end_controls_section();
@@ -112,27 +114,32 @@ class Mainbanner extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-        $button_url = $settings['lidoma_button_url']['url'] ?? false;
-        $button_target = $settings['lidoma_button_url']['is_external'] ? ' target="_blank"' :  '';
 
         ?>
-        <section class="mainBanner">
+        <section class="aboutBanner">
             <div class="container banner">
-                <div class="bannerArea">
+                <div class="abArea">
                     <div class="textArea">
                         <h1 class="title"><?php echo $settings['big_text']?></h1>
-                        <h2 class="title"><?php echo $settings['second_big_text']?></h2>
                         <?php echo $settings['banner_content']?>
+                        <div class="abList">
+                            <h4 class="title"><?php echo $settings['list_text']?></h4>
+                            <ul>
+                            <?php
+                            foreach ($settings['about_list'] as $item) :
+                                ?>
+                                <li><?php echo $item['title']; ?></li>
+                            <?php
+
+                            endforeach;
+
+                            ?>
+                            </ul>
+                        </div>
                     </div>
                     <div class="imgArea lazyload lazyloaded">
                         <?php echo getImage( $settings['banner_image']['id']  ); ?>
                     </div>
-                </div>
-                <div class="buttonArea">
-                    <img class="lazyload" src="<?php echo ARINA_ASSETS_URI; ?>/img/lidoma_banner_logo.png" alt="Lidoma">
-                    <?php if ( $button_url ): ?>
-                        <a href="<?php echo $button_url ?>"<?php echo $button_target ?> class="buttonLidoma"><?php echo $settings['lidoma_button'] ?></a>
-                    <?php endif; ?>
                 </div>
             </div>
         </section>

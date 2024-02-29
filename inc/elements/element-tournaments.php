@@ -67,7 +67,7 @@ class Tournaments extends Widget_Base
         $query_post = new \WP_Query( $args );
 
         ?>
-            <section class="Tournaments">
+            <section class="Tournaments" id="tournaments">
                 <div class="container tournaments">
                     <div class="titleArea">
                         <h1 class="title">
@@ -99,23 +99,31 @@ class Tournaments extends Widget_Base
                                         <p><?php echo esc_html(get_the_excerpt()); ?> <a href="<?php echo the_permalink(); ?>" class="readMore">Read More</a></p>
                                     </div>
                                     <div class="tournamentReq">
+                                    <?php if (!empty($platform)): ?>
                                         <div class="platform">
                                             <?php echo $platform ?>
                                         </div>
+                                    <?php endif; ?>
+                                    <?php if (!empty($capacity)): ?>
                                         <div class="capacity">
                                             <?php echo $capacity ?>
                                         </div>
+                                    <?php endif; ?>
+                                    <?php if (!empty($price)): ?>
                                         <div class="price">
                                             <?php echo $price ?>
                                         </div>
+                                    <?php endif; ?>
                                     </div>
                                     <div class="tJoinArea">
+                                        <?php if (!empty($prize)): ?>
                                         <div class="prizeArea">
                                             <p>Prize Pool</p>
                                             <p class="prizeAmount">
                                                 <?php echo $prize ?>
                                             </p>
                                         </div>
+                                        <?php endif; ?>
                                         <div class="tJoinButton">
                                             <a href="<?php echo the_permalink(); ?>">Join</a>
                                         </div>
@@ -127,7 +135,7 @@ class Tournaments extends Widget_Base
                         endif;
                         ?>
                     </div>
-                    <div class="discoverMore">
+                    <!--<div class="discoverMore">
                         <div class="arrowArea">
 
                         </div>
@@ -136,7 +144,7 @@ class Tournaments extends Widget_Base
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M29.8582 3.14656L0.0836182 32.9212L2.20494 35.0425L31.98 5.26747L31.98 33.002L34.98 33.002L34.98 1.64656L34.98 0.146557L33.48 0.146557L2.1245 0.146557L2.1245 3.14656L29.8582 3.14656Z" fill="white"/>
                             </svg><br>
                             Discover More</a>
-                    </div>
+                    </div>-->
                 </div>
             </section>
         <?php

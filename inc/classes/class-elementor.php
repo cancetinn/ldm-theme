@@ -24,6 +24,7 @@ class Elementor
         'liwazone'          => 'Liwazone',
         'partnerarea'       => 'Partnerarea',
         'newsletterarea'    => 'Newsletterarea',
+        'aboutbanner'       => 'Aboutbanner',
         'thanks'            => 'Thanks',
      ];
 

@@ -541,31 +541,6 @@ if( !function_exists( 'arina_breadcrumbs' )) :
             }
 
             // Print the BreadCrumb
-            if( ! empty( $breadcrumbs ) ){
-
-                ?>
-                <nav class="breadcrubs">
-                    <ul class="breadList">
-                        <?php
-
-                        foreach( $breadcrumbs as $key => $item ) :
-                            $class_home = $key === 0 ? ' home' : '';
-
-                            if( !empty( $item['url'] )){
-                                echo sprintf( '<li class="link%s"><a href="%s">%s</a></li>',
-                                    $class_home, esc_url($item['url']), $item['name']
-                                );
-                            } else {
-                                echo ( $before . $item['name'] . $after );
-                            }
-                        endforeach;
-
-                        ?>
-                    </ul>
-                </nav>
-                <?php
-
-            }
         }
 
         wp_reset_postdata();

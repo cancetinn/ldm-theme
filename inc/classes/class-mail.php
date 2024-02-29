@@ -27,6 +27,10 @@ class Mail {
 		// Contact form ajax
         add_action('wp_ajax_nopriv_contact_form', [$this, 'contact_form']);
         add_action('wp_ajax_contact_form', [$this, 'contact_form']);
+
+        //Tournament FORM AJAX
+        add_action('wp_ajax_nopriv_tournaments_form', [$this, 'tournaments_form']);
+        add_action('wp_ajax_tournaments_form', [$this, 'tournaments_form']);
     }
 
     public function contact_form()
@@ -51,11 +55,48 @@ class Mail {
         die;
     }
 
-    public function phpMailer($args, $messages)
+    public function tournaments_form()
+    {
+
+        self::checkNonce("tournament_form_nonce");
+
+        $args = [
+            'name'          => $_POST['name'],
+            'name2'         => $_POST['name2'],
+            'email'         => $_POST['email'],
+            'email2'        => $_POST['email2'],
+            'pubg'          => $_POST['pubg'],
+            'cs2'           => $_POST['cs2'],
+            'fc24'          => $_POST['fc24'],
+            'template'      => 'tournament', // contact-template.php
+            'required'  => ['name', 'email'],
+        ];
+
+        $messages = [
+            'error'     => esc_html__("Bir hata oluştu!", ARINA_TEXT),
+            'success'   => esc_html__("Mesajınız başarılı bir şekilde gönderildi.", ARINA_TEXT),
+        ];
+
+        self::phpMailer($args, $messages, 'tournament');
+
+
+        $userEmailArgs = $args;
+        $userEmailArgs['template'] = 'application';
+        self::phpMailer($userEmailArgs, $messages, 'application', $args['email']);
+
+        if (!empty($args['email2'])) {
+            self::phpMailer($userEmailArgs, $messages, 'application', $args['email2']);
+        }
+
+        die;
+
+    }
+
+    public function phpMailer($args, $messages, $templateName = '', $recipientEmail = '')
     {
 		self::validateFields( $args['required'] );
 
-        $mail = new PHPMailer();
+        $mail = new PHPMailer(true);
 
         $mail->isSMTP();
         $mail->isHTML(true);
@@ -76,13 +117,24 @@ class Mail {
             )
         );
         $mail->setFrom(MAIL_USERNAME, MAIL_TEXT);
-        $mail->addAddress('can.cetin@arinadigital.com', MAIL_TEXT);
+        if (!empty($recipientEmail)) {
+            $mail->addAddress($recipientEmail);
+        }
+
+
+        //user emails
+        $mail->addAddress($args['email']);
+        if (!empty($args['email2'])) {
+            $mail->addAddress($args['email2']);
+        }
+
 
 	    // Format date/time
 	    $date = date_i18n('d/m/Y H:i', current_time('timestamp'));
-	    $mail->Subject = 'Form Dolduruldu ' . $date;
+        $mail->Subject = $subject ? $subject : 'LIDOMA Form Notification';
 
-        $mail->MsgHTML( self::mailTemplate($args) );
+        $args['template'] = $templateName;
+        $mail->MsgHTML(self::mailTemplate($args));
 
         if(!$mail->send()) :
 	        self::sendJsonFormat("error", $messages['error']);

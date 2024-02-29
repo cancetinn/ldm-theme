@@ -27,8 +27,6 @@ body {
         }
     }
 
-    &.home {
-
         header {
 
             .headerMain {
@@ -62,29 +60,6 @@ body {
                 }
             }
         }
-    }
-
-    &:not(.home) {
-
-        header {
-            --header-height: 100px;
-            --fixed-height: 100px;
-
-            .fixedSpace.fixed {
-                height: var(--fixed-height);
-            }
-
-            .headerMain {
-                background: var(--black-color);
-                display: flex;
-                align-items: center;
-
-                &.stickyMenu.fixed {
-                    background: var(--become-bgcolor);
-                }
-            }
-        }
-    }
 }
 
 // min width
@@ -115,6 +90,7 @@ body {
                             color: #fff;
                             display: flex;
                             padding: 10px 22px;
+                            text-transform: uppercase;
 
                             &:hover {
                                 color: var(--primary-color);
@@ -314,13 +290,6 @@ body {
                     display: flex;
                     align-items: center;
                 }
-            }
-        }
-
-        &:not(.home) {
-
-            header {
-                --header-height: 100px;
             }
         }
     }

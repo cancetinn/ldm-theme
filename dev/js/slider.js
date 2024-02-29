@@ -1,25 +1,36 @@
 document.addEventListener("DOMContentLoaded", function(){
     // Sliders Options
-    swiperSlider('.logo-slider', {
-        slidesPerView: 2,
-        loop: true,
+    swiperSlider('.logoCarousel', {
+        spaceBetween: 0,
+        centeredSlides: true,
+        speed: 5000,
         autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
+            delay: 0,
         },
-        spaceBetween: 30,
+        loop: true,
+        slidesPerView: 'auto',
+        allowTouchMove: true,
+        disableOnInteraction: true,
         breakpoints: {
             480: {
-                slidesPerView: 2
+                slidesPerView: 2,
+                spaceBetween: 30
+            },
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 30
             },
             768: {
-                slidesPerView: 3
+                slidesPerView: 4,
+                spaceBetween: 30
             },
-            992: {
-                slidesPerView: 4
+            1024: {
+                slidesPerView: 5,
+                spaceBetween: 30
             },
-            1200: {
-                slidesPerView: 5
+            1280: {
+                slidesPerView: 8,
+                spaceBetween: 30
             }
         }
     });

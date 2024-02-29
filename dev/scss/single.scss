@@ -1,0 +1,174 @@
+article {
+
+    h1.title {
+        font-size: 6rem;
+        text-align: center;
+    }
+
+    .formArea {
+
+        form {
+
+            .formFlex {
+                display: flex;
+                gap: 70px;
+                order: 1;
+
+                input[type=email] {
+                    display: block;
+                    font-family: "Benzin", sans-serif;
+                    background: transparent;
+                    outline: none;
+                    border: 1px solid #929292;
+                    border-radius: 8px;
+                    color: #ffffff;
+                    font-size: 16px;
+                    width: 625px;
+                    height: 48px;
+                    padding: 0px 20px;
+                    margin-bottom: 20px;
+                    transition: all .3s ease;
+
+                    &:focus {
+                        border: 1px solid #194185;
+                    }
+                }
+
+                input[type=text] {
+                    display: block;
+                    font-family: "Benzin", sans-serif;
+                    background: transparent;
+                    outline: none;
+                    border: 1px solid #929292;
+                    border-radius: 8px;
+                    color: #ffffff;
+                    font-size: 16px;
+                    width: 625px;
+                    height: 48px;
+                    padding: 0px 20px;
+                    margin-bottom: 20px;
+                    transition: all .3s ease;
+
+                    &:focus {
+                        border: 1px solid #194185;
+                    }
+                }
+
+                .tButton {
+                    border: none;
+                    background-color: #BA04FE;
+                    color: #fff;
+                    font-family: "Benzin", sans-serif;
+                    width: 100%;
+                    height: 48px;
+                    font-size: 16px;
+                    border-radius: 8px;
+                    transition: .3s all ease;
+
+                    &:hover {
+                        cursor: pointer;
+                        transition: .3s all ease;
+                        background-color: var(--primary-color) ;
+                    }
+                }
+            }
+
+            .flexCheck {
+                display: flex;
+                flex-wrap: wrap;
+                order: 2;
+
+                label {
+                    padding: 10px;
+                    display: block;
+                    position: relative;
+                    margin: 10px;
+                    cursor: pointer;
+                    -webkit-touch-callout: none;
+                    -webkit-user-select: none;
+                    -khtml-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                    margin-bottom: -10px;
+
+                    &:before {
+                        background-color: white;
+                        color: white;
+                        content: " ";
+                        display: block;
+                        position: absolute;
+                        top: -5px;
+                        left: -5px;
+                        width: 25px;
+                        height: 25px;
+                        text-align: center;
+                        line-height: 28px;
+                        transition-duration: 0.4s;
+                        transform: scale(0);
+                    }
+
+                    &:after {
+                        top: 15px;
+                        right: 30px;
+                        left: unset;
+                        width: 10px;
+                        height: 20px;
+                        display: none;
+                    }
+
+
+                    img {
+                        transition-duration: 0.2s;
+                        transform-origin: 50% 50%;
+                        filter: grayscale(100%);
+                    }
+                }
+                :checked+label {
+                    box-shadow: 0 0 10px #34b233;
+                    transform: scale(0.95);
+                    border-radius: 30px;
+                        img {
+                            transform: scale(0.95);
+                            z-index: -1;
+                            filter: grayscale(0%);
+                        }
+
+                        &:after {
+                            border-color: red;
+                        }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    article {
+        padding: 0 30px;
+        .formArea {
+
+            form {
+
+                .formFlex {
+                    flex-wrap: wrap;
+
+                    input[type=email] {
+                        width: 350px;
+                        max-width: 100%;
+                    }
+
+                    input[type=text] {
+                        width: 350px;
+                        max-width: 100%;
+                    }
+                }
+
+                .flexCheck {
+                    order: -1;
+                }
+            }
+        }
+    }
+}
+

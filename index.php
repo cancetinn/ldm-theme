@@ -15,22 +15,22 @@ get_header();
  * */
 
 ?>
-    <div class="breadWrap">
+<!--    <div class="breadWrap">
         <div class="container">
             <nav class="breadcrubs">
                 <ul class="breadList">
                     <li class="link home">
-                        <a href="<?php echo home_url(); ?>">
-                            <?php echo getRedux('bread_home_text'); ?>
+                        <a href="<?php /*echo home_url(); */?>">
+                            <?php /*echo getRedux('bread_home_text'); */?>
                         </a>
                     </li>
                     <li class="link">
-                        <span><?php echo getRedux('news_title'); ?></span>
+                        <span><?php /*echo getRedux('news_title'); */?></span>
                     </li>
                 </ul>
             </nav>
         </div>
-    </div>
+    </div>-->
 
     <main class="blogList">
         <div class="container">

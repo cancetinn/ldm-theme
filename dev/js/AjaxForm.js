@@ -1,6 +1,6 @@
 class AjaxForm {
     stopLoadingStatus = null
-    timeoutDuration = 5000
+    timeoutDuration = 10000
     footer = selector("footer")
 
     messages(status, messageText = "") {
@@ -32,23 +32,29 @@ class AjaxForm {
         this.ctxRemoved()
     }
 
-    fetchForm(formData, getForm){
-        const req = new RequestX()
+    fetchForm(formData, getForm) {
+        const req = new RequestX();
+        this.messages("loading");
 
-        this.messages("loading")
-
-        if ( this.stopLoadingStatus ) return
+        if (this.stopLoadingStatus) return;
 
         req.post(formData)
             .then(data => {
                 if (data?.status !== "error") {
-                    this.messages("success", "Thank you !")
-                    getForm.reset()
+                    if (formData.get('action') === 'newsletterForm') {
+                        this.messages("success", "Thank you for subscribing to our newsletter!");
+                    } else if (formData.get('action') === 'tournaments_form') {
+                        this.messages("success", "Your registration has been received! Details will be sent to your email address. Please check your email.");
+                    } else {
+                        this.messages("success", "Thank you!");
+                    }
+                    getForm.reset();
                 } else {
-                    this.messages("error", "Something went wrong !")
+                    this.messages("error", "Something went wrong!");
                 }
-            })
+            });
     }
+
 
     closeClicked(e) {
         if (e.target.matches(".ctxClose")) {
