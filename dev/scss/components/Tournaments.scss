@@ -31,6 +31,7 @@
             padding: 40px;
             flex: 1 1 30%;
             transition: all .3s ease;
+            max-width: 100%;
 
             &:hover {
                 box-shadow: 0 5px 15px #8D1CFE;
@@ -232,6 +233,24 @@
                 left: 1%;
                 width: 136px;
                 height: 135px;
+            }
+        }
+
+        .tJoinArea {
+            gap: 30px;
+        }
+
+        .tournamentArea {
+
+            .tournamentBadge {
+
+                .tournamentImg {
+
+                    img {
+                        object-position: right;
+                        height: 200px;
+                    }
+                }
             }
         }
     }

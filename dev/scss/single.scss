@@ -1,7 +1,7 @@
 article {
 
     h1.title {
-        font-size: 6rem;
+        font-size: clamp(2rem, 4vw, 6rem);
         text-align: center;
     }
 
