@@ -1,5 +1,41 @@
 article {
 
+    .top {
+        display: flex;
+        gap: 40px;
+
+        .titleArea {
+            flex: 0 0 40%;
+            padding: 0 30px;
+
+            .reqArea {
+                display: flex;
+                /*justify-content: space-between;*/
+                padding-top: 32px;
+
+                .dateArea {
+                    width: 60%;
+
+                    h3.title {
+                        font-size: 24px;
+                        color: #BA04FE;
+                        padding-top: 33px;
+                    }
+
+                    ul {
+                        padding-top: 10px;
+
+                        li {
+                            list-style: inside;
+                            padding: 0 10px;
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     h1.title {
         font-size: clamp(2rem, 4vw, 6rem);
         text-align: center;
@@ -146,6 +182,19 @@ article {
 @media only screen and (max-width: 992px) {
     article {
         padding: 0 30px;
+
+        .top {
+            flex-wrap: wrap;
+
+            .titleArea {
+
+                .reqArea {
+                    justify-content: space-between;
+                    gap: 30px;
+                }
+            }
+        }
+
         .formArea {
 
             form {

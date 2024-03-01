@@ -48,9 +48,9 @@ $pickgames = rtrim($pickgames, ', ');
         <table align="center" border="0" cellspacing="0" cellpadding="0" width="640" style="margin-bottom:10px">
             <tr>
                 <th colspan="2" align="center">
-                    <h2>
+                    <h2 style="font-size: 18px;">
                         You have successfully completed your registration for JA GAMING FEST. <br>
-                        Simply show the above information to the officials at the festival entrance. 
+                        Simply show the above information to the officials at the festival entrance.
                         <br>We wish you the best of luck in the tournament!
                     </h2>
                 </th>

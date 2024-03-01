@@ -31,6 +31,40 @@
                 li {
                     list-style: inside;
                     padding: 2px 5px;
+                    position: relative;
+
+                    .toggle-btn {
+                        color: var(--primary-color);
+                        font-size: 16px;
+
+                    }
+
+                    .dropdown-content {
+                        max-height: 0;
+                        overflow: hidden;
+                        transition: max-height 0.5s ease-out, visibility 0.5s ease-out;
+                        visibility: hidden;
+                        list-style-type: none;
+                        padding: 0px;
+                    }
+
+                    .dropdown-content.show {
+                        visibility: visible;
+                        max-height: 1000px;
+                        padding: 15px 0px;
+                    }
+
+                    .dropdown-content {
+
+                        li {
+                            padding: 5px 30px;
+                            font-size: 14px;
+
+                            span {
+                                color: #5328F7;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -85,6 +119,7 @@
         }
     }
 }
+
 
 @-webkit-keyframes mover {
     0% { transform: translateY(0); }

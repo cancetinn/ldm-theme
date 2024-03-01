@@ -77,7 +77,7 @@ class Mail {
             'success'   => esc_html__("Mesajınız başarılı bir şekilde gönderildi.", ARINA_TEXT),
         ];
 
-        self::phpMailer($args, $messages);
+        //self::phpMailer($args, $messages);
 
     $userEmailArgs = $args;
     $userEmailArgs['email'] = $_POST['email'];
