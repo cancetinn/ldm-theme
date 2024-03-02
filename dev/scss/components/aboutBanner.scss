@@ -23,51 +23,7 @@
             max-width: 50%;
         }
 
-        .abList {
-            padding-top: 100px;
 
-            ul {
-
-                li {
-                    list-style: inside;
-                    padding: 2px 5px;
-                    position: relative;
-
-                    .toggle-btn {
-                        color: var(--primary-color);
-                        font-size: 16px;
-
-                    }
-
-                    .dropdown-content {
-                        max-height: 0;
-                        overflow: hidden;
-                        transition: max-height 0.5s ease-out, visibility 0.5s ease-out;
-                        visibility: hidden;
-                        list-style-type: none;
-                        padding: 0px;
-                    }
-
-                    .dropdown-content.show {
-                        visibility: visible;
-                        max-height: 1000px;
-                        padding: 15px 0px;
-                    }
-
-                    .dropdown-content {
-
-                        li {
-                            padding: 5px 30px;
-                            font-size: 14px;
-
-                            span {
-                                color: #5328F7;
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 
     .abArea {
@@ -84,6 +40,52 @@
                 right: 0;
                 -webkit-animation: mover 2s infinite  alternate;
                 animation: mover 2s infinite  alternate;
+            }
+        }
+    }
+}
+
+.abServices {
+
+    .abList {
+        padding-top: 100px;
+
+        ul {
+
+            li {
+                list-style: inside;
+                padding: 2px 5px;
+                position: relative;
+
+                .toggle-btn {
+                    color: var(--primary-color);
+                    font-size: 16px;
+
+                }
+
+                .dropdown-content {
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: max-height 0.5s ease-out;
+                    visibility: hidden;
+                }
+
+                .dropdown-content.show {
+                    visibility: visible;
+                    max-height: 1000px;
+                }
+
+                .dropdown-content {
+
+                    li {
+                        padding: 5px 30px;
+                        font-size: 14px;
+
+                        span {
+                            color: #5328F7;
+                        }
+                    }
+                }
             }
         }
     }

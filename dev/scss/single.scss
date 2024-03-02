@@ -191,6 +191,14 @@ article {
                 .reqArea {
                     justify-content: space-between;
                     gap: 30px;
+
+                    .dateArea {
+
+                        img {
+                            width: 40px;
+                            height: 40px;
+                        }
+                    }
                 }
             }
         }
