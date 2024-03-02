@@ -36,7 +36,7 @@ $permalink = get_the_permalink( $current_page_id );
                     <img class="lazyloaded lazyload" src="<?php echo ARINA_ASSETS_URI; ?>/img/date.png"" alt="">
                     <h3 class="title">ENDING DATE</h3>
                     <ul>
-                        <li>March 28</li>
+                        <li>March 31</li>
                     </ul>
                 </div>
             </div>
