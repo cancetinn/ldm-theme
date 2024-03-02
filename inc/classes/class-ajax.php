@@ -27,12 +27,18 @@ class Ajax
         add_action('wp_ajax_tournaments', [$this, 'load_works_by_category']);
         add_action('wp_ajax_nopriv_tournaments', [$this, 'load_works_by_category']);
 
+        //tournament save db
+        add_action('init', [$this, 'create_ja_game_fest_db']);
+        add_action('wp_ajax_tournaments_form', [$this,'ja_game_fest_save_detail']);
+        add_action('wp_ajax_nopriv_tournaments_form', [$this,'ja_game_fest_save_detail']);
+
         /*Newsletter Form*/
         add_action('wp_ajax_newsletterForm', [$this, 'save_custom_fields_data']);
         add_action('wp_ajax_nopriv_newsletterForm', [$this, 'save_custom_fields_data']);
 
 
     }
+
 
     public function load_posts_by_category()
     {
@@ -87,6 +93,62 @@ class Ajax
 
         echo 'Form verileri başarıyla kaydedildi!';
         wp_die();
+    }
+
+    //ja game fest database create
+    public function create_ja_game_fest_db() {
+        global $wpdb;
+        $table_name = $wpdb->prefix . 'ja_game_fest_data';
+        $charset_collate = $wpdb->get_charset_collate();
+
+        $sql = "CREATE TABLE $table_name (
+        id mediumint(9) NOT NULL AUTO_INCREMENT,
+        name tinytext NOT NULL,
+        email text NOT NULL,
+        name2 tinytext,
+        email2 text,
+        games text NOT NULL,
+        nonce text NOT NULL,
+        PRIMARY KEY  (id)
+    ) $charset_collate;";
+
+        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+        dbDelta($sql);
+    }
+
+
+    //ja game fest database save
+    public function ja_game_fest_save_detail() {
+        check_ajax_referer('tournament_form_nonce', 'security');
+
+        global $wpdb;
+        $table_name = $wpdb->prefix . 'ja_game_fest_data';
+
+        $name = sanitize_text_field($_POST['name']);
+        $email = sanitize_email($_POST['email']);
+        $name2 = sanitize_text_field($_POST['name2']);
+        $email2 = sanitize_email($_POST['email2']);
+        $games = implode(', ', array_filter([
+            isset($_POST['pubg']) ? 'PUBG Mobile' : '',
+            isset($_POST['cs2']) ? 'CS2' : '',
+            isset($_POST['fc24']) ? 'FC 24' : '',
+        ]));
+
+        $nonce = sanitize_text_field($_POST['security']);
+
+        $wpdb->insert(
+            $table_name,
+            [
+                'name' => $name,
+                'email' => $email,
+                'name2' => $name2,
+                'email2' => $email2,
+                'games' => $games,
+                'nonce' => $nonce,
+            ]
+        );
+
+        wp_send_json_success('Form başarıyla kaydedildi.');
     }
 
 
