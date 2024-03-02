@@ -87,7 +87,7 @@ $permalink = get_the_permalink( $current_page_id );
                 <div class="spacex" style="--spacer:100px"></div>
 
                 <div class="formArea">
-                    <form action="<?php echo admin_url('admin-ajax.php'); ?>" method="post" name="post<?php the_ID(); ?>" id="post<?php the_ID(); ?>">
+                    <form action="" method="post" name="post<?php the_ID(); ?>" id="post<?php the_ID(); ?>">
                     <div class="formFlex">
                             <div class="flexArea">
                                 <div class="form">
@@ -135,15 +135,8 @@ $permalink = get_the_permalink( $current_page_id );
             e.preventDefault()
             const formData = new FormData(getForm)
 
-            fetch('<?php echo admin_url('admin-ajax.php'); ?>', {
-                method: 'POST',
-                credentials: 'same-origin',
-                body: formData
-            })
-                .then(response => response.json())
-
             formData.append('action', 'tournaments_form')
-            formData.append('security', dataNonce)
+            formData.append('security', document.querySelector('.tournamentNonce').getAttribute('data-nonce'));
 
             ajax.fetchForm(formData, getForm)
         })

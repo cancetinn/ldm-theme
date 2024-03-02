@@ -134,6 +134,7 @@ class Ajax
             isset($_POST['fc24']) ? 'FC 24' : '',
         ]));
 
+
         $nonce = sanitize_text_field($_POST['security']);
 
         $wpdb->insert(
@@ -147,8 +148,6 @@ class Ajax
                 'nonce' => $nonce,
             ]
         );
-
-        wp_send_json_success('Form başarıyla kaydedildi.');
     }
 
 
