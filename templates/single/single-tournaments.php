@@ -108,7 +108,7 @@ $permalink = get_the_permalink( $current_page_id );
                             <div class="flexCheck">
                                 <label>Pick your Games</label>
                                 <input type="checkbox" id="pubg" name="pubg" value="PUBG Mobile"/>
-                                <label for="pubg"><img class="lazyload lazyloaded" src="<?php echo ARINA_ASSETS_URI; ?>/img/pubgreg.png" /></label>
+                                <label for="pubg"><img class="lazyload lazyloaded" src="<?php echo ARINA_ASSETS_URI; ?>/img/pbg.png" /></label>
                                 <input type="checkbox" id="cs2" name="cs2" value="CS2" />
                                 <label for="cs2"><img class="lazyload lazyloaded" src="<?php echo ARINA_ASSETS_URI; ?>/img/cs2reg.png" /></label>
                                 <input type="checkbox" id="fc24" name="fc24" value="FC 24" />
