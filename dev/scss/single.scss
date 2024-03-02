@@ -2,7 +2,8 @@ article {
 
     .top {
         display: flex;
-        gap: 40px;
+        gap: 100px;
+        align-items: center;
 
         .titleArea {
             flex: 0 0 40%;
@@ -15,6 +16,10 @@ article {
 
                 .dateArea {
                     width: 60%;
+
+                    img {
+                        width: 40px;
+                    }
 
                     h3.title {
                         font-size: 24px;

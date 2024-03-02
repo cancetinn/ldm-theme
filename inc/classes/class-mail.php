@@ -60,6 +60,12 @@ class Mail {
 
         self::checkNonce("tournament_form_nonce");
 
+        //en az bir oyun seçtiren bölüm
+        if (empty($_POST['pubg']) && empty($_POST['cs2']) && empty($_POST['fc24'])) {
+            self::sendJsonFormat("error", esc_html__("Please select at least 1 game.", ARINA_TEXT));
+            die;
+        }
+
         $args = [
             'name'          => $_POST['name'],
             'name2'         => $_POST['name2'],
@@ -73,19 +79,19 @@ class Mail {
         ];
 
         $messages = [
-            'error'     => esc_html__("Bir hata oluştu!", ARINA_TEXT),
+            'error'     => esc_html__("Please fill in the required fields.", ARINA_TEXT),
             'success'   => esc_html__("Mesajınız başarılı bir şekilde gönderildi.", ARINA_TEXT),
         ];
 
         //self::phpMailer($args, $messages);
 
-    $userEmailArgs = $args;
-    $userEmailArgs['email'] = $_POST['email'];
-    $userEmailArgs['template'] = 'application';
-    $userEmailMessages = [
-        'error'   => esc_html__("E-posta gönderilemedi.", ARINA_TEXT),
-        'success' => esc_html__("Başvurunuz alındı.", ARINA_TEXT),
-    ];
+        $userEmailArgs = $args;
+        $userEmailArgs['email'] = $_POST['email'];
+        $userEmailArgs['template'] = 'application';
+        $userEmailMessages = [
+            'error'   => esc_html__("E-posta gönderilemedi.", ARINA_TEXT),
+            'success' => esc_html__("Başvurunuz alındı.", ARINA_TEXT),
+        ];
 
     self::phpMailer($userEmailArgs, $userEmailMessages);
 
@@ -166,7 +172,7 @@ class Mail {
 			}
 
 			if (!empty( $check_field )) {
-				self::sendJsonFormat("error", esc_html__("Lütfen gerekli alanları doldurun!", ARINA_TEXT));
+				self::sendJsonFormat("error", esc_html__("Please fill in the required fields.", ARINA_TEXT));
 			}
 		}
 	}

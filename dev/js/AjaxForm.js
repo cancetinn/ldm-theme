@@ -50,7 +50,7 @@ class AjaxForm {
                     }
                     getForm.reset();
                 } else {
-                    this.messages("error", "Something went wrong!");
+                    this.messages("error", data?.message)
                 }
             });
     }
