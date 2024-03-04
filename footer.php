@@ -34,10 +34,10 @@ $youtube        = getRedux('social_youtube');
         <div class="footerBottom">
             <ul>
                 <li>
-                    <a href="<?php echo $disclamerUrl; ?>"><?php echo $disclamer; ?></a>
+                    <a target="_blank" href="<?php echo $disclamerUrl; ?>"><?php echo $disclamer; ?></a>
                 </li>
                 <li>
-                    <a href="<?php echo $privacyUrl; ?>"><?php echo $privacy; ?></a>
+                    <a target="_blank" href="<?php echo $privacyUrl; ?>"><?php echo $privacy; ?></a>
                 </li>
             </ul>
 
