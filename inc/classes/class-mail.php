@@ -75,7 +75,7 @@ class Mail {
             'cs2'           => $_POST['cs2'],
             'fc24'          => $_POST['fc24'],
             'template'      => 'tournament', // contact-template.php
-            'required'  => ['name', 'email'],
+            'required'  => ['name', 'email',],
         ];
 
         $messages = [

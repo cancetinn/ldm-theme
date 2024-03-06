@@ -35,54 +35,65 @@ if (!empty($fc24)) {
 $pickgames = rtrim($pickgames, ', ');
 
 ?>
-<table style="font-family:'Poppins',sans-serif;" border="0" cellpadding="0" cellspacing="0" width="100%">
-    <thead>
-    <tr>
-        <table align="center" border="0" cellspacing="30" cellpadding="30" width="640" bgcolor="#0A0A0A">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
+    </head>
+    <body>
+        <table style="font-family:'Poppins',sans-serif;" border="0" cellpadding="0" cellspacing="0" width="100%">
+            <thead>
             <tr>
-                <th colspan="2" align="center">
-                    <img width="400" src="https://i.imgur.com/nI41CLt.png">
-                </th>
+                <table align="center" border="0" cellspacing="30" cellpadding="30" width="640" bgcolor="#0A0A0A">
+                    <tr>
+                        <th colspan="2" align="center">
+                            <img width="400" src="https://lidoma.com/lidoma-mail-logo.png">
+                        </th>
+                    </tr>
+                </table>
+                <table align="center" border="0" cellspacing="0" cellpadding="0" width="640" style="margin-bottom:10px">
+                    <tr>
+                        <th colspan="2" align="center">
+                            <h2>
+                                Tournament Form has been filled out!
+                            </h2>
+                        </th>
+                    </tr>
+                </table>
             </tr>
-        </table>
-        <table align="center" border="0" cellspacing="0" cellpadding="0" width="640" style="margin-bottom:10px">
+            </thead>
+            <tbody>
             <tr>
-                <th colspan="2" align="center">
-                    <h2>
-                        Tournament Form has been filled out!
-                    </h2>
-                </th>
+                <td>
+                    <table align="center" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td bgcolor="#f4f4f4" style="padding:20px;">
+                                <table border="0" cellspacing="0" cellpadding="0" width="600">
+                                    <tr>
+                                        <td align="left" style="padding:10px 30px;font-size:16px" bgcolor="#ffffff">
+                                            <p><strong>Your Name</strong> : <?php echo $name; ?></p>
+                                            <p><strong>Email</strong> : <?php echo $email; ?></p>
+
+                                            <?php if (!empty($name2)): ?>
+                                                <p><strong>Your Name</strong> : <?php echo $name2; ?></p>
+                                            <?php endif; ?>
+
+                                            <?php if (!empty($email2)): ?>
+                                                <p><strong>Email</strong> : <?php echo $email2; ?></p>
+                                            <?php endif; ?>
+                                            <p><strong>Pick Games</strong> : <?php echo $pickgames; ?></p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <p style="text-align: center;text-decoration: underline;color: #000;"><a href="https://lidoma.com">Unsubscribe</a></p>
+                </td>
             </tr>
+            </tbody>
         </table>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>
-            <table align="center" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td bgcolor="#f4f4f4" style="padding:20px;">
-                        <table border="0" cellspacing="0" cellpadding="0" width="600">
-                            <tr>
-                                <td align="left" style="padding:10px 30px;font-size:16px" bgcolor="#ffffff">
-                                    <p><strong>Your Name</strong> : <?php echo $name; ?></p>
-                                    <p><strong>Email</strong> : <?php echo $email; ?></p>
+    </body>
+</html>
 
-                                    <?php if (!empty($name2)): ?>
-                                        <p><strong>Your Name</strong> : <?php echo $name2; ?></p>
-                                    <?php endif; ?>
 
-                                    <?php if (!empty($email2)): ?>
-                                        <p><strong>Email</strong> : <?php echo $email2; ?></p>
-                                    <?php endif; ?>
-                                    <p><strong>Pick Games</strong> : <?php echo $pickgames; ?></p>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-    </tbody>
-</table>

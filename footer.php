@@ -17,6 +17,9 @@ $instagram      = getRedux('social_instagram');
 $youtube        = getRedux('social_youtube');
 
 ?>
+<a target="_blank" href="https://wa.me/message/XDJFQXK6TKARM1" class="dd-m-whatsapp">
+    <span class="icon"></span>
+</a>
 <footer class="footer">
     <div class="container footer">
         <div class="footerLogo flex">

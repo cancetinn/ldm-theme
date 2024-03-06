@@ -137,6 +137,7 @@ class Ajax
 
         $nonce = sanitize_text_field($_POST['security']);
 
+
         $wpdb->insert(
             $table_name,
             [

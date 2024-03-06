@@ -158,9 +158,10 @@ $permalink = get_the_permalink( $current_page_id );
             var cs2Checkbox = document.getElementById('cs2');
             var fc24Checkbox = document.getElementById('fc24');
 
+
             if (!pubgCheckbox.checked && !cs2Checkbox.checked && !fc24Checkbox.checked) {
-                e.preventDefault();
-                //ajaxForm.messages("error", "Please select at least 1 game.");
+                e.preventDefault(); // Form gönderimini durdur
+                //alert("Please select at least one game."); // Kullanıcıyı uyar
                 return;
             }
 
@@ -171,31 +172,5 @@ $permalink = get_the_permalink( $current_page_id );
 
             ajaxForm.fetchForm(formData, form);
         });
-
-        function togglePlayer2Requirement() {
-            var pubgCheckbox = document.getElementById('pubg');
-            var cs2Checkbox = document.getElementById('cs2');
-            var fc24Checkbox = document.getElementById('fc24');
-
-            var name2Field = document.getElementById('name2');
-            var email2Field = document.getElementById('email2');
-            var optionalTexts = document.querySelectorAll('.optional-text');
-
-            if (pubgCheckbox.checked || cs2Checkbox.checked) {
-                name2Field.required = true;
-                email2Field.required = true;
-                optionalTexts.forEach(text => text.style.display = 'none');
-            } else {
-                name2Field.required = false;
-                email2Field.required = false;
-                optionalTexts.forEach(text => text.style.display = '');
-            }
-        }
-
-        document.getElementById('pubg').addEventListener('change', togglePlayer2Requirement);
-        document.getElementById('cs2').addEventListener('change', togglePlayer2Requirement);
-        document.getElementById('fc24').addEventListener('change', togglePlayer2Requirement);
-
-        togglePlayer2Requirement();
     });
 </script>
