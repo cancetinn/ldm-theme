@@ -180,6 +180,28 @@ article {
                         }
                 }
             }
+
+            .termArea {
+                margin-bottom: 20px;
+
+                a {
+                    color: var(--primary-color);
+                    text-decoration: underline;
+
+                    &:hover {
+                        color: #BA04FE;
+                        transition: all .3s ease;
+                    }
+                }
+                input[type="checkbox"]:checked + label::before {
+                    background-color: #BA04FE;
+                    border-color: #BA04FE;
+                }
+                input[type="checkbox"]:checked + label::after {
+                    border-color: #fff;
+                    top: 2px;
+                }
+            }
         }
     }
 }

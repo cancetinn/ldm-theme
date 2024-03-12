@@ -105,6 +105,14 @@ $permalink = get_the_permalink( $current_page_id );
                                     <label>Duo Email <span class="optional-text">(optional)</span></label>
                                     <input type="email" id="email2" name="email2">
                                 </div>
+                                <div class="termArea">
+                                    <input type="checkbox" id="term" name="term" value="term" required/>
+                                    <label for="term">I have read and accept the <a href="https://lidoma.com/Lidoma%20User%20Agreement%20Terms%20of%20Use.pdf" target="_blank"> Terms and Conditions</a> and the <a href="https://lidoma.com/LIDOMA%20PRIVACY%20POLICY.pdf" target="_blank">Privacy Policy.</a></label>
+                                </div>
+                                <div class="termArea">
+                                    <input type="checkbox" id="rulebook" name="rulebook" value="rulebook" required/>
+                                    <label for="rulebook">I have read and accept the <a href="https://lidoma.com/wp-content/uploads/2024/03/JA-GAME-FESTIVAL-RULEBOOK.pdf" target="_blank"> Rulebook</a></label>
+                                </div>
                                 <button class="tButton" type="submit">REGISTER</button>
                             </div>
                             <div class="flexCheck">
