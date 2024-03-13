@@ -1,0 +1,21 @@
+.errorPage {
+    text-align: center;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+
+    .ep-wrap {
+
+        .e404 {
+            font-size: 72px;
+        }
+
+        h1.title {
+            font-size: 72px;
+        }
+
+        img {
+            max-width: 150px;
+        }
+    }
+}

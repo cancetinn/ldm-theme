@@ -86,6 +86,7 @@ class Tournaments extends Widget_Base
                                 $price = get_field('price');
                                 $prize = get_field('prize_pool');
                                 $thumbnail = get_the_post_thumbnail( get_the_ID(), 'portfolio_thumb', ['alt' => strip_tags(get_the_title()) ] );
+                                $acfurl = get_field('tournament_url');
                                 ?>
 
                                 <div class="tournamentBadge">
@@ -125,7 +126,7 @@ class Tournaments extends Widget_Base
                                         </div>
                                         <?php endif; ?>
                                         <div class="tJoinButton">
-                                            <a href="<?php echo the_permalink(); ?>">Join</a>
+                                            <a href="<?php echo (!empty($acfurl) ? $acfurl : the_permalink()); ?>">Join</a>
                                         </div>
                                     </div>
                                 </div>
