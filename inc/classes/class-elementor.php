@@ -25,6 +25,7 @@ class Elementor
         'partnerarea'       => 'Partnerarea',
         'newsletterarea'    => 'Newsletterarea',
         'aboutbanner'       => 'Aboutbanner',
+        'blogarea'          => 'Blogarea',
         'thanks'            => 'Thanks',
      ];
 

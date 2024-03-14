@@ -1,0 +1,139 @@
+.blogArea {
+
+    .titleArea {
+        text-align: center;
+        padding-bottom: 42px;
+
+        h1.title {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+        }
+    }
+
+    .baWrap {
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+
+        .baItem {
+
+            &.category-tournament-news {
+                max-width: 604px;
+                max-height: 212px;
+                display: flex;
+                flex-basis: 50%;
+                gap: 24px;
+                background-color: rgba(34, 34, 49, .444);
+                border-radius: 20px;
+
+                .baPostImg {
+
+                    img {
+                        border-radius: 20px;
+                        min-width: 242px;
+                        height: 212px;
+                    }
+                }
+
+                .postAreaFlex {
+                    display: flex;
+                    align-items: center;
+
+                    .baPostDesc {
+
+                        .baTag {
+                            color: #9235EB;
+                            font-size: 14px;
+                            padding-bottom: 10px;
+                        }
+
+                        a {
+                            color: #ffffff;
+
+                            .baPostTitle {
+                                font-weight: bold;
+                                font-size: 24px;
+                                max-width: 85%;
+                                padding-bottom: 10px;
+
+                                &:hover {
+                                    transition: all .3s ease;
+                                    color: #4c29f6;
+                                }
+                            }
+                        }
+
+                        .baPostExcerpt {
+                            color: #ABABB2;
+                            font-size: 16px;
+                            font-weight: normal;
+                        }
+
+                        .post-time {
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+            &.category-articles {
+                flex-basis: 33%;
+                gap: 33px;
+                border-bottom: 4px solid #4c29f6;
+                max-width: 386px;
+                margin-bottom: 46px;
+
+                .baPostImg {
+
+                    img {
+                        width: 387px;
+                        max-height: 200px;
+                    }
+
+                    &:hover {
+                        filter: grayscale(100%);
+                        transition: all .3s ease;
+                    }
+                }
+
+                .postAreaFlex {
+
+                    .baPostDesc {
+                        padding: 0 30px;
+
+                        .baTag {
+                            display: none;
+                        }
+
+                        .baPostExcerpt {
+                            display: none;
+                        }
+
+                        a {
+
+                            .baPostTitle {
+                                padding-top: 20px;
+                                font-size: 18px;
+                                width: 70%;
+                                font-weight: 500;
+                                color: #ffffff;
+                                transition: all .3s ease;
+
+                                &:hover {
+                                    transition: all .3s ease;
+                                    color: #9235EB;
+                                }
+                            }
+                        }
+
+                        .post-time {
+                            padding-top: 10px;
+                            padding-bottom: 25px;
+                            font-size: 11px;
+                            opacity: 0.5;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
