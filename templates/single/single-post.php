@@ -23,9 +23,6 @@ $thumbnail = get_the_post_thumbnail( get_the_ID(), 'full', ['alt' => strip_tags(
                 <div class="timeArea">
                     <?php the_time('d M Y'); ?>
                 </div>
-                <div class="shareArea">
-                    share:
-                </div>
             </div>
 
             <div class="contentArea">
