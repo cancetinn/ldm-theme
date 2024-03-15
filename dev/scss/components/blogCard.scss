@@ -1,0 +1,20 @@
+.blogCard {
+
+    .titleArea {
+        background: linear-gradient(90deg, rgba(165,31,244,1) 35%, rgba(45,45,63,1) 100%);
+        min-height: 35vh;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-radius: 20px;
+
+        h1.title {
+            font-size: clamp(1.50rem, 4vw, 2.5rem);
+        }
+
+        p {
+            font-size: clamp(0.75rem, 4vw, 1.125rem);
+        }
+    }
+}

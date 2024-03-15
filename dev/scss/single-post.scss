@@ -1,0 +1,117 @@
+article {
+
+    .postSingle {
+        padding-top: 150px;
+
+        .postThumb {
+            text-align: center;
+            padding-bottom: 50px;
+        }
+
+        .postTitle {
+
+            h1.title {
+                font-size: clamp(1.75rem, 4vw, 3rem);
+                font-weight: 500;
+                padding-bottom: 40px;
+            }
+        }
+
+        .stWrap {
+            display: flex;
+            justify-content: space-between;
+            color: #7C8B99;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #95959F;
+        }
+
+        .contentArea {
+            padding: 25px 0;
+            border-bottom: 1px solid #95959f;
+
+            h1, h2 ,h3 {
+                color: #ffffff;
+                font-size: 32px;
+            }
+
+            p {
+                color: #7C8B99;
+                font-size: 16px;
+            }
+
+            a {
+                text-decoration: none;
+                color: #4C29F6;
+
+                &:hover {
+                    transition: all .3s ease;
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .bigTitle {
+            padding-top: 150px;
+
+            span {
+                font-size: 13px;
+                color: #8331D1;
+            }
+
+            h1.title {
+                text-align: left;
+                color: #ffffff;
+                font-size: clamp(1.75rem, 4vw, 3rem);
+            }
+        }
+
+        .lbWrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding-bottom: 125px;
+            justify-content: center;
+
+            .lbItem {
+                flex: 1 1 30%;
+                max-width: 370px;
+
+                img {
+                    width: 370px;
+                    height: 230px;
+
+                    &:hover {
+                        filter: grayscale(100%);
+                        transition: all .3s ease;
+                    }
+                }
+
+                .lbItemTitle {
+
+                    a {
+                        font-size: 20px;
+                        color: #ffffff;
+
+                        &:hover {
+                            transition: all .3s ease;
+                            color: #4c29f6;
+                        }
+                    }
+                }
+
+                .post-time {
+                    color: #95959F;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    article {
+        .lbWrap {
+            flex-direction: column;
+        }
+    }
+}

@@ -145,18 +145,12 @@ class Blogarea extends Widget_Base
                 <?php
                 if ($query->have_posts()) :
                     while ($query->have_posts()) : $query->the_post();
-                        $categories = get_the_terms(get_the_ID(), 'category');
-                        $category_classes = '';
-                        if (!empty($categories)) {
-                            foreach ($categories as $category) {
-                                $category_classes .= ' category-' . $category->slug; // Kategori slug'ını sınıf ismi olarak ekliyoruz
-                            }
-                        }
                         $thumbnail = get_the_post_thumbnail( get_the_ID(), 'portfolio_thumb', ['alt' => strip_tags(get_the_title()) ] );
                         $tag = get_field('tag');
                         $post_time = get_the_time('U');
                         $current_time = current_time('timestamp');
                         $time_diff = $current_time - $post_time;
+                        $is_this = get_field('select_type');
 
                         $time_string = '';
                         if ($time_diff < 24 * HOUR_IN_SECONDS) {
@@ -165,7 +159,7 @@ class Blogarea extends Widget_Base
                             $time_string = '<div class="post-time">' . get_the_date() . '</div>';
                         }
                         ?>
-                    <div class="baItem <?php echo $category_classes; ?>">
+                    <div class="baItem <?php echo $is_this ?>">
                         <a href="<?php echo the_permalink(); ?>">
                             <div class="baPostImg">
                                 <?php echo $thumbnail; ?>

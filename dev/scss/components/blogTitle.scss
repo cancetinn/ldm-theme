@@ -1,0 +1,18 @@
+.blogTitle {
+    padding-top: 250px;
+
+    .titleArea {
+
+        h1.title {
+            font-size: clamp(2rem, 4vw, 3.75rem);
+            font-weight: bold;
+            padding-bottom: 20px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 16px;
+            text-align: center;
+        }
+    }
+}

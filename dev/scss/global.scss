@@ -63,6 +63,14 @@ a {
     &.zone {
         max-width: 1198px;
     }
+
+    &.single-post {
+        max-width: 970px;
+    }
+
+    &.latest-post {
+        max-width: 1170px;
+    }
 }
 
 img[src*="data:image/svg+xml"] {
