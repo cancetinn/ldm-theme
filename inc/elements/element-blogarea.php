@@ -147,6 +147,7 @@ class Blogarea extends Widget_Base
                     while ($query->have_posts()) : $query->the_post();
                         $thumbnail = get_the_post_thumbnail( get_the_ID(), 'portfolio_thumb', ['alt' => strip_tags(get_the_title()) ] );
                         $tag = get_field('tag');
+                        $excerpt = get_field('excerpt_area');
                         $post_time = get_the_time('U');
                         $current_time = current_time('timestamp');
                         $time_diff = $current_time - $post_time;
@@ -178,7 +179,7 @@ class Blogarea extends Widget_Base
                                     </div>
                                 </a>
                                 <div class="baPostExcerpt">
-                                    <?php arina_the_excerpt(12); ?>
+                                    <?php echo $excerpt ?>
                                 </div>
                                 <?php echo $time_string; ?>
                             </div>
