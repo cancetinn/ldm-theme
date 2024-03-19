@@ -103,7 +103,7 @@ body {
 
                         &.current-menu-item {
                             a {
-                                color: #ffffff;
+                                color: var(--primary-color);
                             }
                         }
                     }
