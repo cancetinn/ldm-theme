@@ -1,0 +1,63 @@
+.focusArea {
+
+    .faWrap {
+        display: flex;
+        gap: 60px;
+        flex-wrap: wrap;
+
+        .focusText {
+            width: 47%;
+
+            h2.title {
+                font-size: clamp(2rem, 4vw, 4rem);
+                color: #ffffff;
+
+                span {
+                    color: #00FBF4;
+                }
+            }
+
+            p {
+                color: #DADADA;
+                font-size: 16px;
+            }
+        }
+
+        .faBoxArea {
+            min-width: 275px;
+            height: 345px;
+            border: 1px solid #fff;
+            max-width: 275px;
+
+            .faBoxItem {
+                display: flex;
+                flex-direction: column;
+                height: 345px;
+                justify-content: space-between;
+                padding: 30px;
+
+                img {
+                    max-width: 60px;
+                }
+            }
+        }
+    }
+}
+
+// max width
+@media only screen and (max-width: 992px) {
+    .focusArea {
+
+        .faWrap {
+            flex-direction: column;
+
+            .focusText {
+                width: 100%;
+            }
+
+            .faBoxArea {
+                margin: 0 auto;
+            }
+        }
+    }
+}

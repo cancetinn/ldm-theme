@@ -29,7 +29,8 @@
 
                     img {
                         border-radius: 20px;
-                        width: 242px;
+                        min-width: 242px;
+                        max-width: 242px;
                         height: 212px;
                     }
                 }

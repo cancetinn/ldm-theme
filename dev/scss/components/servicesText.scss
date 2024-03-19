@@ -1,0 +1,19 @@
+.servicesText {
+    padding-top: 250px;
+
+    .titleArea {
+
+        h1.title {
+            font-size: clamp(3rem, 4vw, 6rem);
+            font-weight: bold;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 20px;
+            text-align: center;
+            color: #BCC6D0;
+        }
+    }
+}

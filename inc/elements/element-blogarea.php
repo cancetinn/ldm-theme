@@ -175,7 +175,8 @@ class Blogarea extends Widget_Base
                             <?php endif; ?>
                                 <a href="<?php echo the_permalink(); ?>">
                                     <div class="baPostTitle">
-                                        <?php the_title(); ?>
+                                        <?php echo wp_trim_words( get_the_title(), 4, '...' ); ?>
+
                                     </div>
                                 </a>
                                 <div class="baPostExcerpt">

@@ -28,6 +28,9 @@ class Elementor
         'blogarea'          => 'Blogarea',
         'blogtitle'         => 'Blogtitle',
         'blogcard'          => 'Blogcard',
+        'servicestext'      => 'Servicestext',
+        'servicesrepeat'    => 'Servicesrepeat',
+        'focusarea'         => 'Focusarea',
         'thanks'            => 'Thanks',
      ];
 

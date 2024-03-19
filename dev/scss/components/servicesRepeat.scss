@@ -1,0 +1,54 @@
+.servicesRepeat {
+
+    .ellipse-21 {
+        top: -500px;
+    }
+
+    .srWrap {
+
+        h2.title {
+            font-size: clamp(1.4375rem, 4vw, 2.5rem);
+        }
+
+        .srItem {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            padding-bottom: 100px;
+
+            .srTitle {
+
+
+                p {
+                    color: #95959F;
+                    font-size: 16px;
+                }
+
+
+            }
+
+            .srImage {
+                flex-shrink: 0;
+            }
+
+        }
+    }
+}
+
+
+// max width
+@media only screen and (max-width: 992px) {
+    .servicesRepeat {
+
+        .srWrap {
+
+            .srItem {
+                flex-direction: column;
+
+                .srTitle {
+                    order: 1;
+                }
+            }
+        }
+    }
+}

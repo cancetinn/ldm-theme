@@ -71,6 +71,7 @@ a {
     &.latest-post {
         max-width: 1170px;
     }
+
 }
 
 img[src*="data:image/svg+xml"] {
@@ -225,5 +226,9 @@ svg.svg {
             background-size: 80%;
         }
     }
+}
+
+.reverse {
+    flex-direction: row-reverse;
 }
 
