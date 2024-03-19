@@ -86,13 +86,30 @@ class Options
 
         register_post_type('tournaments', [
                 'labels' => [
-                    'name' => __('tournaments', ARINA_TEXT),
+                    'name' => __('Tournaments', ARINA_TEXT),
                     'singular_name' => __('Tournaments', ARINA_TEXT)
                 ],
-                'menu_icon'     => 'dashicons-groups',
-                'menu_position' => 6,
+                'menu_icon'     => 'dashicons-games',
+                'menu_position' => 4,
                 'supports'      => array('title', 'editor', 'thumbnail', 'excerpt'),
-                'rewrite'       => array('slug' => 'tournament'),
+                'rewrite'       => array('slug' => 'tournaments'),
+                'show_ui'       => true,
+                'has_archive'   => false,
+                'public'        => true,
+                'show_in_rest'  => true, // gutenberg
+                //'publicly_queryable'  => false,
+            ]
+        );
+
+        register_post_type('casestudies', [
+                'labels' => [
+                    'name' => __('Case Studies', ARINA_TEXT),
+                    'singular_name' => __('Casestudies', ARINA_TEXT)
+                ],
+                'menu_icon'     => 'dashicons-heart',
+                'menu_position' => 5,
+                'supports'      => array('title', 'editor', 'thumbnail', 'excerpt'),
+                'rewrite'       => array('slug' => 'case-study'),
                 'show_ui'       => true,
                 'has_archive'   => false,
                 'public'        => true,
@@ -107,7 +124,7 @@ class Options
                 'singular_name' => __('Newsletter', ARINA_TEXT)
             ],
             'menu_icon'     => 'dashicons-email',
-            'menu_position' => 7,
+            'menu_position' => 6,
             'supports'      => array('title'),
             'rewrite'       => array('slug' => 'newsletter'),
             'show_ui'       => true,

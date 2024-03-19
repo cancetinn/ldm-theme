@@ -31,6 +31,8 @@ class Elementor
         'servicestext'      => 'Servicestext',
         'servicesrepeat'    => 'Servicesrepeat',
         'focusarea'         => 'Focusarea',
+        'casearea'          => 'Casearea',
+        'homeblog'          => 'Homeblog',
         'thanks'            => 'Thanks',
      ];
 

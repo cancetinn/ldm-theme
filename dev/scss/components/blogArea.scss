@@ -137,6 +137,66 @@
                     }
                 }
             }
+
+            &.homeNews {
+                flex-basis: 33%;
+                gap: 33px;
+                border-bottom: 4px solid #4c29f6;
+                max-width: 386px;
+                margin-bottom: 46px;
+
+                .baPostImg {
+
+                    img {
+                        width: 387px;
+                        max-height: 200px;
+                    }
+
+                    &:hover {
+                        filter: grayscale(100%);
+                        transition: all .3s ease;
+                    }
+                }
+
+                .postAreaFlex {
+
+                    .baPostDesc {
+                        padding: 0 30px;
+
+                        .baTag {
+                            display: none;
+                        }
+
+                        .baPostExcerpt {
+                            display: none;
+                        }
+
+                        a {
+
+                            .baPostTitle {
+                                padding-top: 20px;
+                                font-size: 18px;
+                                width: 70%;
+                                font-weight: 500;
+                                color: #ffffff;
+                                transition: all .3s ease;
+
+                                &:hover {
+                                    transition: all .3s ease;
+                                    color: #9235EB;
+                                }
+                            }
+                        }
+
+                        .post-time {
+                            padding-top: 10px;
+                            padding-bottom: 25px;
+                            font-size: 11px;
+                            opacity: 0.5;
+                        }
+                    }
+                }
+            }
         }
     }
 }

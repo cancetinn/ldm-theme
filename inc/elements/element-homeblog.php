@@ -11,16 +11,16 @@ use Elementor\Controls_Manager;
 
 defined( 'ABSPATH' ) || exit; // Exit if accessed directly
 
-class Blogarea extends Widget_Base
+class homeblog extends Widget_Base
 {
     public function get_name()
     {
-        return 'blogarea';
+        return 'homeblog';
     }
 
     public function get_title()
     {
-        return 'Blog Area';
+        return 'Home Blog Area';
     }
 
     public function get_icon()
@@ -103,6 +103,7 @@ class Blogarea extends Widget_Base
             ]
         );
 
+
         // END CONTROLS
         $this->end_controls_section();
     }
@@ -110,7 +111,6 @@ class Blogarea extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings();
-        $posts = $settings['posts'];
         $category = $settings['category'] ?? [];
 
         $page = get_query_var('page') ? get_query_var('page') : 1;
@@ -135,7 +135,6 @@ class Blogarea extends Widget_Base
                 ];
             }
 
-
         $query = new \WP_Query($args);
 
         ?>
@@ -145,51 +144,45 @@ class Blogarea extends Widget_Base
                     <h1 class="title"><?php echo $settings['title'] ?></h1>
                 </div>
                 <div class="baWrap">
-                <?php
-                if ($query->have_posts()) :
-                    while ($query->have_posts()) : $query->the_post();
-                        $thumbnail = get_the_post_thumbnail( get_the_ID(), 'portfolio_thumb', ['alt' => strip_tags(get_the_title()) ] );
-                        $tag = get_field('tag');
-                        $excerpt = get_field('excerpt_area');
-                        $is_this = get_field('select_type');
-                        ?>
-                    <div class="baItem <?php echo $is_this ?>">
-                        <a href="<?php echo the_permalink(); ?>">
-                            <div class="baPostImg">
-                                <?php echo $thumbnail; ?>
-                            </div>
-                        </a>
-                        <div class="postAreaFlex">
-                            <div class="baPostDesc">
-                            <?php if (!empty($tag)): ?>
-                                <div class="baTag">
-                                    <?php echo $tag ?>
-                                </div>
-                            <?php endif; ?>
+                    <?php
+                    if ($query->have_posts()) :
+                        while ($query->have_posts()) : $query->the_post();
+                            $thumbnail = get_the_post_thumbnail( get_the_ID(), 'portfolio_thumb', ['alt' => strip_tags(get_the_title()) ] );
+                            $tag = get_field('tag');
+                            $excerpt = get_field('excerpt_area');
+                            ?>
+                            <div class="baItem articlesNews">
                                 <a href="<?php echo the_permalink(); ?>">
-                                    <div class="baPostTitle">
-                                        <?php echo the_title(); ?>
-
+                                    <div class="baPostImg">
+                                        <?php echo $thumbnail; ?>
                                     </div>
                                 </a>
-                                <div class="baPostExcerpt">
-                                    <?php echo $excerpt ?>
-                                </div>
-                                <div class="post-time">
-                                    <?php echo date("F j, Y,"); ?>
+                                <div class="postAreaFlex">
+                                    <div class="baPostDesc">
+                                        <?php if (!empty($tag)): ?>
+                                            <div class="baTag">
+                                                <?php echo $tag ?>
+                                            </div>
+                                        <?php endif; ?>
+                                        <a href="<?php echo the_permalink(); ?>">
+                                            <div class="baPostTitle">
+                                                <?php echo the_title(); ?>
+                                            </div>
+                                        </a>
+                                        <div class="baPostExcerpt">
+                                            <?php echo $excerpt ?>
+                                        </div>
+                                        <div class="post-time">
+                                            <?php echo date("F j, Y,"); ?>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <?php
-                    endwhile;
-                endif;
-                ?>
+                        <?php
+                        endwhile;
+                    endif;
+                    ?>
                 </div>
-                <?php
-                arina_pagination( $query );
-                wp_reset_postdata();
-                ?>
             </div>
         </section>
         <?php

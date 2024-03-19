@@ -232,3 +232,20 @@ svg.svg {
     flex-direction: row-reverse;
 }
 
+.pagination {
+    padding: 40px 0;
+
+    .page-numbers {
+        color: #ffffff;
+        display: flex;
+        gap: 5px;
+        justify-content: center;
+        padding: 5px 15px;
+
+        &.current {
+            padding: 5px 15px;
+            border-radius: 50%;
+            background: linear-gradient(134.72deg, #4C29F6 0%, #422CB1 101.5%)
+        }
+    }
+}

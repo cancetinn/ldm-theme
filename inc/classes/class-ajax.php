@@ -79,6 +79,40 @@ class Ajax
         wp_die();
     }
 
+    //arina ajax paged
+    public function arinaQuery( $taxonomy, $option = [] ){
+        $cats = ($option['cat_id'] !== "0") ? $option['cat_id'] : $option['cats'];
+
+        $args = [
+            'post_type'      => 'post',
+            'post_status'    => 'publish',
+            'order'          => $option['order'],
+            'posts_per_page' => $option['limit'],
+            'tax_query' => [
+                [
+                    'taxonomy'  => $taxonomy,
+                    'field'     => 'term_id',
+                    'terms'     => $cats,
+                ],
+            ]
+        ];
+
+        // Load more pagination
+        $paged = 1;
+
+        if( !empty( $option['paged'] ) ){
+            $paged = intval( $option['paged'] );
+        }
+
+        $args['paged'] = $paged;
+
+        // Run the Query
+        $query = new \WP_Query( $args );
+        $query->set( 'new_max_num_pages', $query->max_num_pages );
+
+        return $query;
+    }
+
     function save_custom_fields_data()
     {
         $email = sanitize_text_field($_POST['email']);
