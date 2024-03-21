@@ -9,11 +9,12 @@ header {
 
         &.stickyMenu.fixed {
             --header-height: var(--fixed-height);
-
             position: fixed;
             top: var(--admin-bar);
             width: 100%;
             z-index: 999;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
         }
     }
 }
