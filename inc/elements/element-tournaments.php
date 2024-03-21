@@ -98,7 +98,7 @@ class Tournaments extends Widget_Base
                                         <h4 class="title"><?php the_title(); ?></h4>
                                     </div>
                                     <div class="tournamentDesc">
-                                        <p><?php echo esc_html(get_the_excerpt()); ?> <a href="<?php echo the_permalink(); ?>" class="readMore">Read More</a></p>
+                                        <p><?php echo get_the_excerpt(); ?></p>
                                     </div>
                                     <div class="tournamentReq">
                                     <?php if (!empty($platform)): ?>
