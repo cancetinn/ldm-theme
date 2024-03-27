@@ -23,7 +23,7 @@
 
         .caImage {
             img {
-                width: 430px;
+                width: 700px;
                 height: 400px;
                 object-fit: cover;
                 border: 2px solid #373FFB;
@@ -70,6 +70,25 @@
                     background-color: #373FFB;
                     transition: all .3s ease;
                 }
+            }
+        }
+    }
+}
+
+
+//max width
+@media only screen and (max-width: 992px) {
+    .caseArea {
+
+        a {
+            &:nth-child(odd) .caWrap {
+                flex-direction: column;
+                gap: 100px;
+            }
+
+            &:nth-child(even) .caWrap {
+                flex-direction: column;
+                gap: 100px
             }
         }
     }
