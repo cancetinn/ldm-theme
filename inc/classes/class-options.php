@@ -104,7 +104,7 @@ class Options
         register_post_type('casestudies', [
                 'labels' => [
                     'name' => __('Case Studies', ARINA_TEXT),
-                    'singular_name' => __('Casestudies', ARINA_TEXT)
+                    'singular_name' => __('casestudies', ARINA_TEXT)
                 ],
                 'menu_icon'     => 'dashicons-heart',
                 'menu_position' => 5,

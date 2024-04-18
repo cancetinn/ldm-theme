@@ -19,34 +19,120 @@ Redux::setSection( $opt_name, [
             'default' => 'info@lidoma.com',
         ],
         [
-            'id' => 'social_linkedin',
-            'title' => 'linkedin URL',
+            'id'=>'global-subsection-start',
+            'type' => 'section',
+            'title' => __('Global Social Media', 'global-social-media'),
+            'indent' => true
+        ],
+        [
+            'id' => 'global_social_instagram',
+            'title' => 'Global Instagram URL',
             'type' => 'text',
             'default' => '#',
         ],
         [
-            'id' => 'social_facebook',
-            'title' => 'facebook URL',
+            'id' => 'global_social_x',
+            'title' => 'Global X URL',
             'type' => 'text',
             'default' => '#',
         ],
         [
-            'id' => 'social_instagram',
-            'title' => 'instagram URL',
+            'id' => 'global_social_youtube',
+            'title' => 'LATAM Youtube URL',
             'type' => 'text',
             'default' => '#',
         ],
         [
-            'id' => 'social_youtube',
-            'title' => 'youtube URL',
+            'id'=>'global-subsection-end',
+            'type' => 'section',
+            'indent' => false
+        ],
+        [
+            'id'=>'latam-subsection-start',
+            'type' => 'section',
+            'title' => __('LATAM Social Media', 'latam-social-media'),
+            'indent' => true
+        ],
+        [
+            'id' => 'latam_social_instagram',
+            'title' => 'LATAM Instagram URL',
             'type' => 'text',
             'default' => '#',
         ],
         [
-            'id' => 'social_x',
-            'title' => 'X URL',
+            'id' => 'latam_social_x',
+            'title' => 'LATAM X URL',
             'type' => 'text',
             'default' => '#',
+        ],
+        [
+            'id' => 'latam_social_youtube',
+            'title' => 'LATAM Youtube URL',
+            'type' => 'text',
+            'default' => '#',
+        ],
+        [
+            'id'=>'latam-subsection-end',
+            'type' => 'section',
+            'indent' => false
+        ],
+        [
+            'id'=>'turkey-subsection-start',
+            'type' => 'section',
+            'title' => __('Turkey Social Media', 'turkey-social-media'),
+            'indent' => true
+        ],
+        [
+            'id' => 'turkey_social_instagram',
+            'title' => 'Turkey Instagram URL',
+            'type' => 'text',
+            'default' => '#',
+        ],
+        [
+            'id' => 'turkey_social_x',
+            'title' => 'Turkey X URL',
+            'type' => 'text',
+            'default' => '#',
+        ],
+        [
+            'id' => 'turkey_social_youtube',
+            'title' => 'Turkey Youtube URL',
+            'type' => 'text',
+            'default' => '#',
+        ],
+        [
+            'id'=>'turkey-subsection-end',
+            'type' => 'section',
+            'indent' => false
+        ],
+        [
+            'id'=>'asia-subsection-start',
+            'type' => 'section',
+            'title' => __('Asia Social Media', 'asia-social-media'),
+            'indent' => true
+        ],
+        [
+            'id' => 'asia_social_instagram',
+            'title' => 'Asia Instagram URL',
+            'type' => 'text',
+            'default' => '#',
+        ],
+        [
+            'id' => 'asia_social_x',
+            'title' => 'Asia X URL',
+            'type' => 'text',
+            'default' => '#',
+        ],
+        [
+            'id' => 'asia_social_youtube',
+            'title' => 'Asia Youtube URL',
+            'type' => 'text',
+            'default' => '#',
+        ],
+        [
+            'id'=>'asia-subsection-end',
+            'type' => 'section',
+            'indent' => false
         ],
     ]
 ]);

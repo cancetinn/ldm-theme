@@ -65,7 +65,7 @@ $tournament = get_field('tournament');
         <?php endif; ?>
         <?php if (!empty($tournament)): ?>
         <div class="tournamentMetric">
-            <p><?php echo $tournament ?><br><span>TOURNAMENT</span></p>
+            <p><?php echo $tournament ?><br><span>MATCHES</span></p>
         </div>
         <?php endif; ?>
         <?php if (!empty($imp)): ?>

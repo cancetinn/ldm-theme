@@ -25,13 +25,34 @@ footer {
             display: flex;
             gap: 40px;
 
-            span {
+            div {
                 display: block;
                 border-right: 1px solid #fff;
-                padding-right: 30px;
+                text-align: center;
+                padding-right: 40px;
 
                 &:last-child {
                     border-right: none;
+                }
+
+                ul {
+                    display: flex;
+                    gap: 30px;
+                    padding-top: 15px;
+                    justify-content: center;
+
+                    li {
+
+                        img {
+                            max-width: 20px;
+                            transition: all .3s ease;
+
+                            &:hover {
+                                box-shadow: 0 5px 15px #8d1cfe;
+                                transition: all .3s ease;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -106,7 +127,7 @@ footer {
                 margin-inline: auto;
                 flex-direction: column;
 
-                span {
+                div {
                     border-right: none;
                     padding-right: 0;
                 }

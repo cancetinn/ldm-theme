@@ -35,6 +35,15 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     });
 
+    swiperSlider('.zoneSlider', {
+        autoplay: true,
+        loop: true,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+
     function swiperSlider(item, options = {}) {
         const isItem = selector(item)
 

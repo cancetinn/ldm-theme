@@ -61,6 +61,16 @@
             flex-shrink: 0;
         }
     }
+
+    .swiper-button-next{
+        color: white;
+        right: 130px;
+    }
+
+    .swiper-button-prev {
+        color: white;
+        left: 130px;
+    }
 }
 
 // max width
@@ -83,6 +93,14 @@
                     }
                 }
             }
+        }
+
+        .swiper-button-next{
+            display: none;
+        }
+
+        .swiper-button-prev {
+            display: none;
         }
     }
 }

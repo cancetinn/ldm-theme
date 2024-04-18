@@ -12,9 +12,27 @@ $disclamerUrl   = getRedux('footer_disclamer_url');
 $privacy        = getRedux('footer_privacy');
 $privacyUrl     = getRedux('footer_privacy_url');
 $mail           = getRedux('social_mail');
-$linkedin       = getRedux('social_linkedin');
-$instagram      = getRedux('social_instagram');
-$youtube        = getRedux('social_youtube');
+
+//global
+$global_instagram        = getRedux('global_social_instagram');
+$global_x                = getRedux('global_social_x');
+$global_youtube          = getRedux('global_social_youtube');
+
+//latam
+$latam_instagram        = getRedux('latam_social_instagram');
+$latam_x                = getRedux('latam_social_x');
+$latam_youtube          = getRedux('latam_social_youtube');
+
+//turkey
+$turkey_instagram        = getRedux('turkey_social_instagram');
+$turkey_x                = getRedux('turkey_social_x');
+$turkey_youtube          = getRedux('turkey_social_youtube');
+
+//asia
+$asia_instagram        = getRedux('asia_social_instagram');
+$asia_x                = getRedux('asia_social_x');
+$asia_youtube          = getRedux('asia_social_youtube');
+
 
 ?>
 <a target="_blank" href="https://wa.me/message/XDJFQXK6TKARM1" class="dd-m-whatsapp">
@@ -27,10 +45,86 @@ $youtube        = getRedux('social_youtube');
         </div>
         <div class="social">
             <div class="socialMedia">
-                <span><a href="<?php removeSpace($instagram); ?>" target="_blank">Instagram</a></span>
-                <span><a href="<?php removeSpace($linkedin); ?>" target="_blank">LinkedIn</a></span>
-                <span><a href="<?php removeSpace($youtube); ?>" target="_blank">Youtube</a></span>
-                <span><a href="mailto:<?php removeSpace($mail); ?>" target="_blank">Contact</a></span>
+                <div>
+                    <span>GLOBAL</span>
+                    <ul>
+                        <li>
+                            <a href="<?php echo $global_instagram; ?>" target="_blank">
+                                <img class="lazyload lazyloaded" src="<?php echo ARINA_ASSETS_URI; ?>/img/instagram.png" alt="Instragram">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $global_x; ?>" target="_blank">
+                                <img class="lazyload lazyloaded" src="<?php echo ARINA_ASSETS_URI; ?>/img/twitter.png" alt="Twitter">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $global_youtube; ?>" target="_blank">
+                                <img class="lazyload lazyloaded" src="<?php echo ARINA_ASSETS_URI; ?>/img/youtube.png" alt="Youtube">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <span>LATAM</span>
+                    <ul>
+                        <li>
+                            <a href="<?php echo $latam_instagram; ?>" target="_blank">
+                                <img class="lazyload lazyloaded" src="<?php echo ARINA_ASSETS_URI; ?>/img/instagram.png" alt="Instragram">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $latam_x; ?>" target="_blank">
+                                <img class="lazyload lazyloaded" src="<?php echo ARINA_ASSETS_URI; ?>/img/twitter.png" alt="Twitter">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $latam_youtube; ?>" target="_blank">
+                                <img class="lazyload lazyloaded" src="<?php echo ARINA_ASSETS_URI; ?>/img/youtube.png" alt="Youtube">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <span>TURKEY</span>
+                    <ul>
+                        <li>
+                            <a href="<?php echo $turkey_instagram; ?>" target="_blank">
+                                <img class="lazyload lazyloaded" src="<?php echo ARINA_ASSETS_URI; ?>/img/instagram.png" alt="Instragram">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $turkey_x; ?>" target="_blank">
+                                <img class="lazyload lazyloaded" src="<?php echo ARINA_ASSETS_URI; ?>/img/twitter.png" alt="Twitter">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $turkey_youtube; ?>" target="_blank">
+                                <img class="lazyload lazyloaded" src="<?php echo ARINA_ASSETS_URI; ?>/img/youtube.png" alt="Youtube">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <span>ASIA</span>
+                    <ul>
+                        <li>
+                            <a href="<?php echo $asia_instagram; ?>" target="_blank">
+                                <img class="lazyload lazyloaded" src="<?php echo ARINA_ASSETS_URI; ?>/img/instagram.png" alt="Instragram">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $asia_x; ?>" target="_blank">
+                                <img class="lazyload lazyloaded" src="<?php echo ARINA_ASSETS_URI; ?>/img/twitter.png" alt="Twitter">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $asia_youtube; ?>" target="_blank">
+                                <img class="lazyload lazyloaded" src="<?php echo ARINA_ASSETS_URI; ?>/img/youtube.png" alt="Youtube">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
 

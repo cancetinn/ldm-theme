@@ -110,7 +110,7 @@ class Blogarea extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings();
-        $posts = $settings['posts'];
+        /*$posts = $settings['posts'];*/
         $category = $settings['category'] ?? [];
 
         $page = get_query_var('page') ? get_query_var('page') : 1;
