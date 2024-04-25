@@ -17,11 +17,11 @@
             border-radius: 25px;
             -webkit-transition: all .3s ease;
             transition: all .3s ease;
-            margin-right: 30px;
         }
     }
     .swiper-wrapper {
-        -webkit-transition-timing-function: linear!important;
-        transition-timing-function: linear!important;
+        -webkit-transition-timing-function:linear!important;
+        -o-transition-timing-function:linear!important;
+        transition-timing-function:linear!important;
     }
 }
