@@ -45,6 +45,15 @@ class Partnerarea extends Widget_Base
 
         // CONTROLS
         $this->add_control(
+            'padding-left',
+            [
+                'label' => esc_attr__('Slider Padding', ARINA_TEXT),
+                'type' => \Elementor\Controls_Manager::NUMBER,
+                'default' => 200,
+            ]
+        );
+
+        $this->add_control(
             'partner_repeater',
             [
                 'label' => esc_html__( 'Partner Area Logos', ARINA_TEXT ),
@@ -78,7 +87,7 @@ class Partnerarea extends Widget_Base
 
         ?>
         <section class="partnerArea">
-            <div class="logoCarousel">
+            <div class="logoCarousel" style="padding-left:<?php echo $settings['padding-left']; ?>px;">
                 <div class="swiper-wrapper">
                     <?php
                     foreach ($settings['partner_repeater'] as $item) {
