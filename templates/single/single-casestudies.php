@@ -92,11 +92,11 @@ $sGallery = get_field('case_studies_gallery');
         <?php endif; ?>
     </div>
 
+    <?php if( $sGallery ): ?>
    <section class="slideGallery">
        <div class="introContainer">
            <div class="swiper-container caseSlider">
                <div class="swiper-wrapper">
-                   <?php if( $sGallery ): ?>
                    <?php foreach( $sGallery as $image ): ?>
                    <div class="swiper-slide">
                        <div class="cards">
@@ -115,7 +115,6 @@ $sGallery = get_field('case_studies_gallery');
                        </div>
                    </div>
                    <?php endforeach; ?>
-                   <?php endif; ?>
                </div>
 
                <div class="swiper-pagination"></div>
@@ -127,6 +126,7 @@ $sGallery = get_field('case_studies_gallery');
            </div>
        </div>
    </section>
+    <?php endif; ?>
 
     <div class="spacex" style="--spacer:100px"></div>
 </article>
