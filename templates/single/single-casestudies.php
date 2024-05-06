@@ -92,6 +92,8 @@ $sGallery = get_field('case_studies_gallery');
         <?php endif; ?>
     </div>
 
+    <div class="spacex" style="--spacer:30px"></div>
+
     <?php if( $sGallery ): ?>
    <section class="slideGallery">
        <div class="introContainer">
