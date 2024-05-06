@@ -18,8 +18,10 @@ $visit = get_field('visitors');
 $peaklive = get_field('peak_live_viewership');
 $team = get_field('teams');
 $tournament = get_field('tournament');
+$sGallery = get_field('case_studies_gallery');
 
 ?>
+
 <div class="spacex" style="--spacer:250px"></div>
 
 <article class="single-casestudy" id="post-<?php the_ID(); ?>">
@@ -89,7 +91,42 @@ $tournament = get_field('tournament');
             </div>
         <?php endif; ?>
     </div>
+
+   <section class="slideGallery">
+       <div class="introContainer">
+           <div class="swiper-container caseSlider">
+               <div class="swiper-wrapper">
+                   <?php if( $sGallery ): ?>
+                   <?php foreach( $sGallery as $image ): ?>
+                   <div class="swiper-slide">
+                       <div class="cards">
+                           <div class="card ong">
+                               <img class="lazyload" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/>
+                               <?php if (!empty($image['caption'])): ?>
+                               <?php if (!empty($image['description'])): ?>
+                               <div class="title-box">
+                                   <h1><?php echo esc_html($image['caption']); ?></h1>
+                                   <p><?php echo esc_html($image['description']); ?></p>
+                                   <div class="seperator"></div>
+                               </div>
+                               <?php endif; ?>
+                               <?php endif; ?>
+                           </div>
+                       </div>
+                   </div>
+                   <?php endforeach; ?>
+                   <?php endif; ?>
+               </div>
+
+               <div class="swiper-pagination"></div>
+
+               <!--<div class="swiper-arrows">
+                   <div class="swiper-button-prev"><span></span></div>
+                   <div class="swiper-button-next"><span></span></div>
+               </div>-->
+           </div>
+       </div>
+   </section>
+
     <div class="spacex" style="--spacer:100px"></div>
 </article>
-
-

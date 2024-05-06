@@ -1,5 +1,24 @@
 document.addEventListener("DOMContentLoaded", function(){
     // Sliders Options
+    swiperSlider('.caseSlider', {
+        autoplay: true,
+        speed: 500,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        centeredSlides: true,
+        paginationClickable: true,
+        watchSlidesProgress: true,
+        loop: true,
+        slidesPerView: 2,
+        spaceBetween: 30,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+
     swiperSlider('.logoCarousel', {
         spaceBetween: 40,
         grabCursor: true,

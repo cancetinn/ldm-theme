@@ -62,6 +62,8 @@ class Assets
 
         // Register scripts
         wp_register_script('lazysizes', ARINA_OUTSIDE . '/plugins/lazysizes.min.js', [], '5.3.2', true);
+        wp_register_style('swiper', ARINA_OUTSIDE . '/plugins/swiper.min.css', [], '6.5.8', 'all');
+        wp_register_script('swiper', ARINA_OUTSIDE . '/plugins/swiper.min.js', [], '6.5.8', true);
         //wp_register_style('fancybox', ARINA_OUTSIDE . '/plugins/fancybox.min.css', [], '5.0', 'all');
         //wp_register_script('fancybox', ARINA_OUTSIDE . '/plugins/fancybox.min.js', [], '5.0', true);
         /*wp_register_style('aos', ARINA_OUTSIDE . '/plugins/aos.min.css', [], '3.0.0', 'all');
@@ -75,14 +77,8 @@ class Assets
         /*wp_enqueue_style('aos');
         wp_enqueue_script('aos');*/
         wp_enqueue_script('theme');
-
-        if ( is_singular('investments') ) {
-            wp_register_style('swiper', ARINA_OUTSIDE . '/plugins/swiper.min.css', [], '5.0.0', 'all');
-            wp_register_script('swiper', ARINA_OUTSIDE . '/plugins/swiper.min.js', [], '5.0.0', true);
-
-            wp_enqueue_style('swiper');
-            wp_enqueue_script('swiper');
-        }
+        wp_enqueue_style('swiper');
+        wp_enqueue_script('swiper');
     }
 
     function arina_admin_enqueue()
