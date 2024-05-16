@@ -1,0 +1,53 @@
+.timeLine {
+
+    .tlWrap {
+        display: flex;
+        flex-direction: row;
+        gap: 140px;
+
+        .tlAbout {
+
+            h3.title {
+                font-size: clamp(1.5rem, -0.9911rem + 4.0179vw, 2.625rem);
+                font-weight: bold;
+            }
+
+            p {
+                font-size: 18px;
+                font-weight: lighter;
+            }
+        }
+
+        .tlList {
+            flex: 1 0 45%;
+
+            ul.timeline {
+
+                li {
+                    border-bottom: 1px solid white;
+                    list-style-type: disc;
+                    padding: 30px;
+
+                    &::marker {
+                        font-size: 40px;
+                    }
+
+                    p.dateTitle {
+                        font-size: 28px;
+                        font-weight: lighter;
+                        margin-bottom: .75rem;
+                    }
+                    p.title {
+                        font-size: 18px;
+                        font-weight: lighter;
+                        text-transform: uppercase;
+                        margin-bottom: .75rem;
+                    }
+                    p {
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+    }
+}

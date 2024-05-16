@@ -1,0 +1,19 @@
+.aboutTitle {
+
+    .atArea {
+
+        .textArea {
+            text-align: center;
+
+            h1.title {
+                font-size: clamp(3rem, 0.5089rem + 4.0179vw, 4.125rem);
+                font-weight: bold;
+            }
+
+            p {
+                font-size: 18px;
+                font-weight: lighter;
+            }
+        }
+    }
+}

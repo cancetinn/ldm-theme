@@ -1,0 +1,71 @@
+.whereLocate {
+
+    .lcWrap {
+
+        .lcArea {
+            display: flex;
+            justify-content: space-between;
+
+            h2.title {
+                font-size: clamp(1.5rem, -0.9911rem + 4.0179vw, 2.625rem);
+                font-weight: bold;
+            }
+
+            p {
+                font-size: 18px;
+                font-weight: lighter;
+            }
+        }
+    }
+
+    .lcAbout {
+
+        .lcList {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+
+            .lcItem {
+                flex: 1 1 40%;
+                display: flex;
+                align-items: center;
+                max-height: 246px;
+                background-color: #AD13F8;
+                border-radius: 40px;
+                max-width: 585px;
+
+                .lcAboutText {
+                    max-width: 300px;
+                    padding-left: 30px;
+
+                    h4.title {
+                        font-size: 24px;
+                    }
+
+                    p {
+                        font-size: 18px;
+                        font-weight: lighter;
+                    }
+                }
+
+                .lcAboutImg {
+                    transition: transform .3s ease;
+
+                    img {
+                        position: relative;
+                        bottom: 30px;
+                        transition: transform .3s ease;
+
+                        &:hover {
+                            transform: translate(0, -5px);
+                            transition: transform .3s ease;
+                            filter: drop-shadow(0 6mm 4mm rgb(160, 0, 210));
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

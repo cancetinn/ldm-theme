@@ -33,6 +33,9 @@ class Elementor
         'focusarea'         => 'Focusarea',
         'casearea'          => 'Casearea',
         'homeblog'          => 'Homeblog',
+        'abouttitle'        => 'Abouttitle',
+        'wherelocate'       => 'Wherelocate',
+        'timeline'          => 'Timeline',
         'thanks'            => 'Thanks',
      ];
 
