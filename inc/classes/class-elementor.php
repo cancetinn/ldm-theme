@@ -36,6 +36,7 @@ class Elementor
         'abouttitle'        => 'Abouttitle',
         'wherelocate'       => 'Wherelocate',
         'timeline'          => 'Timeline',
+        'ourglobe'          => 'Ourglobe',
         'thanks'            => 'Thanks',
      ];
 

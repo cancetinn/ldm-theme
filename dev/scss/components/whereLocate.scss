@@ -14,6 +14,7 @@
             p {
                 font-size: 18px;
                 font-weight: lighter;
+                max-width: 500px;
             }
         }
     }
@@ -34,6 +35,7 @@
                 background-color: #AD13F8;
                 border-radius: 40px;
                 max-width: 585px;
+                margin-bottom: 25px;
 
                 .lcAboutText {
                     max-width: 300px;
@@ -62,6 +64,32 @@
                             transition: transform .3s ease;
                             filter: drop-shadow(0 6mm 4mm rgb(160, 0, 210));
                         }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// max width
+@media only screen and (max-width: 992px) {
+    .whereLocate {
+        .lcWrap {
+            .lcArea {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        .lcAbout {
+            .lcList {
+                flex-direction: column;
+
+                .lcItem {
+                    margin-bottom: 0;
+
+                    .lcAboutText {
+                        max-width: 230px;
                     }
                 }
             }

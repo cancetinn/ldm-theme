@@ -27,6 +27,13 @@
                     border-bottom: 1px solid white;
                     list-style-type: disc;
                     padding: 30px;
+                    transition: all .3s ease-in;
+
+                    &:hover {
+                        transition: background .3s ease-in;
+                        background: rebeccapurple;
+
+                    }
 
                     &::marker {
                         font-size: 40px;
@@ -47,6 +54,20 @@
                         font-size: 18px;
                     }
                 }
+            }
+        }
+    }
+}
+
+
+// max width
+@media only screen and (max-width: 992px) {
+    .timeLine {
+        .tlWrap {
+            flex-direction: column;
+            gap: 50px;
+            .tlAbout {
+                text-align: center;
             }
         }
     }
