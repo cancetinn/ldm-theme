@@ -118,13 +118,30 @@ class Options
             ]
         );
 
+        register_post_type('service', [
+                'labels' => [
+                    'name' => __('Services', ARINA_TEXT),
+                    'singular_name' => __('service', ARINA_TEXT)
+                ],
+                'menu_icon'     => 'dashicons-admin-site',
+                'menu_position' => 6,
+                'supports'      => array('title', 'editor', 'thumbnail', 'excerpt'),
+                'rewrite'       => array('slug' => 'service'),
+                'show_ui'       => true,
+                'has_archive'   => false,
+                'public'        => true,
+                'show_in_rest'  => true, // gutenberg
+                //'publicly_queryable'  => false,
+            ]
+        );
+
         register_post_type('newsletter', [
             'labels' => [
                 'name' => __('Newsletter', ARINA_TEXT),
                 'singular_name' => __('Newsletter', ARINA_TEXT)
             ],
             'menu_icon'     => 'dashicons-email',
-            'menu_position' => 6,
+            'menu_position' => 7,
             'supports'      => array('title'),
             'rewrite'       => array('slug' => 'newsletter'),
             'show_ui'       => true,

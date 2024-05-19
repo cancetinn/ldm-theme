@@ -69,7 +69,7 @@ class Newsletterarea extends Widget_Base
                     </div>
                     <div class="naForm">
                         <form action="" name="newsletterForm" id="newsletterForm">
-                            <input type="email" id="email" name="email" placeholder="Enter Email Adress">
+                            <input type="email" id="email" name="email" placeholder="Enter Email Address">
                             <button class="naButton" type="submit">SEND</button>
                         </form>
                     </div>

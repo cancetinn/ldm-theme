@@ -89,51 +89,6 @@ class Ourglobe extends Widget_Base
             ]
         );
 
-        $this->add_control(
-            'story_list_title', [
-                'label' => 'Story List Title',
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => "Our Stellar Services Include:",
-                'label_block' => true,
-            ]
-        );
-
-        $this->add_control(
-            'story_list',
-            [
-                'label' => esc_html__( 'Story Services Items', ARINA_TEXT ),
-                'type' => \Elementor\Controls_Manager::REPEATER,
-                'fields' => [
-                    [
-                        'name' => 'title_services',
-                        'label' => esc_html__( 'Title Services', ARINA_TEXT ),
-                        'type' => \Elementor\Controls_Manager::TEXTAREA,
-                        'default' => 'Game Design',
-                        'label_block' => true,
-                    ],
-                    [
-                        'name' => 'lidoma_button_url',
-                        'label' => esc_html__('Services URL', ARINA_TEXT),
-                        'type' => \Elementor\Controls_Manager::URL,
-                        'default' => [
-                            'url' => '#',
-                            'is_external' => false,
-                            'nofollow' => false,
-                        ],
-                        'label_block' => true,
-                    ],
-
-                ],
-                'default' => [
-                    [
-                        'title' => 'Game Design',
-                    ],
-                ],
-                'title_field' => '{{{ title }}}',
-            ]
-        );
-
-
         // END CONTROLS
         $this->end_controls_section();
     }
@@ -151,29 +106,11 @@ class Ourglobe extends Widget_Base
                             <?php echo $settings['mission_title'] ?>
                         </h3>
                         <?php echo $settings ['mission_content'] ?>
-                    </div>
-                    <div class="ogStory">
-                        <h3 class="title">
-                            <?php echo $settings['story_title'] ?>
-                        </h3>
-                        <?php echo $settings ['story_content'] ?>
-                        <div class="ogList">
-                            <h4 class="title">
-                                <?php echo $settings['story_list_title'] ?>
-                            </h4>
-                            <ul class="ogServiceslist">
-                            <?php
-                            foreach ($settings['story_list'] as $item) {
-                                $button_url = $item['lidoma_button_url']['url'] ?? false;
-                                $button_target = $item['lidoma_button_url']['is_external'] ? ' target="_blank"' :  '';
-                                ?>
-                                <li>
-                                    <?php if ( $button_url ): ?>
-                                        <a href="<?php echo $button_url ?>"<?php echo $button_target ?>><?php echo $item['title_services'] ?></a>
-                                    <?php endif; ?>
-                                </li>
-                                <?php } ?>
-                            </ul>
+                        <div class="ogStory">
+                            <h3 class="title">
+                                <?php echo $settings['story_title'] ?>
+                            </h3>
+                            <?php echo $settings ['story_content'] ?>
                         </div>
                     </div>
                 </div>

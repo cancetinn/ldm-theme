@@ -17,7 +17,7 @@ defined('ABSPATH') || exit; // Exit if accessed directly
             <div class="desktop-menu">
                 <div class="logo">
                     <a href="<?php echo home_url(); ?>">
-                        <img src="<?php echo ARINA_ASSETS_URI; ?>/img/logo.png" alt="Lidoma">
+                        <img src="<?php echo ARINA_ASSETS_URI; ?>/img/logo-white.png" alt="Lidoma">
                     </a>
                 </div>
                 <nav>
@@ -38,7 +38,7 @@ defined('ABSPATH') || exit; // Exit if accessed directly
             <div class="mobile-menu">
                 <div class="logo">
                     <a href="<?php echo home_url(); ?>">
-                        <img src="<?php echo ARINA_ASSETS_URI; ?>/img/logo.png" alt="Lidoma">
+                        <img src="<?php echo ARINA_ASSETS_URI; ?>/img/logo-white.png" alt="Lidoma">
                     </a>
                 </div>
 

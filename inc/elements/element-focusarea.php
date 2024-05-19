@@ -81,6 +81,17 @@ class Focusarea extends Widget_Base
                             'url' => \Elementor\Utils::get_placeholder_image_src(),
                         ]
                     ],
+                    [
+                        'name' => 'lidoma_button_url',
+                        'label' => esc_html__('Services URL', ARINA_TEXT),
+                        'type' => \Elementor\Controls_Manager::URL,
+                        'default' => [
+                            'url' => '#',
+                            'is_external' => false,
+                            'nofollow' => false,
+                        ],
+                        'label_block' => true,
+                    ],
                 ],
                 'default' => [
                     [
@@ -110,16 +121,20 @@ class Focusarea extends Widget_Base
                     <?php
                     foreach ($settings['focus_repeater'] as $item) {
                     $image_url = $item['image']['url'] ?? '';
+                        $button_url = $item['lidoma_button_url']['url'] ?? false;
+                        $button_target = $item['lidoma_button_url']['is_external'] ? ' target="_blank"' :  '';
                     ?>
-                    <div class="faBoxArea">
-                        <div class="faBoxItem">
-                            <img class="lazyload" src="<?php echo esc_url($image_url); ?>" alt="Partner Logos">
-                            <h4><?php echo $item['title']; ?></h4>
-                            <div class="rightArrow">
-                                <img class="lazyload lazyloaded" src="<?php echo ARINA_ASSETS_URI; ?>/icons/right-arrow.svg" alt="Right Arrow">
+                    <a href="<?php echo $button_url ?>"<?php echo $button_target ?>>
+                        <div class="faBoxArea">
+                                <div class="faBoxItem">
+                                    <img class="lazyload" src="<?php echo esc_url($image_url); ?>" alt="Partner Logos">
+                                    <h4><?php echo $item['title']; ?></h4>
+                                    <div class="rightArrow">
+                                        <img class="lazyload lazyloaded" src="<?php echo ARINA_ASSETS_URI; ?>/icons/right-arrow.svg" alt="Right Arrow">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                     </a>
                     <?php } ?>
                 </div>
             </div>

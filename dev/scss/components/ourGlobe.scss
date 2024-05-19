@@ -3,8 +3,10 @@
     align-items: center;
     flex-direction: row;
     gap: 120px;
+    padding-left: 120px;
 
     .ogArea {
+
         .ogMission{
             padding-bottom: 20px;
 
@@ -15,35 +17,15 @@
             p {
                 font-size: 18px;
             }
-        }
-        .ogStory {
-            h3.title {
-                font-size: clamp(1.5rem, -0.9911rem + 4.0179vw, 2.625rem);
-                padding-bottom: 20px;
-            }
-            p {
-                font-size: 18px;
-                padding-bottom: 30px;
-            }
 
-            .ogList {
-
-                ul.ogServiceslist {
-                    padding-top: 10px;
-                    padding-left: 30px;
-                    li {
-                        list-style-type: disc;
-                        padding-bottom: 10px;
-
-                        a {
-                            color: #fff;
-
-                            &:hover {
-                                transition: all .3s ease-in;
-                                color: #BA04FE;
-                            }
-                        }
-                    }
+            .ogStory {
+                h3.title {
+                    font-size: clamp(1.5rem, -0.9911rem + 4.0179vw, 2.400rem);
+                    padding-bottom: 20px;
+                }
+                p {
+                    font-size: 18px;
+                    padding-bottom: 30px;
                 }
             }
         }
@@ -59,6 +41,7 @@
 @media only screen and (max-width: 992px) {
     .ourGlobe {
         flex-direction: column;
+        padding-left: 10px;
 
         .globePic {
             display: none;

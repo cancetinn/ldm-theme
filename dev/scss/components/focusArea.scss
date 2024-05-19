@@ -23,25 +23,34 @@
             }
         }
 
-        .faBoxArea {
-            min-width: 275px;
-            height: 345px;
-            border: 1px solid #fff;
-            max-width: 275px;
+        a {
+            color:#fff;
 
-            .faBoxItem {
-                display: flex;
-                flex-direction: column;
+            &:hover {
+                background: #BA04FE;
+                transition: all .3s ease-in;
+            }
+
+            .faBoxArea {
+                min-width: 275px;
                 height: 345px;
-                justify-content: space-between;
-                padding: 30px;
+                border: 1px solid #fff;
+                max-width: 275px;
 
-                h4 {
-                    font-size: 22px;
-                }
+                .faBoxItem {
+                    display: flex;
+                    flex-direction: column;
+                    height: 345px;
+                    justify-content: space-between;
+                    padding: 30px;
 
-                img {
-                    max-width: 60px;
+                    h4 {
+                        font-size: 22px;
+                    }
+
+                    img {
+                        max-width: 60px;
+                    }
                 }
             }
         }
