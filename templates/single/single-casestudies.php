@@ -39,9 +39,11 @@ $sGallery = get_field('case_studies_gallery');
             <?php echo the_content(); ?>
             <div class="categoryArea">
 
+                <?php if (!empty($clients)): ?>
                 <div class="clientL">
                     <p>Clients :<br><span><?php echo $clients ?></span></p>
                 </div>
+                <?php endif; ?>
                 <div class="categoryL">
                     <p>Category :<br><span><?php echo $category ?></span></p>
                 </div>

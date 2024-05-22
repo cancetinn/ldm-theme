@@ -59,16 +59,7 @@ class Mainbanner extends Widget_Base
             'big_text', [
                 'label' => 'Big Text',
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => "THE ULTIMATE",
-                'label_block' => true,
-            ]
-        );
-
-        $this->add_control(
-            'second_big_text', [
-                'label' => 'SecondBig Text',
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => "ESPORTS PLATFORM",
+                'default' => "THE ULTIMATE <span>ESPORTS PLATFORM</span>",
                 'label_block' => true,
             ]
         );
@@ -120,8 +111,7 @@ class Mainbanner extends Widget_Base
             <div class="container banner">
                 <div class="bannerArea">
                     <div class="textArea">
-                        <h1 class="title"><?php echo $settings['big_text']?></h1>
-                        <h2 class="title"><?php echo $settings['second_big_text']?></h2>
+                        <h1 class="title" id="changeText"><?php echo $settings['big_text']?></h1>
                         <?php echo $settings['banner_content']?>
                     </div>
                     <div class="imgArea lazyload lazyloaded">
@@ -136,6 +126,25 @@ class Mainbanner extends Widget_Base
                 </div>
             </div>
         </section>
+
+        <!--<script>
+            var text = ["Arda Turan", "MERT HAKAN YANDAŞ"];
+            var counter = 0;
+            var elem = document.getElementById("changeText");
+            setInterval(change, 2500);
+
+            function change() {
+                elem.classList.add('hide');
+                setTimeout(function () {
+                    elem.innerHTML = text[counter];
+                    elem.classList.remove('hide');
+                    counter++;
+                    if (counter >= text.length) {
+                        counter = 0;
+                    }
+                }, 500);
+            }
+        </script>-->
 
         <?php
     }

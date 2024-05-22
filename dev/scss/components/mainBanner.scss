@@ -7,11 +7,12 @@
         h1.title {
             font-size: clamp(2rem, -4.643rem + 10.714vw, 5rem);
             font-weight: 700;
-        }
+            line-height: 85px;
 
-        h2.title {
-            font-size: clamp(1.75rem, -3.232rem + 8.036vw, 4rem);
-            font-weight: 500;
+            span {
+                font-size: clamp(1.75rem, -3.232rem + 8.036vw, 4rem);
+                font-weight: 500;
+            }
         }
 
         p {
@@ -160,6 +161,10 @@
                 padding: 30px;
                 z-index: 6;
                 white-space: unset;
+
+                h1.title {
+                    line-height: 40px;
+                }
             }
 
             .imgArea {
@@ -195,4 +200,12 @@
 @keyframes mover {
     0% { transform: translateY(0); }
     100% { transform: translateY(-20px); }
+}
+
+#changeText {
+    opacity: 1;
+    transition: opacity 1s;
+}
+.hide {
+    opacity: 0 !important;
 }

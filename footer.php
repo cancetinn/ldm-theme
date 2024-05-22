@@ -144,6 +144,6 @@ $asia_youtube          = getRedux('asia_social_youtube');
     <div data-ajaxurl="<?php echo admin_url('admin-ajax.php'); ?>"></div>
 </footer>
 <?php wp_footer(); ?>
-
+<script src="//code.jivosite.com/widget/oP0FQ4nqpH" async></script>
 </body>
 </html>
