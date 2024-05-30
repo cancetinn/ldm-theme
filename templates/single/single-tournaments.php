@@ -22,11 +22,11 @@ if($template == 'TEMPLATE_ONE') {
 }
 
 elseif($template == 'TEMPLATE_TWO') {
-    get_template_part( "templates/single/single", 'template_two' );
+    get_template_part( "templates/single/single", 'template-two' );
 }
 
 else {
-    get_template_part( "templates/single/single", 'template_three' );
+    get_template_part( "templates/single/single", 'template-three' );
 }
 
 ?>
