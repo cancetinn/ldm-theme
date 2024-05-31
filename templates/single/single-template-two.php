@@ -20,41 +20,33 @@ $banner = get_field('banner');
             </div>
             <div class="titleArea">
                 <!--<h1 class="title"><?php /*echo the_title(); */?></h1>-->
-                <p><?php echo the_content(); ?></p>
-
-<!--                <div class="pbButton">
-                    <a href="https://lidoma.com/wp-content/uploads/2024/03/JA-GAME-FEST_compressed.pdf" target="_blank" class="buttonLidoma">PLAYBOOK</a>
-                </div>
-
                 <div class="reqArea">
                     <div class="dateArea">
-                        <img class="lazyloaded lazyload" src="<?php /*echo ARINA_ASSETS_URI; */?>/img/date.png"" alt="">
+                        <img class="lazyloaded lazyload" src="<?php echo ARINA_ASSETS_URI; ?>/img/date.png"" alt="">
                         <h3 class="title">START DATE</h3>
                         <ul>
-                            <li>March 11</li>
+                            <li>June 5th</li>
                         </ul>
                     </div>
                     <div class="dateArea">
-                        <img class="lazyloaded lazyload" src="<?php /*echo ARINA_ASSETS_URI; */?>/img/date.png"" alt="">
+                        <img class="lazyloaded lazyload" src="<?php echo ARINA_ASSETS_URI; ?>/img/date.png"" alt="">
                         <h3 class="title">ENDING DATE</h3>
                         <ul>
-                            <li>March 31</li>
+                            <li>June 16th</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="reqArea">
                     <div class="dateArea">
-                        <img class="lazyloaded lazyload" src="<?php /*echo ARINA_ASSETS_URI; */?>/img/gamepad.png"" alt="">
-                        <h3 class="title">GAMES</h3>
+                        <img class="lazyloaded lazyload" src="<?php echo ARINA_ASSETS_URI; ?>/img/gamepad.png"" alt="">
+                        <h3 class="title">GAME</h3>
                         <ul>
-                            <li>FC24</li>
-                            <li>PUBG MOBILE</li>
-                            <li>CS2</li>
+                            <li>HONOR OF KINGS</li>
                         </ul>
                     </div>
                     <div class="dateArea">
-                        <img class="lazyloaded lazyload" src="<?php /*echo ARINA_ASSETS_URI; */?>/img/format.png"" alt="">
+                        <img class="lazyloaded lazyload" src="<?php echo ARINA_ASSETS_URI; ?>/img/format.png"" alt="">
                         <h3 class="title">FORMAT</h3>
                         <ul>
                             <li>Community</li>
@@ -64,22 +56,13 @@ $banner = get_field('banner');
 
                 <div class="reqArea">
                     <div class="dateArea">
-                        <img class="lazyloaded lazyload" src="<?php /*echo ARINA_ASSETS_URI; */?>/img/prize.png"" alt="">
+                        <img class="lazyloaded lazyload" src="<?php echo ARINA_ASSETS_URI; ?>/img/prize.png"" alt="">
                         <h3 class="title">PRIZE POOL</h3>
                         <ul>
-                            <li>FC24: <b>$5,000</b></li>
-                            <li>PUBG MOBILE: <b>$5,000</b></li>
-                            <li>CS2: <b>$5,000</b></li>
+                            <li><b>$10000</b></li>
                         </ul>
                     </div>
-                    <div class="dateArea">
-                        <img class="lazyloaded lazyload" src="<?php /*echo ARINA_ASSETS_URI; */?>/img/extra.png"" alt="">
-                        <h3 class="title">EXTRA</h3>
-                        <ul>
-                            <li>Admission is free<br> for JA residents.</li>
-                        </ul>
-                    </div>
-                </div>-->
+                </div>
             </div>
         </div>
     </div>
