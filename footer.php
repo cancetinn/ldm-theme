@@ -18,10 +18,10 @@ $global_instagram        = getRedux('global_social_instagram');
 $global_x                = getRedux('global_social_x');
 $global_youtube          = getRedux('global_social_youtube');
 
-//latam
+//latam test
 $latam_instagram        = getRedux('latam_social_instagram');
 $latam_x                = getRedux('latam_social_x');
-$latam_youtube          = getRedux('latam_social_youtube');
+$latam_youtube          = getRedux('latam_social_youtube'); 
 
 //turkey
 $turkey_instagram        = getRedux('turkey_social_instagram');
