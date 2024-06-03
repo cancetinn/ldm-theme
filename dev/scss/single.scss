@@ -405,6 +405,27 @@ article {
                 }
             }
         }
+
+        .newformArea {
+
+            form {
+
+                .teamForm {
+
+                    .teaminfo {
+                        flex-direction: column;
+                    }
+                }
+
+                .buttonArea {
+
+                    .tButton {
+                        width: 100%;
+                        height: 70px;
+                    }
+                }
+            }
+        }
     }
 }
 

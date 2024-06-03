@@ -24,16 +24,12 @@ $banner = get_field('banner');
                     <div class="dateArea">
                         <img class="lazyloaded lazyload" src="<?php echo ARINA_ASSETS_URI; ?>/img/date.png"" alt="">
                         <h3 class="title">START DATE</h3>
-                        <ul>
-                            <li>June 5th</li>
-                        </ul>
+                            <p>June 5th</p>
                     </div>
                     <div class="dateArea">
                         <img class="lazyloaded lazyload" src="<?php echo ARINA_ASSETS_URI; ?>/img/date.png"" alt="">
                         <h3 class="title">ENDING DATE</h3>
-                        <ul>
-                            <li>June 16th</li>
-                        </ul>
+                            <p>June 16th</p>
                     </div>
                 </div>
 
@@ -41,16 +37,12 @@ $banner = get_field('banner');
                     <div class="dateArea">
                         <img class="lazyloaded lazyload" src="<?php echo ARINA_ASSETS_URI; ?>/img/gamepad.png"" alt="">
                         <h3 class="title">GAME</h3>
-                        <ul>
-                            <li>HONOR OF KINGS</li>
-                        </ul>
+                            <p>HONOR OF KINGS</p>
                     </div>
                     <div class="dateArea">
                         <img class="lazyloaded lazyload" src="<?php echo ARINA_ASSETS_URI; ?>/img/format.png"" alt="">
                         <h3 class="title">FORMAT</h3>
-                        <ul>
-                            <li>Community</li>
-                        </ul>
+                            <p>Community</p>
                     </div>
                 </div>
 
@@ -58,9 +50,7 @@ $banner = get_field('banner');
                     <div class="dateArea">
                         <img class="lazyloaded lazyload" src="<?php echo ARINA_ASSETS_URI; ?>/img/prize.png"" alt="">
                         <h3 class="title">PRIZE POOL</h3>
-                        <ul>
-                            <li><b>$10000</b></li>
-                        </ul>
+                            <p><b>$10000</b></li></p>
                     </div>
                 </div>
             </div>
