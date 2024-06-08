@@ -49,8 +49,7 @@ $pickgames = rtrim($pickgames, ', ');
             <tr>
                 <th colspan="2" align="center">
                     <h2 style="font-size: 18px;">
-                        You have successfully completed your registration for JA GAMING FEST. <br>
-                        Simply show the above information to the officials at the festival entrance.
+                        You have successfully completed your registration for ARAB CHAMPIONSHIP.
                         <br>We wish you the best of luck in the tournament!
                     </h2>
                 </th>
@@ -61,7 +60,7 @@ $pickgames = rtrim($pickgames, ', ');
     <tbody>
     <tr>
         <td>
-            <table align="center" border="0" cellspacing="0" cellpadding="0">
+            <!-- <table align="center" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td bgcolor="#f4f4f4" style="padding:20px;">
                         <table border="0" cellspacing="0" cellpadding="0" width="600">
@@ -83,7 +82,7 @@ $pickgames = rtrim($pickgames, ', ');
                         </table>
                     </td>
                 </tr>
-            </table>
+            </table> -->
         </td>
     </tr>
     </tbody>

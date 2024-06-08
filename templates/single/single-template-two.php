@@ -10,7 +10,7 @@ $banner = get_field('banner');
 
 ?>
 
-<div class="spacex" style="--spacer:150px"></div>
+<div class="spacex" style="--spacer:200px"></div>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <div class="container">
@@ -20,6 +20,10 @@ $banner = get_field('banner');
             </div>
             <div class="titleArea">
                 <!--<h1 class="title"><?php /*echo the_title(); */?></h1>-->
+                <div class="pbButton">
+                    <a href="https://docs.google.com/document/d/17IOCx3Tpz8T-intAOiajDpBkP2xVt4122e7fSVdXlN0/edit?usp=sharing" target="_blank" class="buttonLidoma">RULEBOOK</a> 
+                    <a href="https://discord.gg/Yxc5qCcjUs" target="_blank" class="buttonLidoma">DISCORD</a>
+                </div>
                 <div class="reqArea">
                     <div class="dateArea">
                         <img class="lazyloaded lazyload" src="<?php echo ARINA_ASSETS_URI; ?>/img/date.png"" alt="">
@@ -74,8 +78,6 @@ $banner = get_field('banner');
                                     <label>Team Country</label>
                                     <select id="teamcountry" name="teamcountry" required>
                                         <option value="">Team Country</option>
-                                        <option value="turkey">Turkey</option>
-                                        <option value="azerbaijan">Azerbaijan</option>
                                         <option value="saudi_arabia">Saudi Arabia</option>
                                         <option value="uae">United Arab Emirates</option>
                                         <option value="egypt">Egypt</option>
@@ -99,7 +101,7 @@ $banner = get_field('banner');
                                 </div>
                                 <div>
                                     <label>Team Logo</label>
-                                    <input type="file" id="teamlogo" name="teamlogo" accept="image/*" required>
+                                    <input type="file" id="teamlogo" name="teamlogo" accept="image/*">
                                 </div>
                             </div>
                             <div class="playersArea">
@@ -222,21 +224,21 @@ $banner = get_field('banner');
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const getForm = document.querySelector("#post<?php the_ID(); ?>");
-        const dataNonce = document.querySelector(".tournamentNonce").getAttribute("data-nonce");
-        const ajax = new AjaxForm();
+        const getForm = selector("#post<?php the_ID(); ?>")
+        const dataNonce = getDataset(".tournamentNonce", "nonce")
+        const ajax = new AjaxForm()
 
         getForm.addEventListener('submit', e => {
-            e.preventDefault();
-            const formData = new FormData(getForm);
+            e.preventDefault()
+            const formData = new FormData(getForm)
 
-            formData.append('action', 'tournaments_form');
-            formData.append('security', dataNonce);
+            formData.append('action', 'tournaments_form')
+            formData.append('security', document.querySelector('.tournamentNonce').getAttribute('data-nonce'));
 
-            ajax.fetchForm(formData, getForm);
-        });
+            ajax.fetchForm(formData, getForm)
+        })
 
         // Custom validation message
-        checkValidationMessage('#cfcheck');
-    });
+        checkValidationMessage('#cfcheck')
+    })
 </script>

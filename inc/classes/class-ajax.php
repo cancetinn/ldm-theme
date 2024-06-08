@@ -126,158 +126,158 @@ class Ajax
 
     // arabs tournament db save
     public function arabtournament_save_detail() {
-        check_ajax_referer('tournament_form_nonce', 'security');
+    check_ajax_referer('tournament_form_nonce', 'security');
 
-        global $wpdb;
-        $table_name = $wpdb->prefix . 'arab_tournament';
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'arab_tournament';
 
-        $team_name = sanitize_text_field($_POST['teamname']);
-        $team_country = sanitize_text_field($_POST['teamcountry']);
-        $leader_phone = sanitize_text_field($_POST['leaderphone']);
-        $player1_ign = sanitize_text_field($_POST['player1ign']);
-        $player1_uid = sanitize_text_field($_POST['player1uid']);
-        $player1_discord = sanitize_text_field($_POST['player1dc']);
-        $player1_email = sanitize_email($_POST['player1email']);
-        $player2_ign = sanitize_text_field($_POST['player2ign']);
-        $player2_uid = sanitize_text_field($_POST['player2uid']);
-        $player2_discord = sanitize_text_field($_POST['player2dc']);
-        $player2_email = sanitize_email($_POST['player2email']);
-        $player3_ign = sanitize_text_field($_POST['player3ign']);
-        $player3_uid = sanitize_text_field($_POST['player3uid']);
-        $player3_discord = sanitize_text_field($_POST['player3dc']);
-        $player3_email = sanitize_email($_POST['player3email']);
-        $player4_ign = sanitize_text_field($_POST['player4ign']);
-        $player4_uid = sanitize_text_field($_POST['player4uid']);
-        $player4_discord = sanitize_text_field($_POST['player4dc']);
-        $player4_email = sanitize_email($_POST['player4email']);
-        $player5_ign = sanitize_text_field($_POST['player5ign']);
-        $player5_uid = sanitize_text_field($_POST['player5uid']);
-        $player5_discord = sanitize_text_field($_POST['player5dc']);
-        $player5_email = sanitize_email($_POST['player5email']);
-        $substitute1_ign = sanitize_text_field($_POST['substitute1_ign']);
-        $substitute1_uid = sanitize_text_field($_POST['substitute1_uid']);
-        $substitute1_discord = sanitize_text_field($_POST['substitute1_discord']);
-        $substitute1_email = sanitize_email($_POST['substitute1_email']);
-        $substitute2_ign = sanitize_text_field($_POST['substitute2_ign']);
-        $substitute2_uid = sanitize_text_field($_POST['substitute2_uid']);
-        $substitute2_discord = sanitize_text_field($_POST['substitute2_discord']);
-        $substitute2_email = sanitize_email($_POST['substitute2_email']);
-        $nonce = sanitize_text_field($_POST['security']);
+    $team_name = sanitize_text_field($_POST['teamname']);
+    $team_country = sanitize_text_field($_POST['teamcountry']);
+    $leader_phone = sanitize_text_field($_POST['leaderphone']);
+    $player1_ign = sanitize_text_field($_POST['player1ign']);
+    $player1_uid = sanitize_text_field($_POST['player1uid']);
+    $player1_discord = sanitize_text_field($_POST['player1dc']);
+    $player1_email = sanitize_email($_POST['player1email']);
+    $player2_ign = sanitize_text_field($_POST['player2ign']);
+    $player2_uid = sanitize_text_field($_POST['player2uid']);
+    $player2_discord = sanitize_text_field($_POST['player2dc']);
+    $player2_email = sanitize_email($_POST['player2email']);
+    $player3_ign = sanitize_text_field($_POST['player3ign']);
+    $player3_uid = sanitize_text_field($_POST['player3uid']);
+    $player3_discord = sanitize_text_field($_POST['player3dc']);
+    $player3_email = sanitize_email($_POST['player3email']);
+    $player4_ign = sanitize_text_field($_POST['player4ign']);
+    $player4_uid = sanitize_text_field($_POST['player4uid']);
+    $player4_discord = sanitize_text_field($_POST['player4dc']);
+    $player4_email = sanitize_email($_POST['player4email']);
+    $player5_ign = sanitize_text_field($_POST['player5ign']);
+    $player5_uid = sanitize_text_field($_POST['player5uid']);
+    $player5_discord = sanitize_text_field($_POST['player5dc']);
+    $player5_email = sanitize_email($_POST['player5email']);
+    $substitute1_ign = sanitize_text_field($_POST['substitute1_ign']);
+    $substitute1_uid = sanitize_text_field($_POST['substitute1_uid']);
+    $substitute1_discord = sanitize_text_field($_POST['substitute1_discord']);
+    $substitute1_email = sanitize_email($_POST['substitute1_email']);
+    $substitute2_ign = sanitize_text_field($_POST['substitute2_ign']);
+    $substitute2_uid = sanitize_text_field($_POST['substitute2_uid']);
+    $substitute2_discord = sanitize_text_field($_POST['substitute2_discord']);
+    $substitute2_email = sanitize_email($_POST['substitute2_email']);
+    $nonce = sanitize_text_field($_POST['security']);
 
-        // Dosya yükleme işlemi
-        if (!empty($_FILES['teamlogo']['name'])) {
-            $file = $_FILES['teamlogo'];
+    // Dosya yükleme işlemi
+    $file_url = '';
+    if (!empty($_FILES['teamlogo']['name'])) {
+        $file = $_FILES['teamlogo'];
 
-            // Yükleme hatalarını kontrol et
-            if ($file['error']) {
-                wp_send_json_error('File upload error!');
-            }
-
-            // Dosyayı WordPress'e yükle
-            $upload = wp_handle_upload($file, array('test_form' => false));
-
-            if (isset($upload['url']) && !isset($upload['error'])) {
-                $file_url = $upload['url'];
-            } else {
-                wp_send_json_error('File upload error: ' . $upload['error']);
-            }
-        } else {
-            wp_send_json_error('File not upload!');
+        // Yükleme hatalarını kontrol et
+        if ($file['error']) {
+            wp_send_json_error('File upload error!');
         }
 
-        // Veritabanına veriyi kaydet
-        $wpdb->insert(
-            $table_name,
-            [
-                'team_name' => $team_name,
-                'team_logo' => $file_url,
-                'team_country' => $team_country,
-                'leader_phone' => $leader_phone,
-                'player1_ign' => $player1_ign,
-                'player1_uid' => $player1_uid,
-                'player1_discord' => $player1_discord,
-                'player1_email' => $player1_email,
-                'player2_ign' => $player2_ign,
-                'player2_uid' => $player2_uid,
-                'player2_discord' => $player2_discord,
-                'player2_email' => $player2_email,
-                'player3_ign' => $player3_ign,
-                'player3_uid' => $player3_uid,
-                'player3_discord' => $player3_discord,
-                'player3_email' => $player3_email,
-                'player4_ign' => $player4_ign,
-                'player4_uid' => $player4_uid,
-                'player4_discord' => $player4_discord,
-                'player4_email' => $player4_email,
-                'player5_ign' => $player5_ign,
-                'player5_uid' => $player5_uid,
-                'player5_discord' => $player5_discord,
-                'player5_email' => $player5_email,
-                'substitute1_ign' => $substitute1_ign,
-                'substitute1_uid' => $substitute1_uid,
-                'substitute1_discord' => $substitute1_discord,
-                'substitute1_email' => $substitute1_email,
-                'substitute2_ign' => $substitute2_ign,
-                'substitute2_uid' => $substitute2_uid,
-                'substitute2_discord' => $substitute2_discord,
-                'substitute2_email' => $substitute2_email,
-                'nonce' => $nonce
-            ]
-        );
+        // Dosyayı WordPress'e yükle
+        $upload = wp_handle_upload($file, array('test_form' => false));
 
-        wp_send_json_success('Form submitted successfully!');
+        if (isset($upload['url']) && !isset($upload['error'])) {
+            $file_url = $upload['url'];
+        } else {
+            wp_send_json_error('File upload error: ' . $upload['error']);
+        }
     }
 
-    // arabs tournament create database
-    public function create_arabtournament_db() {
-        global $wpdb;
-        $table_name = $wpdb->prefix . 'arab_tournament';
-        $charset_collate = $wpdb->get_charset_collate();
+    // Veritabanına veriyi kaydet
+    $wpdb->insert(
+        $table_name,
+        [
+            'team_name' => $team_name,
+            'team_logo' => $file_url,
+            'team_country' => $team_country,
+            'leader_phone' => $leader_phone,
+            'player1_ign' => $player1_ign,
+            'player1_uid' => $player1_uid,
+            'player1_discord' => $player1_discord,
+            'player1_email' => $player1_email,
+            'player2_ign' => $player2_ign,
+            'player2_uid' => $player2_uid,
+            'player2_discord' => $player2_discord,
+            'player2_email' => $player2_email,
+            'player3_ign' => $player3_ign,
+            'player3_uid' => $player3_uid,
+            'player3_discord' => $player3_discord,
+            'player3_email' => $player3_email,
+            'player4_ign' => $player4_ign,
+            'player4_uid' => $player4_uid,
+            'player4_discord' => $player4_discord,
+            'player4_email' => $player4_email,
+            'player5_ign' => $player5_ign,
+            'player5_uid' => $player5_uid,
+            'player5_discord' => $player5_discord,
+            'player5_email' => $player5_email,
+            'substitute1_ign' => $substitute1_ign,
+            'substitute1_uid' => $substitute1_uid,
+            'substitute1_discord' => $substitute1_discord,
+            'substitute1_email' => $substitute1_email,
+            'substitute2_ign' => $substitute2_ign,
+            'substitute2_uid' => $substitute2_uid,
+            'substitute2_discord' => $substitute2_discord,
+            'substitute2_email' => $substitute2_email,
+            'nonce' => $nonce
+        ]
+    );
 
-        $sql = "CREATE TABLE $table_name (
-    id mediumint(9) NOT NULL AUTO_INCREMENT,
-    team_name tinytext NOT NULL,
-    team_logo text NOT NULL,
-    team_country text NOT NULL,
-    leader_phone text NOT NULL,
-    player1_ign tinytext NOT NULL,
-    player1_uid text NOT NULL,
-    player1_discord text NOT NULL,
-    player1_email text NOT NULL,
-    player2_ign tinytext,
-    player2_uid text,
-    player2_discord text,
-    player2_email text,
-    player3_ign tinytext,
-    player3_uid text,
-    player3_discord text,
-    player3_email text,
-    player4_ign tinytext,
-    player4_uid text,
-    player4_discord text,
-    player4_email text,
-    player5_ign tinytext,
-    player5_uid text,
-    player5_discord text,
-    player5_email text,
-    substitute1_ign tinytext,
-    substitute1_uid text,
-    substitute1_discord text,
-    substitute1_email text,
-    substitute2_ign tinytext,
-    substitute2_uid text,
-    substitute2_discord text,
-    substitute2_email text,
-    nonce text NOT NULL,
-    PRIMARY KEY  (id)
+    wp_send_json_success('Form submitted successfully!');
+}
+
+// arabs tournament create database
+public function create_arabtournament_db() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'arab_tournament';
+    $charset_collate = $wpdb->get_charset_collate();
+
+    $sql = "CREATE TABLE $table_name (
+        id mediumint(9) NOT NULL AUTO_INCREMENT,
+        team_name tinytext NOT NULL,
+        team_logo text,
+        team_country text NOT NULL,
+        leader_phone text NOT NULL,
+        player1_ign tinytext NOT NULL,
+        player1_uid text NOT NULL,
+        player1_discord text NOT NULL,
+        player1_email text NOT NULL,
+        player2_ign tinytext,
+        player2_uid text,
+        player2_discord text,
+        player2_email text,
+        player3_ign tinytext,
+        player3_uid text,
+        player3_discord text,
+        player3_email text,
+        player4_ign tinytext,
+        player4_uid text,
+        player4_discord text,
+        player4_email text,
+        player5_ign tinytext,
+        player5_uid text,
+        player5_discord text,
+        player5_email text,
+        substitute1_ign tinytext,
+        substitute1_uid text,
+        substitute1_discord text,
+        substitute1_email text,
+        substitute2_ign tinytext,
+        substitute2_uid text,
+        substitute2_discord text,
+        substitute2_email text,
+        nonce text NOT NULL,
+        PRIMARY KEY  (id)
     ) $charset_collate;";
 
-        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-        dbDelta($sql);
-    }
+    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+    dbDelta($sql);
+}
 
-    public function handle_form_update_permissions_check($request)
-    {
-        return current_user_can('manage_options');
-    }
+public function handle_form_update_permissions_check($request)
+{
+    return current_user_can('manage_options');
+}
+
 }

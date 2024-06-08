@@ -60,22 +60,13 @@ class Mail {
 
         self::checkNonce("tournament_form_nonce");
 
-        //en az bir oyun seçtiren bölüm
-        if (empty($_POST['pubg']) && empty($_POST['cs2']) && empty($_POST['fc24'])) {
-            self::sendJsonFormat("error", esc_html__("Please select at least 1 game.", ARINA_TEXT));
-            die;
-        }
 
         $args = [
             'name'          => $_POST['name'],
             'name2'         => $_POST['name2'],
-            'email'         => $_POST['email'],
-            'email2'        => $_POST['email2'],
-            'pubg'          => $_POST['pubg'],
-            'cs2'           => $_POST['cs2'],
-            'fc24'          => $_POST['fc24'],
+            'player1email'  => $_POST['player1email'],
             'template'      => 'tournament', // contact-template.php
-            'required'  => ['name', 'email',],
+            'required'  => ['name', 'player1email',],
         ];
 
         $messages = [
@@ -86,7 +77,7 @@ class Mail {
         //self::phpMailer($args, $messages);
 
         $userEmailArgs = $args;
-        $userEmailArgs['email'] = $_POST['email'];
+        $userEmailArgs['player1email'] = $_POST['player1email'];
         $userEmailArgs['template'] = 'application';
         $userEmailMessages = [
             'error'   => esc_html__("E-posta gönderilemedi.", ARINA_TEXT),
