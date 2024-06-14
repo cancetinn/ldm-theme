@@ -33,7 +33,7 @@ $banner = get_field('banner');
                     <div class="dateArea">
                         <img class="lazyloaded lazyload" src="<?php echo ARINA_ASSETS_URI; ?>/img/date.png"" alt="">
                         <h3 class="title">ENDING DATE</h3>
-                            <p>June 7th</p>
+                            <p>July 7th</p>
                     </div>
                 </div>
 
