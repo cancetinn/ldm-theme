@@ -33,7 +33,7 @@ $banner = get_field('banner');
                     <div class="dateArea">
                         <img class="lazyloaded lazyload" src="<?php echo ARINA_ASSETS_URI; ?>/img/date.png"" alt="">
                         <h3 class="title">ENDING DATE</h3>
-                            <p>June 16th</p>
+                            <p>June 7th</p>
                     </div>
                 </div>
 
@@ -184,6 +184,10 @@ $banner = get_field('banner');
                                     <input type="text" name="substitute2_email">
                                 </div>
                             </div>
+                        </div>
+                        <div class="refereArea" style="max-width: 250px;margin: 0 auto;margin-top: 30px;">
+                        <label>Referrer Name</label>
+                        <input type="text" id="reference" name="reference">
                         </div>
                         <div class="buttonArea">
                             <button type="button" id="addSubstituteButton" class="tButton">Add Substitute Player</button>

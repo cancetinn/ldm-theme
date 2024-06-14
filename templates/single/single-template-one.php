@@ -10,7 +10,7 @@ $banner = get_field('banner');
 
 ?>
 
-<div class="spacex" style="--spacer:150px"></div>
+<!-- <div class="spacex" style="--spacer:150px"></div>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <div class="container">
@@ -19,7 +19,6 @@ $banner = get_field('banner');
                 <img class="lazyload lazyloaded" src="<?php echo esc_url($banner['url']) ?>" alt="">
             </div>
             <div class="titleArea">
-                <!--<h1 class="title"><?php /*echo the_title(); */?></h1>-->
                 <p><?php echo the_content(); ?></p>
 
                 <div class="pbButton">
@@ -134,9 +133,9 @@ $banner = get_field('banner');
     </div>
 
     <div class="spacex" style="--spacer:250px"></div>
-</article>
+</article> -->
 
-<script>
+<!-- <script>
     document.addEventListener('DOMContentLoaded', function () {
         const getForm = selector("#post<?php the_ID(); ?>")
         const dataNonce = getDataset(".tournamentNonce", "nonce")
@@ -155,9 +154,9 @@ $banner = get_field('banner');
         // Custom validation message
         checkValidationMessage('#cfcheck')
     })
-</script>
+</script> -->
 
-<script>
+<!-- <script>
     document.addEventListener('DOMContentLoaded', function () {
         const form = document.getElementById('post<?php the_ID(); ?>');
         var ajaxForm = new AjaxForm();
@@ -182,4 +181,4 @@ $banner = get_field('banner');
             ajaxForm.fetchForm(formData, form);
         });
     });
-</script>
+</script> -->

@@ -162,6 +162,7 @@ class Ajax
     $substitute2_uid = sanitize_text_field($_POST['substitute2_uid']);
     $substitute2_discord = sanitize_text_field($_POST['substitute2_discord']);
     $substitute2_email = sanitize_email($_POST['substitute2_email']);
+    $reference = sanitize_email($_POST['reference']);
     $nonce = sanitize_text_field($_POST['security']);
 
     // Dosya yükleme işlemi
@@ -220,6 +221,7 @@ class Ajax
             'substitute2_uid' => $substitute2_uid,
             'substitute2_discord' => $substitute2_discord,
             'substitute2_email' => $substitute2_email,
+            'reference' => $reference,
             'nonce' => $nonce
         ]
     );
@@ -267,6 +269,7 @@ public function create_arabtournament_db() {
         substitute2_uid text,
         substitute2_discord text,
         substitute2_email text,
+        reference text,
         nonce text NOT NULL,
         PRIMARY KEY  (id)
     ) $charset_collate;";
