@@ -67,7 +67,7 @@ $banner = get_field('banner');
                 <div class="spacex" style="--spacer:100px"></div>
 
                 <div class="newformArea">
-                    <form action="" method="post" name="post<?php the_ID(); ?>" id="post<?php the_ID(); ?>">
+                    <form action="" method="post" name="arab_tournament" id="arab_tournament">
                         <div class="teamForm">
                             <div class="teaminfo">
                                 <div>
@@ -193,7 +193,7 @@ $banner = get_field('banner');
                             <button type="button" id="addSubstituteButton" class="tButton">Add Substitute Player</button>
                             <button class="tButton" type="submit">Register</button>
                         </div>
-                        <div class="tournamentNonce" data-nonce="<?php echo wp_create_nonce('tournament_form_nonce'); ?>"></div>
+                        <div class="tournamentNonce" data-nonce="<?php echo wp_create_nonce('arab_form_nonce'); ?>"></div>
                     </form>
                 </div>
             </div>
@@ -228,7 +228,7 @@ $banner = get_field('banner');
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const getForm = selector("#post<?php the_ID(); ?>")
+        const getForm = selector("#arab_tournament")
         const dataNonce = getDataset(".tournamentNonce", "nonce")
         const ajax = new AjaxForm()
 
@@ -236,7 +236,7 @@ $banner = get_field('banner');
             e.preventDefault()
             const formData = new FormData(getForm)
 
-            formData.append('action', 'tournaments_form')
+            formData.append('action', 'arab_tournament')
             formData.append('security', document.querySelector('.tournamentNonce').getAttribute('data-nonce'));
 
             ajax.fetchForm(formData, getForm)

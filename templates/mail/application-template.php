@@ -49,8 +49,11 @@ $pickgames = rtrim($pickgames, ', ');
             <tr>
                 <th colspan="2" align="center">
                     <h2 style="font-size: 18px;">
-                        You have successfully completed your registration for ARAB CHAMPIONSHIP.
-                        <br>We wish you the best of luck in the tournament!
+                    You have successfully submitted your information for the ARAB CHAMPIONSHIP tournament. To complete your registration, please join our Discord server, claim your team role in the <b>#role_assign channel</b>, and read the <b>#info</b> channel for important details about team residency and other critical information.
+                    <br><br>
+                    Discord Server Link: <a href="https://discord.gg/u8dDCmmFyY">https://discord.gg/u8dDCmmFyY</a>
+                    <br><br>
+                    We wish you the best of Luck in the tournament.
                     </h2>
                 </th>
             </tr>

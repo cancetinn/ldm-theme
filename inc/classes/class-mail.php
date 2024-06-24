@@ -31,6 +31,10 @@ class Mail {
         //Tournament FORM AJAX
         add_action('wp_ajax_nopriv_tournaments_form', [$this, 'tournaments_form']);
         add_action('wp_ajax_tournaments_form', [$this, 'tournaments_form']);
+
+        //Arab Tournament FORM AJAX
+        add_action('wp_ajax_nopriv_arab_tournament', [$this, 'arab_tournament']);
+        add_action('wp_ajax_arab_tournament', [$this, 'arab_tournament']);
     }
 
     public function contact_form()
@@ -105,16 +109,12 @@ class Mail {
     die;
     }
 
-    public function phpMailer($args, $messages, $subject = '')
+    public function phpMailer($args, $messages, $subject = 'Tournament Application Received')
     {
-		self::validateFields( $args['required'] );
-
         $mail = new PHPMailer();
 
         $mail->isSMTP();
         $mail->isHTML(true);
-        //$mail->SMTPDebug = 2;
-
         $mail->Host = MAIL_HOST;
         $mail->Port = MAIL_PORT;
         $mail->SMTPSecure = MAIL_SECURE;
@@ -122,35 +122,29 @@ class Mail {
         $mail->CharSet = 'UTF-8';
         $mail->Username = MAIL_USERNAME;
         $mail->Password = MAIL_PASSWORD;
-        $mail->SMTPOptions = array(
-            'ssl' => array(
+        $mail->SMTPOptions = [
+            'ssl' => [
                 'verify_peer' => false,
                 'verify_peer_name' => false,
                 'allow_self_signed' => true
-            )
-        );
-        $mail->setFrom(MAIL_USERNAME, MAIL_TEXT);
-        $mail->addAddress('can.cetin@arinadigital.com', MAIL_TEXT);
+            ]
+        ];
 
-        //user emails
-        $mail->addAddress($args['email']);
-        if (!empty($args['email2'])) {
-            $mail->addAddress($args['email2']);
+        $mail->setFrom(MAIL_USERNAME, 'Tournament Registration');
+        foreach ($args['emails'] as $email) {
+            $mail->addAddress($email); // Add a recipient
         }
 
+        $mail->Subject = $subject;
+        $mail->MsgHTML(self::mailTemplate($args));
 
-	    // Format date/time
-	    $date = date_i18n('d/m/Y H:i', current_time('timestamp'));
-        $mail->Subject = $subject ? $subject : 'LIDOMA Form Notification';
-
-        $mail->MsgHTML( self::mailTemplate($args) );
-
-        if(!$mail->send()) :
-	        self::sendJsonFormat("error", $messages['error']);
-        else :
-	        self::sendJsonFormat("success", $messages['success']);
-        endif;
+        if(!$mail->send()) {
+            self::sendJsonFormat("error", $messages['error']);
+        } else {
+            self::sendJsonFormat("success", $messages['success']);
+        }
     }
+
 
 	public function validateFields($fields){
 		$check_field = [];
@@ -193,5 +187,34 @@ class Mail {
         $templateContent = ob_get_clean();
 
         return $templateContent;
+    }
+
+    public function arab_tournament()
+    {
+        self::checkNonce("arab_form_nonce");
+
+        $emails = [
+            $_POST['player1email'],
+            $_POST['player2email'],
+            $_POST['player3email'],
+            $_POST['player4email'],
+            $_POST['player5email'],
+            $_POST['substitute1_email'],
+            $_POST['substitute2_email'],
+        ];
+
+        $args = [
+            'emails'        => $emails,
+            'template'      => 'application',
+        ];
+
+        $messages = [
+            'error'     => esc_html__("Please fill in the required fields.", ARINA_TEXT),
+            'success'   => esc_html__("Your tournament application has been successfully received.", ARINA_TEXT),
+        ];
+
+        self::phpMailer($args, $messages);
+
+        die;
     }
 }
