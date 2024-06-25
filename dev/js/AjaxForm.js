@@ -43,7 +43,7 @@ class AjaxForm {
                 if (data?.status !== "error") {
                     if (formData.get('action') === 'newsletterForm') {
                         this.messages("success", "Thank you for subscribing to our newsletter!");
-                    } else if (formData.get('action') === 'arab_tournament') {
+                    } else if (formData.get('action') === 'tournaments_form') {
                         this.messages('success', '<a href="https://discord.gg/u8dDCmmFyY">Your registration has been received! Details will be sent to your email address. To complete your registration, please join our <b>Discord server!</b></a>');
                     } else {
                         this.messages("success", "Thank you!");

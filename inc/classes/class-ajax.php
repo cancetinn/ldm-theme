@@ -29,8 +29,8 @@ class Ajax
 
         /*arab tournament save db*/
         add_action('init', [$this, 'create_arabtournament_db']);
-        add_action('wp_ajax_tournaments_form', [$this,'arabtournament_save_detail']);
-        add_action('wp_ajax_nopriv_tournaments_form', [$this,'arabtournament_save_detail']);
+        add_action('wp_ajax_arabtournaments_db', [$this,'arabtournament_save_detail']);
+        add_action('wp_ajax_nopriv_arabtournaments_db', [$this,'arabtournament_save_detail']);
 
     }
 
@@ -162,7 +162,7 @@ class Ajax
     $substitute2_uid = sanitize_text_field($_POST['substitute2_uid']);
     $substitute2_discord = sanitize_text_field($_POST['substitute2_discord']);
     $substitute2_email = sanitize_email($_POST['substitute2_email']);
-    $reference = sanitize_email($_POST['reference']);
+    $reference = sanitize_text_field($_POST['reference']);
     $nonce = sanitize_text_field($_POST['security']);
 
     // Dosya yükleme işlemi
