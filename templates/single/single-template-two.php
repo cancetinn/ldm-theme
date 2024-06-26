@@ -237,7 +237,6 @@ $banner = get_field('banner');
             const formData = new FormData(getForm)
 
             formData.append('action', 'tournaments_form')
-            formData.append('action', 'arabtournaments_db')
             formData.append('security', document.querySelector('.tournamentNonce').getAttribute('data-nonce'));
 
             ajax.fetchForm(formData, getForm)

@@ -52,6 +52,7 @@ class AjaxForm {
                 } else {
                     this.messages("error", data?.message)
                 }
+
             });
     }
 
